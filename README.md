@@ -1,3 +1,3 @@
 # QuartettChat
-# Pattern und Frameworks
-# Beuth-Hochschule Berlin
+Pattern und Frameworks
+Beuth-Hochschule Berlin
