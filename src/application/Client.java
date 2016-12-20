@@ -2,7 +2,7 @@ package application;
 
 public class Client {
 	
-	public stativ void main (String[]args){
+	public static void main (String[]args){
 		System.out.println("Test");
 	}
 }
