@@ -15,7 +15,7 @@ public class Main2 extends Application {
 	public void start(Stage stage) {
 		StackPane pane = new StackPane();
 		Button button = new Button();
-		button.setText("Hier klicken");
+		button.setText("Click it");
 		button.setOnAction(new EventHandler<ActionEvent>() { @Override
 			public void handle(ActionEvent event) {
 			Platform.exit();
