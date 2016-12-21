@@ -1,3 +1,6 @@
+// 2016-12-21_Test_Git_Artur 
+// 2016-12-21_Test_Git_Artur_v2 
+
 package application;
 	
 import javafx.application.Application;
