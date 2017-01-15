@@ -76,8 +76,8 @@ Spieler2 wählt Elementattribut neuer erster Karte Stapel rechts;
 	
 wenn Spieler 2 gewonnen dann wie vorher und Spieler 2 bekommt Karte von Spieler 1;
 
-wenn Stapel links 	leer, Spieler2 gewonnen;
-wenn Stapel rechts	leer, Spieler1 gewonnen;
+wenn Stapel links und rechts leer, Spieler mit den meistens karten hat gewonnen;
+
 
 
 */
