@@ -12,8 +12,10 @@ import java.util.List;
 		
 	}
 	
+	//  public Karten(String name, int topspeed, int hubraum, double beschleunigung, int zylinder, int ps, int rpm)
+	
 	public Kartenstapel(int a){
-        Karten.add(new Karten("Audi_A4_DTM", 290, 4000, 4.3, 8, 465, 7300));
+        Karten.add(new Karten("Audi_A4_DTM", "bildUrl", 465, 290, 20, 4000, 4.3));
         Karten.add(new Karten("Chrysler_Viper_GTSR", 315, 7986, 3.7, 10, 600, 7000));
         Karten.add(new Karten("Citroen_Xsara_WRC", 270, 1998, 4.7, 4, 305, 7300));
         Karten.add(new Karten("VW_Polo_Super1600",205,1598,5.8,4,215,8750));
