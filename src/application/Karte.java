@@ -1,6 +1,8 @@
 package application;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyStringProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
@@ -8,6 +10,8 @@ import javafx.scene.image.Image;
 
 public class Karte {
     private static StringProperty name = new SimpleStringProperty();
+    private ObjectProperty<javafx.scene.image.Image> imageProperty = new SimpleObjectProperty<>();
+
     private static String image;
 	private static StringProperty ps = new SimpleStringProperty();
 	private static StringProperty kmh = new SimpleStringProperty();
@@ -20,6 +24,8 @@ public class Karte {
         // TODO Auto-generated constructor stub
         this.name.setValue(name);
         this.image = new String(bildUrl);
+        Image imageUse = new Image(image);
+        this.imageProperty.set(imageUse);
 		this.ps.setValue(ps);
 		this.kmh.setValue(kmh);
 		this.verbrauch.setValue(verbrauch);
@@ -27,7 +33,15 @@ public class Karte {
 		this.beschleunigung.setValue(beschleunigung);
     }
     
-    public void printKarte(){
+    public ObjectProperty<javafx.scene.image.Image> getImageProperty() {
+		return imageProperty;
+	}
+
+	public void setImageProperty(ObjectProperty<javafx.scene.image.Image> imageProperty) {
+		this.imageProperty = imageProperty;
+	}
+
+	public void printKarte(){
     	System.out.println(this.getName());
     }
     

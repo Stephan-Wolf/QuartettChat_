@@ -2,6 +2,8 @@ package application;
 
 import java.io.File;
 import java.lang.reflect.Array;
+
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -26,41 +28,41 @@ public class ViewModel {
 	@FXML
 	private AnchorPane setImage;
 	
-	Karte karte = new Karte("Audi-V8","file:///Users/christianhechtberger/git/QuartettChat_/src/application/Img/Audi-V8.jpg", "500", "250","16.5","6500","4");
+	
 	
 	
 //	Image image = new Image("file:///Users/christianhechtberger/git/QuartettChat_/src/application/Img/BMWZ1.jpg");
 	Image image2 = new Image("file:///Users/christianhechtberger/git/QuartettChat_/src/application/Img/Audi-V8.jpg");
 	
+	Karte karte = new Karte("Audi-V8","/Img/Audi-V8.jpg", "500", "250","16.5","6500","4");
 	
 	
 	@FXML
 	private void compare(ActionEvent event){
-//		System.out.println("Test");
-//		label1.setText(karte2.getPs());
-//		karte1.getPs().bind(label1.textProperty());
-//		label1.textProperty().bind(karte.getPs());
-//		
-//    	label2.setText(karte.getKmh());
-//		label3.setText(karte.getVerbrauch());
-//		label4.setText(karte.getCcm());
-//		label5.setText(karte.getBeschleunigung());
-//		imageDisplay.setImage(image2);
-//		System.out.println(karte.getPs());
-//		Karte karte = new Karte("file:///Users/christianhechtberger/git/QuartettChat_/src/application/Img/Audi-V8.jpg", "400", "230","15","6550","2");
+		Karte karte = new Karte("BMW Z1","/Img/BMWZ1.jpg", "300", "150","12.5","6200","2");
+		switchCards();
 	}
+	
 	@FXML
 	private void nextCard(ActionEvent event){
+		Karte karte = new Karte("Audi-V8","/Img/Audi-V8.jpg", "500", "250","16.5","6500","4");
+		switchCards();
+//		Image image = new Image(karte.getImage());
+		System.out.println(karte.getImageProperty());
+//		imageDisplay.setImage(image);	
+		
+	}
+
+	@FXML
+	private void switchCards(){
+		imageDisplay.imageProperty().bind(karte.getImageProperty());
 		label1.textProperty().bind(karte.psProperty());
 		label2.textProperty().bind(karte.kmhProperty());
 		label3.textProperty().bind(karte.verbrauchProperty());
 		label4.textProperty().bind(karte.ccmProperty());
 		label5.textProperty().bind(karte.beschleunigungProperty());
-		Image image = new Image(karte.getImage());
-		imageDisplay.setImage(image);	
-		
 	}
-
+	
 
 }
 
