@@ -7,7 +7,9 @@ public class Chat {
 		
 	}
 	public String empfangeNachricht(){
-		return;
+		String sss="hallO";
+		return sss;
 	}
+	//TEst PUSH 2
 
 }
