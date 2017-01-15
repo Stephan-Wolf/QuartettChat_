@@ -8,6 +8,6 @@ public class Karte {
 	private int baujahr;
 	private float verbrauch;
 	private long preis;
-	
+	private int test;
 
 }
