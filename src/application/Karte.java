@@ -1,27 +1,113 @@
 package application;
 
-public class Karten {
-    public String Name;
-    public int TopSpeed;
-    public int Hubraum;
-    public double TimeTo100;
-    public int Zylinder;
-    public int PS;
-    public int RpM;
+import javafx.beans.property.ReadOnlyStringProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.image.Image;
 
-    public Karten(String name, int topspeed, int hubraum, double beschleunigung, int zylinder, int ps, int rpm) {
+public class Karte {
+    private static StringProperty name = new SimpleStringProperty();
+    private static String image;
+	private static StringProperty ps = new SimpleStringProperty();
+	private static StringProperty kmh = new SimpleStringProperty();
+	private static StringProperty verbrauch = new SimpleStringProperty();
+	private static StringProperty ccm = new SimpleStringProperty();
+	private static StringProperty beschleunigung = new SimpleStringProperty();
+    
+    public Karte (String name, String bildUrl, String ps, String kmh, String verbrauch, String ccm, String beschleunigung){
+    
         // TODO Auto-generated constructor stub
-        this.Name = name;
-        this.TopSpeed = topspeed;
-        this.Hubraum = hubraum;
-        this.TimeTo100 = beschleunigung;
-        this.Zylinder = zylinder;
-        this.PS = ps;
-        this.RpM = rpm;
+        this.name.setValue(name);
+        this.image = new String(bildUrl);
+		this.ps.setValue(ps);
+		this.kmh.setValue(kmh);
+		this.verbrauch.setValue(verbrauch);
+		this.ccm.setValue(ccm);
+		this.beschleunigung.setValue(beschleunigung);
     }
     
     public void printKarte(){
-    	System.out.println(this.Name);
+    	System.out.println(this.getName());
     }
     
+    
+    
+    public String getName() {
+		return name.get();
+	}
+
+	public void setName(String name) {
+		this.name.set(name);
+	}
+	
+	public ReadOnlyStringProperty nameProperty(){
+		return name;
+	}
+	
+	public static String getImage() {
+		return image;
+	}
+
+	public String getPs() {
+		return ps.get();
+	}
+
+	public void setPs(String ps) {
+		this.ps.set(ps);
+	}
+	
+	public ReadOnlyStringProperty psProperty(){
+		return ps;
+	}
+
+	public String getKmh() {
+		return kmh.get();
+	}
+
+	public void setKmh(String kmh) {
+		this.kmh.set(kmh);
+	}
+	
+	public ReadOnlyStringProperty kmhProperty(){
+		return kmh;
+	}
+
+	public String getVerbrauch() {
+		return verbrauch.get();
+	}
+
+	public void setVerbrauch(String verbrauch) {
+		this.verbrauch.set(verbrauch);
+	}
+	
+	public ReadOnlyStringProperty verbrauchProperty(){
+		return verbrauch;
+	}
+
+	public String getCcm() {
+		return ccm.get();
+	}
+
+	public void setCcm(String ccm) {
+		this.ccm.set(ccm);
+	}
+	
+	public ReadOnlyStringProperty ccmProperty(){
+		return ccm;
+	}
+
+	public String getBeschleunigung() {
+		return beschleunigung.get();
+	}
+
+	public void setBeschleunigung(String beschleunigung) {
+		this.beschleunigung.set(beschleunigung);
+	}
+	
+	public ReadOnlyStringProperty beschleunigungProperty(){
+		return beschleunigung;
+	}	
+
 }
+
