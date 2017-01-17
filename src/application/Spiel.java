@@ -3,7 +3,7 @@ package application;
 public class Spiel {
 	
 	public boolean vergleicheAttribut(){
-		return;
+		return true;
 	}
 	
 	public void kartenAusteilen(){

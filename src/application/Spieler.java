@@ -6,7 +6,7 @@ public class Spieler {
 	private boolean hatKarte;
 	private boolean connencted;
 	
-	public void empfangeKarte(Karten karte){
+	public void empfangeKarte(Karte karte){
 		
 	}
 	public void gebeKarteZurueck(){

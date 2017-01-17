@@ -12,12 +12,12 @@ public class Karte {
     private static StringProperty name = new SimpleStringProperty();
     private ObjectProperty<javafx.scene.image.Image> imageProperty = new SimpleObjectProperty<>();
 
-    private static String image;
-	private static StringProperty ps = new SimpleStringProperty();
-	private static StringProperty kmh = new SimpleStringProperty();
-	private static StringProperty verbrauch = new SimpleStringProperty();
-	private static StringProperty ccm = new SimpleStringProperty();
-	private static StringProperty beschleunigung = new SimpleStringProperty();
+    private String image;
+	private StringProperty ps = new SimpleStringProperty();
+	private StringProperty kmh = new SimpleStringProperty();
+	private StringProperty verbrauch = new SimpleStringProperty();
+	private StringProperty ccm = new SimpleStringProperty();
+	private StringProperty beschleunigung = new SimpleStringProperty();
     
     public Karte (String name, String bildUrl, String ps, String kmh, String verbrauch, String ccm, String beschleunigung){
     
@@ -59,7 +59,7 @@ public class Karte {
 		return name;
 	}
 	
-	public static String getImage() {
+	public String getImage() {
 		return image;
 	}
 
