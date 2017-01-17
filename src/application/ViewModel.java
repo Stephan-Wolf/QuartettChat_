@@ -20,6 +20,8 @@ import javafx.scene.text.TextFlow;
 
 public class ViewModel {
 	
+	private Kartenstapel kartenstapel = new Kartenstapel();
+	private int counter = 0;
 	@FXML
 	private Text label1, label2, label3, label4, label5;
 	
@@ -29,25 +31,17 @@ public class ViewModel {
 	@FXML
 	private AnchorPane setImage;
 	
-	private Kartenstapel kartenstapel = new Kartenstapel();
-	private int counter = 0;
-	
-//	Image image = new Image("file:///Users/christianhechtberger/git/QuartettChat_/src/application/Img/BMWZ1.jpg");
-//	Image image2 = new Image("file:///Users/christianhechtberger/git/QuartettChat_/src/application/Img/Audi-V8.jpg");
-	
 	
 	List<Karte> list = kartenstapel.getList();
 	Karte karte = list.get(0);
 	
 	@FXML
 	private void compare(ActionEvent event){
-		switchCards();
 	}
 	
 	@FXML
 	private void nextCard(ActionEvent event){
 		Karte karte = list.get(counter);
-//		switchCards();
 		imageDisplay.imageProperty().bind(karte.getImageProperty());
 		label1.textProperty().bind(karte.psProperty());
 		label2.textProperty().bind(karte.kmhProperty());
@@ -55,22 +49,7 @@ public class ViewModel {
 		label4.textProperty().bind(karte.ccmProperty());
 		label5.textProperty().bind(karte.beschleunigungProperty());
 		counter++;
-//		Image image = new Image(karte.getImage());
-		System.out.println(karte.getImageProperty());
-//		imageDisplay.setImage(image);	
-		
 	}
-
-	@FXML
-	private void switchCards(){
-//		imageDisplay.imageProperty().bind(karte.getImageProperty());
-		label1.textProperty().bind(karte.psProperty());
-		label2.textProperty().bind(karte.kmhProperty());
-		label3.textProperty().bind(karte.verbrauchProperty());
-		label4.textProperty().bind(karte.ccmProperty());
-		label5.textProperty().bind(karte.beschleunigungProperty());
-	}
-	
 
 }
 

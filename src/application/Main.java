@@ -13,7 +13,6 @@ import javafx.scene.layout.Pane;
 
 public class Main extends Application {
 	
-	private Kartenstapel kartenstapel;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -22,16 +21,9 @@ public class Main extends Application {
 //			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(new Scene(root));
 			primaryStage.show();
-			test();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void test(){
-		kartenstapel = new Kartenstapel();
-		List<Karte> list = kartenstapel.getList();
-		System.out.println(list.size());
 	}
 	
 	public static void main(String[] args) {
