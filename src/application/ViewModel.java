@@ -37,6 +37,15 @@ public class ViewModel {
 	
 	@FXML
 	private void compare(ActionEvent event){
+		kartenstapel.entferneErsteKarte();
+		Karte karte = list.get(0);
+		imageDisplay.imageProperty().bind(karte.getImageProperty());
+		label1.textProperty().bind(karte.psProperty());
+		label2.textProperty().bind(karte.kmhProperty());
+		label3.textProperty().bind(karte.verbrauchProperty());
+		label4.textProperty().bind(karte.ccmProperty());
+		label5.textProperty().bind(karte.beschleunigungProperty());
+		System.out.println("Stapelgröße: " + kartenstapel.getList().size());
 	}
 	
 	@FXML
