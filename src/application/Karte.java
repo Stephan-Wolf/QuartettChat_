@@ -9,7 +9,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 
 public class Karte {
-    private static StringProperty name = new SimpleStringProperty();
+    private StringProperty name = new SimpleStringProperty();
     private ObjectProperty<javafx.scene.image.Image> imageProperty = new SimpleObjectProperty<>();
 
     private String image;

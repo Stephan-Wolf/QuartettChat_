@@ -12,6 +12,8 @@ import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -22,6 +24,9 @@ public class ViewModel {
 	
 	private Kartenstapel kartenstapel = new Kartenstapel();
 	private int counter = 0;
+	
+	
+	
 	@FXML
 	private Text label0, label1, label2, label3, label4, label5;
 	
@@ -31,9 +36,19 @@ public class ViewModel {
 	@FXML
 	private AnchorPane setImage;
 	
+	@FXML
+	private TextField textField = new TextField();
+	
+	@FXML
+	private TextArea textArea = new TextArea();
 	
 	List<Karte> list = kartenstapel.getList();
 	Karte karte = list.get(0);
+
+	@FXML
+    public void initialize() {
+		textArea.setEditable(false);
+    }
 	
 	@FXML
 	private void compare(ActionEvent event){
@@ -51,15 +66,10 @@ public class ViewModel {
 	}
 	
 	@FXML
-	private void nextCard(ActionEvent event){
-		Karte karte = list.get(counter);
-		imageDisplay.imageProperty().bind(karte.getImageProperty());
-		label1.textProperty().bind(karte.psProperty());
-		label2.textProperty().bind(karte.kmhProperty());
-		label3.textProperty().bind(karte.verbrauchProperty());
-		label4.textProperty().bind(karte.ccmProperty());
-		label5.textProperty().bind(karte.beschleunigungProperty());
-		counter++;
+	private void senden(ActionEvent event){
+		textArea.appendText(textField.getText());
+		
+		textField.clear();
 	}
 
 }
