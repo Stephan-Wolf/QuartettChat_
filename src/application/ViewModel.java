@@ -23,7 +23,7 @@ public class ViewModel {
 	private Kartenstapel kartenstapel = new Kartenstapel();
 	private int counter = 0;
 	@FXML
-	private Text label1, label2, label3, label4, label5;
+	private Text label0, label1, label2, label3, label4, label5;
 	
 	@FXML
 	private ImageView imageDisplay;
@@ -40,6 +40,7 @@ public class ViewModel {
 		kartenstapel.entferneErsteKarte();
 		Karte karte = list.get(0);
 		imageDisplay.imageProperty().bind(karte.getImageProperty());
+		label0.textProperty().bind(karte.nameProperty());
 		label1.textProperty().bind(karte.psProperty());
 		label2.textProperty().bind(karte.kmhProperty());
 		label3.textProperty().bind(karte.verbrauchProperty());
