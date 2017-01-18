@@ -75,8 +75,8 @@ import java.util.List;
 	
 	
 	// Muss noch 
-	public void entferneKarte(int id){
-		list.remove(id);
+	public Karte entferneKarte(int id){
+		return list.remove(id);
 	}
 	public void entferneErsteKarte(){
 		list.remove(0);
