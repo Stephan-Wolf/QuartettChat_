@@ -25,8 +25,6 @@ public class ViewModel {
 	private Kartenstapel kartenstapel = new Kartenstapel();
 	private int counter = 0;
 	
-	
-	
 	@FXML
 	private Text label0, label1, label2, label3, label4, label5;
 	
@@ -68,7 +66,6 @@ public class ViewModel {
 	@FXML
 	private void senden(ActionEvent event){
 		textArea.appendText(textField.getText());
-		
 		textField.clear();
 	}
 
