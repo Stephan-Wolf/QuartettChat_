@@ -4,6 +4,7 @@ import java.io.File;
 import java.lang.reflect.Array;
 import java.util.List;
 
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -20,10 +21,16 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
-public class ViewModel {
+public class ViewModel  {
 	
 	private Kartenstapel kartenstapel = new Kartenstapel();
 	private int counter = 0;
+	
+	
+	private boolean isServer = true;
+	
+	
+	private NetworkConnection connection = isServer ? createServer() : createClient();
 	
 	@FXML
 	private Text label0, label1, label2, label3, label4, label5;
@@ -63,10 +70,51 @@ public class ViewModel {
 		System.out.println("Stapelgröße: " + kartenstapel.getList().size());
 	}
 	
+	
+	public void init() throws Exception {
+		connection.startConnection();
+	}
+	
+	
+	public void stop() throws Exception {
+		connection.closeConnection();
+	}
+	
+	@FXML
+	private Server createServer() {
+		return new Server(55555, data -> {
+			Platform.runLater(() -> {
+				textArea.appendText(data.toString()+ "\n");
+			});
+		});
+	}
+	
+	@FXML
+	private Client createClient() {
+		return new Client("localhost", 55555, data -> {
+			Platform.runLater(() -> {
+				textArea.appendText(data.toString()+ "\n");
+			});
+		});
+	}
+	
+	
 	@FXML
 	private void senden(ActionEvent event){
-		textArea.appendText(textField.getText());
+		
+		String message = isServer ? "Server: " : "Client: ";
+		message += textField.getText();
 		textField.clear();
+		
+		textArea.appendText(message + "\n");
+		
+		try {
+			connection.send(message);
+		} catch (Exception e) {
+			textArea.appendText("Failed to send\n");
+		}
+		
+		
 	}
 
 }
