@@ -1,11 +1,15 @@
 package application;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.LinkedList;
+import java.util.Collections;
 
  public class Kartenstapel {
 	
-	 
-	private List<Karte> list;// hier vom typ der Karten-Klasse
+	// LinkedList statt List und ArrayList
+	 // dadurch können wir sehr einfach am Ende / Anfang einfügen / entfernen
+	 // die letzten 5 Werten von Karten auf float ändern!!
+	private LinkedList<Karte> list;// hier vom typ der Karten-Klasse
 	Karte a1 = new Karte("Audi-V8","/Img/Audi-V8.jpg", "500", "250","16.5","6500","4");
 	Karte a2 = new Karte("BMW Z1","/Img/BMWZ1.jpg", "200", "220","12.5","6200","8");
 	Karte a3 = new Karte("Honda NSX","/Img/HondaNSX.jpg", "400", "210","6.5","4500","9");
@@ -18,8 +22,8 @@ import java.util.List;
 	Karte a10 = new Karte("VW Golf 2 GTI G6","/Img/VWGolf2GTIG6.jpg", "300", "250","15.5","1600","13");
 	Karte a11 = new Karte("VW Polo 2 GT","/Img/VWPolo2GT.jpg", "320", "190","11.3","6200","10");
 	//  Karte (String name, String bildUrl, String ps, String kmh, String verbrauch, String ccm, String beschleunigung)
-	public Kartenstapel(){
-		list = new ArrayList<Karte>();
+	public Kartenstapel() {
+		list = new LinkedList<Karte>();
 		list.add(a1);
 		list.add(a2);
 		list.add(a3);
@@ -31,6 +35,7 @@ import java.util.List;
 		list.add(a9);
 		list.add(a10);
 		list.add(a11);
+		
 //        list.add(new Karte("Audi_A4_DTM", "bildUrl", "465", "290", "20", "4000", "4.3"));
 //        list.add(new Karte("Chrysler_Viper_GTSR","bildUrl", "600", "315", "30","7986", "3.7"));
 //        list.add(new Karte("Citroen_Xsara_WRC","bildUrl", "305", "270", "18","1998", "4.7"));
@@ -75,11 +80,12 @@ import java.util.List;
 	
 	
 	// Muss noch 
-	public Karte entferneKarte(int id){
-		return list.remove(id);
+	public void entferneKarte(){
+	
 	}
+	
 	public void entferneErsteKarte(){
-		list.remove(0);
+		
 	}
 	
 	
@@ -93,5 +99,25 @@ import java.util.List;
 		}
 	}
 	
+	public void mischen () {
+		Collections.shuffle(list);
+	}
+	
+	public Spielerstapel [] gebeSpielerstapel () {
+		
+		Spielerstapel spieler1Stapel = new Spielerstapel();
+		Spielerstapel spieler2Stapel = new Spielerstapel();
+		
+		int listSize = list.size();
+		
+		for(int i = 0; i < listSize; i++) {
+			if (i%2 == 0) {
+				spieler1Stapel.fuegeKarteObenHinzu(list.removeLast());
+			} else {
+				spieler2Stapel.fuegeKarteObenHinzu(list.removeLast());
+			}
+		}
+		return (new Spielerstapel [] {spieler1Stapel, spieler2Stapel});
+	}
     
 }

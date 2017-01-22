@@ -9,7 +9,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 
 public class Karte {
-    private StringProperty name = new SimpleStringProperty();
+    private static StringProperty name = new SimpleStringProperty();
     private ObjectProperty<javafx.scene.image.Image> imageProperty = new SimpleObjectProperty<>();
 
     private String image;
@@ -40,11 +40,11 @@ public class Karte {
 	public void setImageProperty(ObjectProperty<javafx.scene.image.Image> imageProperty) {
 		this.imageProperty = imageProperty;
 	}
+	
 
 	public void printKarte(){
     	System.out.println(this.getName());
     }
-    
     
     
     public String getName() {
@@ -56,6 +56,10 @@ public class Karte {
 	}
 	
 	public ReadOnlyStringProperty nameProperty(){
+		return name;
+	}
+	
+	public StringProperty getNameProperty(){
 		return name;
 	}
 	
@@ -74,6 +78,10 @@ public class Karte {
 	public ReadOnlyStringProperty psProperty(){
 		return ps;
 	}
+	
+	public StringProperty getPsProperty(){
+		return ps;
+	}
 
 	public String getKmh() {
 		return kmh.get();
@@ -84,6 +92,10 @@ public class Karte {
 	}
 	
 	public ReadOnlyStringProperty kmhProperty(){
+		return kmh;
+	}
+	
+	public StringProperty getKmhProperty(){
 		return kmh;
 	}
 
@@ -98,6 +110,10 @@ public class Karte {
 	public ReadOnlyStringProperty verbrauchProperty(){
 		return verbrauch;
 	}
+	
+	public StringProperty getVerbrauchProperty(){
+		return verbrauch;
+	}
 
 	public String getCcm() {
 		return ccm.get();
@@ -108,6 +124,10 @@ public class Karte {
 	}
 	
 	public ReadOnlyStringProperty ccmProperty(){
+		return ccm;
+	}
+	
+	public StringProperty getCcmProperty(){
 		return ccm;
 	}
 
@@ -122,6 +142,9 @@ public class Karte {
 	public ReadOnlyStringProperty beschleunigungProperty(){
 		return beschleunigung;
 	}	
-
+	
+	public StringProperty getBeschleunigungProperty(){
+			return beschleunigung;
+		}	
 }
 
