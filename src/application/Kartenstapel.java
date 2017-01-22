@@ -89,7 +89,7 @@ import java.util.Collections;
 	}
 	
 	
-	public List<Karte> getList() {
+	public LinkedList<Karte> getList() {
 	       return list;
 	}
 	

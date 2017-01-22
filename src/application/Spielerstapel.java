@@ -1,6 +1,7 @@
 package application;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Collections;
 
 public class Spielerstapel {
@@ -15,12 +16,16 @@ public class Spielerstapel {
 	}
 	
 	void fuegeKarteObenHinzu (Karte k) {
-		// hinten anhängen
+		// hinten anhï¿½ngen
 		stapel.addLast(k);
 	}
 	
+	public LinkedList<Karte> getList() {
+	       return stapel;
+	}
+	
 	void fuegeKarteUntenHinzu (Karte k) {
-		// vorne anhängen
+		// vorne anhï¿½ngen
 		stapel.addFirst(k);
 	}
 	
