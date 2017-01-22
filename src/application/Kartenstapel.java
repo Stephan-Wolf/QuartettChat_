@@ -22,10 +22,10 @@ import java.util.Collections;
 	Karte a10 = new Karte("VW Golf 2 GTI G6","/Img/VWGolf2GTIG6.jpg", "300", "250","15.5","1600","13");
 	Karte a11 = new Karte("VW Polo 2 GT","/Img/VWPolo2GT.jpg", "320", "190","11.3","1300","10");
 	Karte a12 = new Karte("Porsche 911 Turbo S","/Img/Porsch911_TurboS.jpg","580","330","12","3800","3");
-	Karte a13 = new Karte("Ferrari_F40","/Img/FerrariF40.jpg","521","325", "18","4706","3.7");
-	Karte a14 = new Karte("Mitsubishi_Lancer_WRC","/Img/Mitsubishi_Lancer_WRC.jpg","300","280", "15","1999","4.4");
-	Karte a15 = new Karte("Skoda_Fabia_WRC","/Img/Skoda_Fabia_WRC.jpg","295","275","17","1999","4.6");
-	Karte a16 = new Karte("Opel_Vectra_GTS","/img/Opel_Vectra_GTS.jpg","465","285", "21","3998","4.4");
+	Karte a13 = new Karte("Ferrari F40","/Img/FerrariF40.jpg","521","325", "18","4706","3.7");
+	Karte a14 = new Karte("Mitsubishi Lancer WRC","/Img/Mitsubishi_Lancer_WRC.jpg","300","280", "15","1999","4.4");
+	Karte a15 = new Karte("Skoda Fabia WRC","/Img/Skoda_Fabia_WRC.jpg","295","275","17","1999","4.6");
+	Karte a16 = new Karte("Opel Vectra GTS","/img/Opel_Vectra_GTS.jpg","465","285", "21","3998","4.4");
 	
 	//  Karte (String name, String bildUrl, String ps, String kmh, String verbrauch, String ccm, String beschleunigung)
 	public Kartenstapel() {
