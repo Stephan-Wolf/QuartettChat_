@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="453.0" prefWidth="593.0" style=": 5px; : #999999;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewModel">
+<AnchorPane prefHeight="453.0" prefWidth="593.0" style=": 5px; : #999999;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.View">
    <children>
       <SplitPane orientation="VERTICAL" prefHeight="453.0" prefWidth="593.0" style="-fx-background-color: #999999;">
         <items>
@@ -18,8 +18,8 @@
                         <Font name="Helvetica" size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnServer" layoutX="93.0" layoutY="373.0" mnemonicParsing="false" text="Spieler 1" onAction="#start" />
-                  <Button fx:id="btnClient" layoutX="192.0" layoutY="373.0" mnemonicParsing="false" text="Spieler 2" onAction="#start" />
+                  <Button fx:id="btnServer" layoutX="93.0" layoutY="373.0" mnemonicParsing="false" text="Spieler 1"  />
+                  <Button fx:id="btnClient" layoutX="192.0" layoutY="373.0" mnemonicParsing="false" text="Spieler 2"  />
                   <Label layoutX="39.0" layoutY="148.0" prefHeight="19.0" prefWidth="305.0" rotate="-15.3" text="HERZLICH WILLKOMMEN" textFill="#ff1b1b">
                      <font>
                         <Font name="Helvetica" size="24.0" />

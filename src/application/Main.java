@@ -20,24 +20,30 @@ import javafx.scene.layout.VBox;
 
 public class Main extends Application {
 	
-	    Button btnscene1, btnscene2;
+	    Button btnServer, btnClient;
 	    Label lblscene1, lblscene2;
 	    Scene scene0, scene1, scene2;
 	    Stage thestage;
 	    VBox box1;
-	    boolean isServer;
+//	    boolean isServer = true;
 	    
 	
 	@Override
 	public void start(Stage primaryStage) {
 		thestage=primaryStage;
-		
+//		 	btnServer=new Button("Spieler 1");
+//	        btnClient=new Button("Spieler 2");
+//	        btnServer.setOnAction(e-> ButtonClicked(e));
+//	        btnClient.setOnAction(e-> ButtonClicked(e));
         
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("UI.fxml"));
 //			Parent root2 = FXMLLoader.load(getClass().getResource("UIStart.fxml"));
 //			scene0 = new Scene(root2);
 			scene1 = new Scene(root);
+			VBox box = new VBox();
+//			box.getChildren().addAll(root2, btnServer, btnClient);
+//			scene0 = new Scene(box);
 //			Scene scene = new Scene(root,400,400);
 //			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			thestage.setScene(scene1);
@@ -55,6 +61,22 @@ public class Main extends Application {
 		
 	}
 	
+	
+	
+//	
+//	public void ButtonClicked(ActionEvent e)
+//    {
+//        if (e.getSource().toString().contains("Spieler 1")){
+//            isServer = true;
+//            System.out.println("TEST1 " + isServer);
+//        	thestage.setScene(scene1);
+//        }    
+//        else if(e.getSource().toString().contains("Spieler 2")){
+//        	isServer = false;
+//        	System.out.println("TEST2 " + isServer);
+//        	thestage.setScene(scene1);
+//        }
+//    }
 
 	
 }

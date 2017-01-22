@@ -31,7 +31,7 @@ public class ViewModel  {
 	private int counter = 0;
 	
 	
-	private boolean isServer = true;
+	boolean isServer = false;
 	
 	
 	private NetworkConnection connection = isServer ? createServer() : createClient();
@@ -57,11 +57,12 @@ public class ViewModel  {
 	@FXML
     public void initialize() throws Exception {
 		textArea.setEditable(false);
-		
+		connection.startConnection();
     }
 	
 	@FXML
 	private void compare(ActionEvent event){
+		System.out.println(isServer);
 		kartenstapel.addKarte(list.get(0));
 		Karte karte = list.get(0);
 		imageDisplay.imageProperty().bind(karte.getImageProperty());
