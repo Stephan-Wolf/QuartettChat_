@@ -7,8 +7,8 @@ import java.util.Collections;
  public class Kartenstapel {
 	
 	// LinkedList statt List und ArrayList
-	 // dadurch können wir sehr einfach am Ende / Anfang einfügen / entfernen
-	 // die letzten 5 Werten von Karten auf float ändern!!
+	 // dadurch kï¿½nnen wir sehr einfach am Ende / Anfang einfï¿½gen / entfernen
+	 // die letzten 5 Werten von Karten auf float ï¿½ndern!!
 	private LinkedList<Karte> list;// hier vom typ der Karten-Klasse
 	Karte a1 = new Karte("Audi-V8","/Img/Audi-V8.jpg", "500", "250","16.5","6500","4");
 	Karte a2 = new Karte("BMW Z1","/Img/BMWZ1.jpg", "200", "220","12.5","6200","8");
@@ -78,14 +78,14 @@ import java.util.Collections;
 		list.add(a);
 	}
 	
-	
-	// Muss noch 
-	public void entferneKarte(){
-	
+	// Wird das Ã¼berhaupt benÃ¶tigt?  
+	public void entferneKarte(int i){
+		list.remove(i);
 	}
 	
+	//Testen
 	public void entferneErsteKarte(){
-		
+		list.removeFirst();
 	}
 	
 	
