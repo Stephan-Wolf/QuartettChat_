@@ -104,20 +104,27 @@ import java.util.Collections;
 	}
 	
 	public Spielerstapel [] gebeSpielerstapel () {
-		
+		Spielerstapel [] spielerstapel = new Spielerstapel [2];
 		Spielerstapel spieler1Stapel = new Spielerstapel();
 		Spielerstapel spieler2Stapel = new Spielerstapel();
 		
 		int listSize = list.size();
 		
-		for(int i = 0; i < listSize; i++) {
+		for(int i = 0; i < listSize-1; i++) {
 			if (i%2 == 0) {
-				spieler1Stapel.fuegeKarteObenHinzu(list.removeLast());
+				Karte k = list.removeLast();
+				k.printKarte();
+				spieler1Stapel.fuegeKarteObenHinzu(k);
 			} else {
-				spieler2Stapel.fuegeKarteObenHinzu(list.removeLast());
+				Karte k = list.removeLast();
+				k.printKarte();
+				spieler2Stapel.fuegeKarteObenHinzu(k);
 			}
 		}
-		return (new Spielerstapel [] {spieler1Stapel, spieler2Stapel});
+		spielerstapel[0]  = spieler1Stapel;
+		spielerstapel[1]  = spieler2Stapel;
+		// return (new Spielerstapel [] {spieler1Stapel, spieler2Stapel});
+		return spielerstapel;
 	}
     
 }

@@ -9,6 +9,7 @@ public class Spielerstapel {
 	private LinkedList<Karte> stapel;
 	
 	public Spielerstapel() {
+		stapel = new LinkedList<Karte> ();
 	}
 	
 	public Karte entferneKarte(){
@@ -16,8 +17,9 @@ public class Spielerstapel {
 	}
 	
 	void fuegeKarteObenHinzu (Karte k) {
-		// hinten anh�ngen
+		// hinten anh�ngen ?? adlast??
 		stapel.addLast(k);
+		
 	}
 	
 	public LinkedList<Karte> getList() {
@@ -42,5 +44,10 @@ public class Spielerstapel {
 		return kartenanzahl;
 	}
 	
-
+	public void zeigeKarten() {
+		for (int i = 0; i < stapel.size() - 1; i++) {
+			stapel.get(i).printKarte();
+		}
+	}
+	
 }

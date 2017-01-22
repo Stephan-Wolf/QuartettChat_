@@ -4,6 +4,9 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+
+import java.util.List;
+
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.SimpleFloatProperty;
 
@@ -82,7 +85,10 @@ public class Spiel {
 	
 
 	private void kartenAusteilen(){
+		List<Karte> list = kartenstapel.getList();
 		Spielerstapel spielerstapel [] = kartenstapel.gebeSpielerstapel();
+		spielerstapel[0].zeigeKarten();
+
 		
 		this.spieler1.empfangeStapel(spielerstapel[0]);
 		spieler1KartenanzahlInt = spielerstapel[0].liefereKartenanzahl();
@@ -206,6 +212,59 @@ public class Spiel {
 			aktuellerRundensieger_Spieler1 = false;
 		}
 	}
+	
+	
+	// Refactoring??? read only??
+	public StringProperty getSpieler1PsProperty () {
+		return this.spieler1Ps;
+	}
+	
+	public StringProperty getSpieler1KmhProperty () {
+		return this.spieler1Kmh;
+	}
+	
+	public StringProperty getSpieler1VerbrauchProperty () {
+		return this.spieler1Verbrauch;
+	}
+	
+	public StringProperty getSpieler1CcmProperty () {
+		return this.spieler1Ccm;
+	}
+	
+	public StringProperty getSpieler1BeschleunigungProperty () {
+		return this.spieler1Beschleunigung;
+	}
+	
+	
+	public ObjectProperty<javafx.scene.image.Image> getSpieler1Img () {
+		return this.spieler1Img;
+	}
+	
+	// Refactoring??? read only??
+	public StringProperty getSpieler2PsProperty () {
+		return this.spieler2Ps;
+	}
+	
+	public StringProperty getSpieler2KmhProperty () {
+		return this.spieler2Kmh;
+	}
+	
+	public StringProperty getSpieler2VerbrauchProperty () {
+		return this.spieler2Verbrauch;
+	}
+	
+	public StringProperty getSpieler2CcmProperty () {
+		return this.spieler2Ccm;
+	}
+	
+	public StringProperty getSpieler2BeschleunigungProperty () {
+		return this.spieler2Beschleunigung;
+	}
+	
+	public ObjectProperty<javafx.scene.image.Image> getSpieler2Img () {
+		return this.spieler2Img;
+	}
+	
 }
 
 

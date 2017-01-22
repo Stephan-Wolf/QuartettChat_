@@ -17,7 +17,7 @@ public class Spieler {
 	
 	// public?? brauchen wir die Variable?
 	// public Karte obereKarte;
-	private Spielerstapel spielerstapel;
+	private Spielerstapel spielerstapel = new Spielerstapel();
 	private int spielerId;
 	private boolean hatKarte;
 	private boolean connencted;
