@@ -20,7 +20,18 @@ import java.util.Collections;
 	Karte a8 = new Karte("Opel Calibra","/Img/Opel-Calibra.jpg", "300", "180","10.5","1200","31");
 	Karte a9 = new Karte("Porsche","/Img/Ratgeber-Porsche.jpg", "280", "250","19.5","4800","3");
 	Karte a10 = new Karte("VW Golf 2 GTI G6","/Img/VWGolf2GTIG6.jpg", "300", "250","15.5","1600","13");
-	Karte a11 = new Karte("VW Polo 2 GT","/Img/VWPolo2GT.jpg", "320", "190","11.3","6200","10");
+	Karte a11 = new Karte("VW Polo 2 GT","/Img/VWPolo2GT.jpg", "320", "190","11.3","1300","10");
+	Karte a12 = new Karte("Porsche 911 Turbo S","/Img/Porsch911_TurboS.jpg","580","330","12","3800","3");
+	Karte a13 = new Karte("Ferrari_F40","/Img/FerrariF40.jpg","521","325", "18","4706","3.7");
+	Karte a14 = new Karte("Mitsubishi_Lancer_WRC","/Img/Mitsubishi_Lancer_WRC.jpg","300","280", "15","1999","4.4");
+	Karte a15 = new Karte("Skoda_Fabia_WRC","/Img/Skoda_Fabia_WRC.jpg","295","275","17","1999","4.6");
+	Karte a16 = new Karte("Opel_Vectra_GTS","/Img/Opel_Vectra_GTS.jpg","465","285", "21","3998","4.4");
+	Karte a13 = new Karte("Ferrari F40","/Img/FerrariF40.jpg","521","325", "18","4706","3.7");
+	Karte a14 = new Karte("Mitsubishi Lancer WRC","/Img/Mitsubishi_Lancer_WRC.jpg","300","280", "15","1999","4.4");
+	Karte a15 = new Karte("Skoda Fabia WRC","/Img/Skoda_Fabia_WRC.jpg","295","275","17","1999","4.6");
+	Karte a16 = new Karte("Opel Vectra GTS","/img/Opel_Vectra_GTS.jpg","465","285", "21","3998","4.4");
+
+	
 	//  Karte (String name, String bildUrl, String ps, String kmh, String verbrauch, String ccm, String beschleunigung)
 	public Kartenstapel() {
 		list = new LinkedList<Karte>();
@@ -35,6 +46,11 @@ import java.util.Collections;
 		list.add(a9);
 		list.add(a10);
 		list.add(a11);
+		list.add(a12);
+		list.add(a13);
+		list.add(a14);
+		list.add(a15);
+		list.add(a16);
 		
 //        list.add(new Karte("Audi_A4_DTM", "bildUrl", "465", "290", "20", "4000", "4.3"));
 //        list.add(new Karte("Chrysler_Viper_GTSR","bildUrl", "600", "315", "30","7986", "3.7"));

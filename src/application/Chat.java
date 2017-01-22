@@ -1,4 +1,4 @@
-// Test push
+
 package application;
 
 public class Chat {
@@ -10,6 +10,6 @@ public class Chat {
 		String sss="hallO";
 		return sss;
 	}
-	//TEst PUSH 2
+	
 
 }

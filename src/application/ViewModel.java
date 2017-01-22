@@ -4,6 +4,7 @@ import java.io.File;
 import java.lang.reflect.Array;
 import java.util.List;
 
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -11,6 +12,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -19,11 +23,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
-public class ViewModel {
+public class ViewModel  {
 	
 	private Kartenstapel kartenstapel = new Kartenstapel();
 	private int counter = 0;
+	Spieler spieler1;
+	Spielerstapel stapel1;
+	
+	
+	boolean isServer = false;
+	
+	
+	private NetworkConnection connection = isServer ? createServer() : createClient();
 	
 	@FXML
 	private Text label0, label1, label2, label3, label4, label5;
@@ -44,13 +57,13 @@ public class ViewModel {
 	Karte karte = list.get(0);
 
 	@FXML
-    public void initialize() {
+    public void initialize() throws Exception {
 		textArea.setEditable(false);
+		connection.startConnection();
     }
 	
 	@FXML
 	private void compare(ActionEvent event){
-		kartenstapel.addKarte(list.get(0));
 		Karte karte = list.get(0);
 		imageDisplay.imageProperty().bind(karte.getImageProperty());
 		label0.textProperty().bind(karte.nameProperty());
@@ -63,11 +76,52 @@ public class ViewModel {
 		System.out.println("Stapelgröße: " + kartenstapel.getList().size());
 	}
 	
+	
+//	public void init() throws Exception {
+//		
+//	}
+	
+	
+	public void stop() throws Exception {
+		connection.closeConnection();
+	}
+	
+	@FXML
+	private Server createServer() {
+		return new Server(55555, data -> {
+			Platform.runLater(() -> {
+				textArea.appendText(data.toString()+ "\n");
+			});
+		});
+	}
+	
+	@FXML
+	private Client createClient() {
+		return new Client("localhost", 55555, data -> {
+			Platform.runLater(() -> {
+				textArea.appendText(data.toString()+ "\n");
+			});
+		});
+	}
+	
+	
 	@FXML
 	private void senden(ActionEvent event){
-		textArea.appendText(textField.getText());
+		
+		String message = isServer ? "Server: " : "Client: ";
+		message += textField.getText();
 		textField.clear();
+		
+		textArea.appendText(message + "\n");
+		
+		try {
+			connection.send(message);
+		} catch (Exception e) {
+			textArea.appendText("Failed to send\n");
+		}
+		
+		
 	}
-
+	
 }
 

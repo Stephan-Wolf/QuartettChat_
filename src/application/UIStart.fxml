@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="453.0" prefWidth="593.0" style=": 5px; : #999999;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.View">
+   <children>
+      <SplitPane orientation="VERTICAL" prefHeight="453.0" prefWidth="593.0" style="-fx-background-color: #999999;">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="106.0" layoutY="14.0" prefHeight="44.0" prefWidth="380.0" text="QUARTETT MIT CHAT">
+                     <font>
+                        <Font name="Helvetica" size="36.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnServer" layoutX="93.0" layoutY="373.0" mnemonicParsing="false" text="Spieler 1"  />
+                  <Button fx:id="btnClient" layoutX="192.0" layoutY="373.0" mnemonicParsing="false" text="Spieler 2"  />
+                  <Label layoutX="39.0" layoutY="148.0" prefHeight="19.0" prefWidth="305.0" rotate="-15.3" text="HERZLICH WILLKOMMEN" textFill="#ff1b1b">
+                     <font>
+                        <Font name="Helvetica" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="86.0" layoutY="312.0" prefHeight="44.0" prefWidth="196.0" text="SUCHE SPIELER AUS">
+                     <font>
+                        <Font name="Helvetica" size="18.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="282.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="227.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="368.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
