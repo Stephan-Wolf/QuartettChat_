@@ -12,6 +12,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -20,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
 public class ViewModel  {
 	
@@ -51,8 +55,9 @@ public class ViewModel  {
 	Karte karte = list.get(0);
 
 	@FXML
-    public void initialize() {
+    public void initialize() throws Exception {
 		textArea.setEditable(false);
+		
     }
 	
 	@FXML
@@ -71,9 +76,9 @@ public class ViewModel  {
 	}
 	
 	
-	public void init() throws Exception {
-		connection.startConnection();
-	}
+//	public void init() throws Exception {
+//		
+//	}
 	
 	
 	public void stop() throws Exception {
@@ -116,6 +121,6 @@ public class ViewModel  {
 		
 		
 	}
-
+	
 }
 
