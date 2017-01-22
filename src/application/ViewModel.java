@@ -29,6 +29,8 @@ public class ViewModel  {
 	
 	private Kartenstapel kartenstapel = new Kartenstapel();
 	private int counter = 0;
+	Spieler spieler1;
+	Spielerstapel stapel1;
 	
 	
 	boolean isServer = false;
@@ -62,8 +64,6 @@ public class ViewModel  {
 	
 	@FXML
 	private void compare(ActionEvent event){
-		System.out.println(isServer);
-		kartenstapel.addKarte(list.get(0));
 		Karte karte = list.get(0);
 		imageDisplay.imageProperty().bind(karte.getImageProperty());
 		label0.textProperty().bind(karte.nameProperty());
