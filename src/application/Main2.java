@@ -35,6 +35,7 @@ public class Main2 extends Application {
 	    	// View controller = loader.<View>getController();
 	    	Spiel spielmodel = new Spiel();
 	    	spielmodel.starten();
+	    	spielmodel.ermittleRundenergebnis("verbrauch");
 	    	
 			ViewModel2 viewModel = new ViewModel2();
 	    	ViewSpieler1 view = new ViewSpieler1(viewModel); 
