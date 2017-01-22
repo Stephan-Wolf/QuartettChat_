@@ -49,8 +49,8 @@ public class Spiel {
 	
 	public Spiel () {
 		kartenstapel = new Kartenstapel();
-		Spieler spieler1 = new Spieler();
-		Spieler spieler2 = new Spieler();
+		spieler1 = new Spieler();
+		spieler2 = new Spieler();
 				
 		spieler1Ps.bind(spieler1.getObereKartePs());
 		spieler1Kmh.bind(spieler1.getObereKarteKmh()); 
@@ -85,11 +85,12 @@ public class Spiel {
 	
 
 	private void kartenAusteilen(){
-		List<Karte> list = kartenstapel.getList();
+		// List<Karte> list = kartenstapel.getList();
 		Spielerstapel spielerstapel [] = kartenstapel.gebeSpielerstapel();
 		spielerstapel[0].zeigeKarten();
-
 		
+		this.spieler1.hallo();
+
 		this.spieler1.empfangeStapel(spielerstapel[0]);
 		spieler1KartenanzahlInt = spielerstapel[0].liefereKartenanzahl();
 		spieler1Kartenanzahl.setValue(String.valueOf(spieler1KartenanzahlInt)); 
@@ -264,6 +265,8 @@ public class Spiel {
 	public ObjectProperty<javafx.scene.image.Image> getSpieler2Img () {
 		return this.spieler2Img;
 	}
+	
+
 	
 }
 

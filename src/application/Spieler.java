@@ -81,4 +81,9 @@ public class Spieler {
 		return this.obereKarteImg;
 	}
 	
+	// test
+	public void hallo () {
+		System.out.print("Hallo");
+	}
+	
 }

@@ -45,7 +45,7 @@ public class Spielerstapel {
 	}
 	
 	public void zeigeKarten() {
-		for (int i = 0; i < stapel.size() - 1; i++) {
+		for (int i = 0; i < stapel.size(); i++) {
 			stapel.get(i).printKarte();
 		}
 	}
