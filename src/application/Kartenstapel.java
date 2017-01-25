@@ -129,7 +129,6 @@ import java.util.Collections;
 		for(int i = 0; i < listSize; i++) {
 			if (i%2 == 0) {
 				Karte k = list.removeLast();
-				k.printKarte();
 				spieler1Stapel.fuegeKarteObenHinzu(k);
 			} else {
 				Karte k = list.removeLast();

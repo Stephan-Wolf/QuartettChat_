@@ -4,6 +4,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.BooleanProperty;
 
 import java.util.List;
 
@@ -16,14 +18,16 @@ public class Spiel {
 	private final int SIEGER_SPIELER_2 = 2;
 	private final int GLEICHSTAND = 0;
 	
-	// oder besser letzterRundersieger_Spieler1 ??
-	boolean aktuellerRundensieger_Spieler1;
+	
+	boolean aktiverSpieler1Boolean;
 	private Spieler spieler1;
 	private Spieler spieler2;
 	private Kartenstapel kartenstapel;
 	private int spieler1KartenanzahlInt;
 	private int spieler2KartenanzahlInt;
 	private boolean spielende = false;
+	
+	private BooleanProperty aktiverSpieler1 = new SimpleBooleanProperty();
 	
 	// Werte der aufgedeckten Karte vom Spieler1
 	private StringProperty spieler1Ps =  new SimpleStringProperty();
@@ -51,20 +55,34 @@ public class Spiel {
 		kartenstapel = new Kartenstapel();
 		spieler1 = new Spieler();
 		spieler2 = new Spieler();
-				
-		spieler1Ps.bind(spieler1.getObereKartePs());
-		spieler1Kmh.bind(spieler1.getObereKarteKmh()); 
-		spieler1Verbrauch.bind(spieler1.getObereKarteVerbrauch());
-		spieler1Ccm.bind(spieler1.getObereKarteCcm());
-		spieler1Beschleunigung.bind(spieler1.getObereKarteBeschleunigung());
-		spieler1Img.bind(spieler1.getObereKarteImg());
 		
-		spieler2Ps.bind(spieler2.getObereKartePs());
-		spieler2Kmh.bind(spieler2.getObereKarteKmh()); 
-		spieler2Verbrauch.bind(spieler2.getObereKarteVerbrauch());
-		spieler2Ccm.bind(spieler2.getObereKarteCcm());
-		spieler2Beschleunigung.bind(spieler2.getObereKarteBeschleunigung());
-		spieler2Img.bind(spieler2.getObereKarteImg());
+		// Spieler1 beginnt
+		// später ändern -> nach Zufall
+		aktiverSpieler1Boolean= false;
+		aktiverSpieler1.setValue(aktiverSpieler1Boolean);
+
+				
+		
+		
+		// später erstetzen durch eine Funktion der Klasse Spieler, mit der der Spieler
+		// ein array mit den Werten der oberen Karte liefert
+		// und dann werden die Daten im Spiel aktualisiert bzw. an das ViewModel im Rahmen von updates weiter geschickt
+
+		spieler1Ps.bind(spieler1.obereKartePsProperty());
+		spieler1Kmh.bind(spieler1.obereKarteKmhProperty()); 
+		spieler1Verbrauch.bind(spieler1.obereKarteVerbrauchProperty());
+		spieler1Ccm.bind(spieler1.obereKarteCcmProperty());
+		spieler1Beschleunigung.bind(spieler1.obereKarteBeschleunigungProperty());
+		spieler1Img.bind(spieler1.obereKarteImgProperty());
+		
+		spieler2Ps.bind(spieler2.obereKartePsProperty());
+		spieler2Kmh.bind(spieler2.obereKarteKmhProperty()); 
+		spieler2Verbrauch.bind(spieler2.obereKarteVerbrauchProperty());
+		spieler2Ccm.bind(spieler2.obereKarteCcmProperty());
+		spieler2Beschleunigung.bind(spieler2.obereKarteBeschleunigungProperty());
+		spieler2Img.bind(spieler2.obereKarteImgProperty());
+		
+		spieler1Ps.bind(spieler1.obereKartePsProperty());
 		
 	}
 	
@@ -80,6 +98,7 @@ public class Spiel {
 	}
 	
 	private void kartenMischen() {
+		System.out.println("kartenMischen()");
 		this.kartenstapel.mischen();
 	}
 	
@@ -87,28 +106,54 @@ public class Spiel {
 	private void kartenAusteilen(){
 		// List<Karte> list = kartenstapel.getList();
 		Spielerstapel spielerstapel [] = kartenstapel.gebeSpielerstapel();
-		spielerstapel[0].zeigeKarten();
 		
-		this.spieler1.hallo();
+		// this.spieler1.hallo();
 
 		this.spieler1.empfangeStapel(spielerstapel[0]);
+		this.spieler1.obereKarteAufdecken();
 		spieler1KartenanzahlInt = spielerstapel[0].liefereKartenanzahl();
 		spieler1Kartenanzahl.setValue(String.valueOf(spieler1KartenanzahlInt)); 
 		
 		this.spieler2.empfangeStapel(spielerstapel [1]);
+		this.spieler2.obereKarteAufdecken();
 		spieler2KartenanzahlInt = spielerstapel [1].liefereKartenanzahl();
 		spieler2Kartenanzahl.setValue(String.valueOf(spieler2KartenanzahlInt));
+		System.out.println();
+		System.out.println("kartenAusteilen()");
+		System.out.println("Spielerstapel Spieler1:");
+		spieler1.AlleKartenAusgeben();
+		System.out.println();
+		System.out.println("Spielerstapel Spieler2:");
+		spieler2.AlleKartenAusgeben();
 	}
 	
+	
+	// noch überlegen, ob auf int verzichten
 	public int ermittleRundenergebnis(String attribut) {
-		int rundenergebnis = vergleicheAttribut("attribut");
-		this.spielerstapelAktualisieren(rundenergebnis);
-		this.aktualisiereAktuellerRundensieger(rundenergebnis);
-		return rundenergebnis;
+		if(!spielende) {
+			int rundenergebnis = vergleicheAttribut(attribut);
+			this.spielerstapelAktualisieren(rundenergebnis);
+			this.aktualisiereAktuellerRundensieger(rundenergebnis);
+			System.out.println();
+			System.out.println("**************************************************");
+			System.out.println("ermittleRundenergebnis() return: " + rundenergebnis);
+			System.out.println("spieler1.AlleKartenAusgeben()");
+			spieler1.AlleKartenAusgeben();
+			System.out.println();
+			System.out.println("spieler2.AlleKartenAusgeben()");
+			spieler2.AlleKartenAusgeben();
+			System.out.println();
+			return rundenergebnis;
+		} else {
+			System.out.println("Spielende: " + spielende);
+			return -1;
+		}
 	}
 	
 	// AUCHTUNG - NOCH REFACORING -> int ergebnis = liefereVergleichsergebnis(StringProperty1, StringProperty2)
 	private int vergleicheAttribut(String attribut){
+		System.out.println("vergleicheAttribut() attribut: " + attribut);
+		
 		if(attribut.equals("ps")) {
 			
 			int ergebnis = liefereVergleichsergebnis(spieler1Ps, spieler2Ps);
@@ -136,6 +181,7 @@ public class Spiel {
 			int ergebnis = liefereVergleichsergebnis(spieler1Beschleunigung, spieler2Beschleunigung);
 			return ergebnis;
 		}
+		
 		return 0;
 	}
 	
@@ -157,10 +203,13 @@ public class Spiel {
 	
 	// Refactoring??
 	private void spielerstapelAktualisieren(int e) {
+		System.out.println("spielerstapelAktualisieren()");
+		
 		if (e == SIEGER_SPIELER_1) {
 			
 			// spieler2
 			Karte k = this.spieler2.gebeKarteZurueck();
+			System.out.println("Aufruf spieler2.gebeKarteZurueck()");
 			spieler2KartenanzahlInt--;
 			spieler2Kartenanzahl.setValue(String.valueOf(spieler2KartenanzahlInt));
 			
@@ -172,6 +221,7 @@ public class Spiel {
 
 			// spieler1
 			this.spieler1.empfangeKarte(k);
+			System.out.println("Aufruf spieler1.empfangeKarte(k)");
 			spieler1KartenanzahlInt++;
 			spieler1Kartenanzahl.setValue(String.valueOf(spieler1KartenanzahlInt));
 			this.spieler1.verschiebeObereKarteNachUnten();
@@ -181,6 +231,7 @@ public class Spiel {
 			
 			// spieler1
 			Karte k = this.spieler1.gebeKarteZurueck();
+			System.out.println("Aufruf spieler1.gebeKarteZurueck()");
 			spieler1KartenanzahlInt--;
 			spieler1Kartenanzahl.setValue(String.valueOf(spieler1KartenanzahlInt));
 			if (spieler1KartenanzahlInt == 0) {
@@ -191,10 +242,11 @@ public class Spiel {
 			
 			// spieler2
 			this.spieler2.empfangeKarte(k);
+			System.out.println("Aufruf spieler2.empfangeKarte(k)");
 			spieler2KartenanzahlInt++;
 			spieler2Kartenanzahl.setValue(String.valueOf(spieler2KartenanzahlInt));
 			this.spieler2.verschiebeObereKarteNachUnten();
-			spieler1.obereKarteAufdecken();
+			spieler2.obereKarteAufdecken();
 		
 		} else {
 			this.spieler1.verschiebeObereKarteNachUnten();
@@ -207,11 +259,14 @@ public class Spiel {
 	
 	private void aktualisiereAktuellerRundensieger(int rundenergebnis)  {
 		if (rundenergebnis == SIEGER_SPIELER_1) {
-			aktuellerRundensieger_Spieler1 = true;
+			aktiverSpieler1Boolean = true;
 		}
 		else if (rundenergebnis == SIEGER_SPIELER_2) {
-			aktuellerRundensieger_Spieler1 = false;
+			aktiverSpieler1Boolean = false;
+			
 		}
+		// später löschen, wenn wir auf Properties in der Klasse Spiel verzichten
+		aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 	}
 	
 	
@@ -266,12 +321,15 @@ public class Spiel {
 		return this.spieler2Img;
 	}
 	
-
+	public BooleanProperty getAktiverSpieler1Boolean () {
+			return this.aktiverSpieler1;
+	
+	}
 	
 }
 
 
-/* 
+/* 	
 
 public class Stapel {
     public static void main(String[] args) {

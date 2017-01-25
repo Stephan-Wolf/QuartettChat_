@@ -7,7 +7,7 @@ import javafx.beans.property.StringProperty;
 
 public class Spieler {
 	
-	private StringProperty obereKartePs =  new SimpleStringProperty();
+	private StringProperty obereKartePs;
 	private StringProperty obereKarteKmh =  new SimpleStringProperty();
 	private StringProperty obereKarteVerbrauch =  new SimpleStringProperty();
 	private StringProperty obereKarteCcm =  new SimpleStringProperty();	
@@ -24,6 +24,11 @@ public class Spieler {
 	
 	
 	public Spieler () {
+	}
+	
+	// TEstMEthode
+	public void AlleKartenAusgeben() {
+		spielerstapel.zeigeKarten();
 	}
 	
 	public void empfangeKarte(Karte karte){
@@ -47,43 +52,43 @@ public class Spieler {
 	public void obereKarteAufdecken() {
 		Karte obereKarte =  spielerstapel.gebeObereKarte();
 		
-		obereKartePs = obereKarte.getPsProperty();
-		obereKarteKmh = obereKarte.getKmhProperty();
-		obereKarteVerbrauch = obereKarte.getVerbrauchProperty();  
-		obereKarteCcm = obereKarte.getCcmProperty();
-		obereKarteBeschleunigung = obereKarte.getBeschleunigungProperty();
-		obereKarteImg = obereKarte.getImageProperty();
+		obereKartePs.setValue(obereKarte.getPsProperty().getValue());
+		obereKarteKmh.setValue(obereKarte.getKmhProperty().getValue());
+		obereKarteVerbrauch.setValue(obereKarte.getVerbrauchProperty().getValue());  
+		obereKarteCcm.setValue(obereKarte.getCcmProperty().getValue());
+		obereKarteBeschleunigung.setValue(obereKarte.getBeschleunigungProperty().getValue());
+		obereKarteImg.setValue(obereKarte.getImageProperty().getValue());
 		
 	}
 	
 	
-	public StringProperty getObereKartePs () {
-		return this.obereKartePs;
+	public final StringProperty obereKartePsProperty () {
+        if (obereKartePs == null) { 
+        	obereKartePs = new SimpleStringProperty(""); 
+        } 
+        return obereKartePs; 
 	}
 	
-	public StringProperty getObereKarteKmh() {
+	public StringProperty obereKarteKmhProperty() {
 		return this.obereKarteKmh;
 	}
 	
-	public StringProperty getObereKarteVerbrauch() {
+	public StringProperty obereKarteVerbrauchProperty() {
 		return this.obereKarteVerbrauch;
 	}
 	
-	public StringProperty getObereKarteCcm() {
+	public StringProperty obereKarteCcmProperty() {
 		return this.obereKarteCcm;
 	}
 	
-	public StringProperty getObereKarteBeschleunigung() {
+	public StringProperty obereKarteBeschleunigungProperty() {
 		return this.obereKarteBeschleunigung;
 	}
 	
-	public ObjectProperty<javafx.scene.image.Image> getObereKarteImg () {
+	public ObjectProperty<javafx.scene.image.Image> obereKarteImgProperty () {
 		return this.obereKarteImg;
 	}
 	
-	// test
-	public void hallo () {
-		System.out.print("Hallo");
-	}
+
 	
 }

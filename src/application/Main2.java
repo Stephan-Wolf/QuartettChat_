@@ -33,11 +33,13 @@ public class Main2 extends Application {
 	        // View fooController = (View) FXMLLoader.getController();
 	       
 	    	// View controller = loader.<View>getController();
+			
+			
 	    	Spiel spielmodel = new Spiel();
 	    	spielmodel.starten();
-	    	spielmodel.ermittleRundenergebnis("verbrauch");
+	    	// spielmodel.ermittleRundenergebnis("verbrauch");
 	    	
-			ViewModel2 viewModel = new ViewModel2();
+			ViewModel2 viewModel = new ViewModel2(spielmodel);
 	    	ViewSpieler1 view = new ViewSpieler1(viewModel); 
 	    	
 	    	loader.setController(view);

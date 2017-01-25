@@ -62,27 +62,27 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                 	 <Button mnemonicParsing="false" onAction="#spieler1comparePS" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
+                                 	 <Button fx:id="spieler1ButtonPS" mnemonicParsing="false" onAction="#spieler1comparePS" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#spieler1compareKMH" prefHeight="26.0" prefWidth="100.0" text="KM/H" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="spieler1ButtonKMH" mnemonicParsing="false" onAction="#spieler1compareKMH" prefHeight="26.0" prefWidth="100.0" text="KM/H" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#spieler1compareVerbrauch" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Button fx:id="spieler1ButtonVerbrauch" mnemonicParsing="false" onAction="#spieler1compareVerbrauch" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#spieler1compareCCM" prefHeight="26.0" prefWidth="100.0" text="CCM" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Button fx:id="spieler1ButtonCCM" mnemonicParsing="false" onAction="#spieler1compareCCM" prefHeight="26.0" prefWidth="100.0" text="CCM" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#spieler1compareBeschleunigung" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <Button fx:id="spieler1ButtonBeschleunigung" mnemonicParsing="false" onAction="#spieler1compareBeschleunigung" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
@@ -149,27 +149,27 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                 	 <Button mnemonicParsing="false" onAction="#spieler2comparePS" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
+                                 	 <Button fx:id="spieler2ButtonPS" mnemonicParsing="false" onAction="#spieler2comparePS" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#spieler2compareKMH" prefHeight="26.0" prefWidth="100.0" text="KM/H" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button fx:id="spieler2ButtonKMH" mnemonicParsing="false" onAction="#spieler2compareKMH" prefHeight="26.0" prefWidth="100.0" text="KM/H" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#spieler2compareVerbrauch" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Button fx:id="spieler2ButtonVerbrauch" mnemonicParsing="false" onAction="#spieler2compareVerbrauch" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#spieler2compareCCM" prefHeight="26.0" prefWidth="100.0" text="CCM" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Button fx:id="spieler2ButtonCCM" mnemonicParsing="false" onAction="#spieler2compareCCM" prefHeight="26.0" prefWidth="100.0" text="CCM" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#spieler2compareBeschleunigung" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <Button fx:id="spieler2ButtonBeschleunigung" mnemonicParsing="false" onAction="#spieler2compareBeschleunigung" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>

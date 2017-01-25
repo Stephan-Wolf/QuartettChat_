@@ -8,6 +8,8 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,13 +24,28 @@ import javafx.scene.text.TextFlow;
 
 public class ViewSpieler1 {
 	
+
+	
+	
+	final String PS = "ps";
+	final String KMH = "kmh";
+	final String VERBRAUCH = "verbrauch";
+	final String CCM = "ccm";
+	final String BESCHLEUNIGUNG = "beschleunigung";
+	
 	private ViewModel2 viewmodel;
 	
 	@FXML
 	private Text spieler1labelPS, spieler1labelKMH, spieler1labelVerbrauch, spieler1labelCCM, spieler1labelBeschleunigung;
 	
 	@FXML
+	private Button spieler1ButtonPS, spieler1ButtonKMH, spieler1ButtonVerbrauch, spieler1ButtonCCM, spieler1ButtonBeschleunigung;
+	
+	@FXML
 	private Text spieler2labelPS, spieler2labelKMH, spieler2labelVerbrauch, spieler2labelCCM, spieler2labelBeschleunigung;
+	
+	@FXML
+	private Button spieler2ButtonPS, spieler2ButtonKMH, spieler2ButtonVerbrauch, spieler2ButtonCCM, spieler2ButtonBeschleunigung;
 		
 	@FXML
 	private ImageView imageDisplay;
@@ -53,11 +70,21 @@ public class ViewSpieler1 {
 	@FXML
     public void initialize() {
 		textArea.setEditable(false);
+		
 		spieler1labelPS.textProperty().bind(viewmodel.getSpieler1PsProperty());
 		spieler1labelKMH.textProperty().bind(viewmodel.getSpieler1KmhProperty());
 		spieler1labelVerbrauch.textProperty().bind(viewmodel.getSpieler1VerbrauchProperty());
 		spieler1labelCCM.textProperty().bind(viewmodel.getSpieler1CcmProperty());
 		spieler1labelBeschleunigung.textProperty().bind(viewmodel.getSpieler1BeschleunigungProperty());
+	
+		// Buttons deaktivieren?
+//		spieler1ButtonPS.disableProperty().bind(viewmodel.aktiverSpieler1Property());
+//		spieler1ButtonKMH.disableProperty().bind(viewmodel.aktiverSpieler1Property());
+//		spieler1ButtonVerbrauch.disableProperty().bind(viewmodel.aktiverSpieler1Property());
+//		spieler1ButtonCCM.disableProperty().bind(viewmodel.aktiverSpieler1Property());
+//		spieler1ButtonBeschleunigung.disableProperty().bind(viewmodel.aktiverSpieler1Property());
+
+		
 		// bind(viewmodel.getSpieler1Img());
 		
 		spieler2labelPS.textProperty().bind(viewmodel.getSpieler2PsProperty());
@@ -65,50 +92,71 @@ public class ViewSpieler1 {
 		spieler2labelVerbrauch.textProperty().bind(viewmodel.getSpieler2VerbrauchProperty());
 		spieler2labelCCM.textProperty().bind(viewmodel.getSpieler2CcmProperty());
 		spieler2labelBeschleunigung.textProperty().bind(viewmodel.getSpieler2BeschleunigungProperty());
+//		
+		// Buttons deaktivieren?
+//		spieler2ButtonPS.disableProperty().bind(viewmodel.aktiverSpieler1Property().not());
+//		spieler2ButtonKMH.disableProperty().bind(viewmodel.aktiverSpieler1Property().not());
+//		spieler2ButtonVerbrauch.disableProperty().bind(viewmodel.aktiverSpieler1Property().not());
+//		spieler2ButtonCCM.disableProperty().bind(viewmodel.aktiverSpieler1Property().not());
+//		spieler2ButtonBeschleunigung.disableProperty().bind(viewmodel.aktiverSpieler1Property().not());
+		
+		
     }
 	
 	@FXML
 	private void spieler1comparePS(ActionEvent event){
+		viewmodel.change(PS);
 	}
+	
 	
 	@FXML
 	private void spieler1compareKMH(ActionEvent event){
+		viewmodel.change(KMH);
 	}
 	
 	@FXML
 	private void spieler1compareVerbrauch(ActionEvent event){
+		viewmodel.change(VERBRAUCH);
 	}
 	
 	@FXML
 	private void spieler1compareCCM(ActionEvent event){
+		viewmodel.change(CCM);
 	}
 	
 	@FXML
 	private void spieler1compareBeschleunigung(ActionEvent event){
+		viewmodel.change(BESCHLEUNIGUNG);
 	}
 	
 	@FXML
 	private void spieler2comparePS(ActionEvent event){
+		viewmodel.change(PS);
 	}
 	
 	@FXML
 	private void spieler2compareKMH(ActionEvent event){
+		viewmodel.change(KMH);
 	}
 	
 	@FXML
 	private void spieler2compareVerbrauch(ActionEvent event){
+		viewmodel.change(VERBRAUCH);
 	}
 	
 	@FXML
 	private void spieler2compareCCM(ActionEvent event){
+		viewmodel.change(CCM);
 	}
 	
 	@FXML
 	private void spieler2compareBeschleunigung(ActionEvent event){
+		viewmodel.change(BESCHLEUNIGUNG);
 	}
 	
 	@FXML
 	private void compare(ActionEvent event){
+
 	}
 	
 	
