@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.List;
 
@@ -74,6 +75,12 @@ public class ViewModel  {
 		label5.textProperty().bind(karte.beschleunigungProperty());
 		kartenstapel.entferneErsteKarte();
 		System.out.println("Stapelgröße: " + kartenstapel.getList().size());
+		try {
+			String message = karte.nameProperty().getValue();
+			connection.send(message);
+		} catch (Exception e) {
+			textArea.appendText("Failed to send\n");
+		}
 	}
 	
 	
