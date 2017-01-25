@@ -4,6 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.BooleanProperty;
 
@@ -30,6 +31,7 @@ public class Spiel {
 	private BooleanProperty aktiverSpieler1 = new SimpleBooleanProperty();
 	
 	// Werte der aufgedeckten Karte vom Spieler1
+	private StringProperty spieler1Name =  new SimpleStringProperty();
 	private StringProperty spieler1Ps =  new SimpleStringProperty();
 	private StringProperty spieler1Kmh =  new SimpleStringProperty();
 	private StringProperty spieler1Verbrauch =  new SimpleStringProperty();
@@ -41,6 +43,7 @@ public class Spiel {
 	
 
 	// Werte der aufgedeckten Karte vom Spieler2
+	private StringProperty spieler2Name =  new SimpleStringProperty();
 	private StringProperty spieler2Ps =  new SimpleStringProperty();
 	private StringProperty spieler2Kmh =  new SimpleStringProperty();
 	private StringProperty spieler2Verbrauch =  new SimpleStringProperty();
@@ -57,17 +60,17 @@ public class Spiel {
 		spieler2 = new Spieler();
 		
 		// Spieler1 beginnt
-		// später ändern -> nach Zufall
+		// spï¿½ter ï¿½ndern -> nach Zufall
 		aktiverSpieler1Boolean= false;
 		aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 
 				
 		
 		
-		// später erstetzen durch eine Funktion der Klasse Spieler, mit der der Spieler
+		// spï¿½ter erstetzen durch eine Funktion der Klasse Spieler, mit der der Spieler
 		// ein array mit den Werten der oberen Karte liefert
 		// und dann werden die Daten im Spiel aktualisiert bzw. an das ViewModel im Rahmen von updates weiter geschickt
-
+		spieler1Name.bind(spieler1.obereKarteNameProperty());
 		spieler1Ps.bind(spieler1.obereKartePsProperty());
 		spieler1Kmh.bind(spieler1.obereKarteKmhProperty()); 
 		spieler1Verbrauch.bind(spieler1.obereKarteVerbrauchProperty());
@@ -75,6 +78,7 @@ public class Spiel {
 		spieler1Beschleunigung.bind(spieler1.obereKarteBeschleunigungProperty());
 		spieler1Img.bind(spieler1.obereKarteImgProperty());
 		
+		spieler2Name.bind(spieler2.obereKarteNameProperty());
 		spieler2Ps.bind(spieler2.obereKartePsProperty());
 		spieler2Kmh.bind(spieler2.obereKarteKmhProperty()); 
 		spieler2Verbrauch.bind(spieler2.obereKarteVerbrauchProperty());
@@ -82,7 +86,7 @@ public class Spiel {
 		spieler2Beschleunigung.bind(spieler2.obereKarteBeschleunigungProperty());
 		spieler2Img.bind(spieler2.obereKarteImgProperty());
 		
-		spieler1Ps.bind(spieler1.obereKartePsProperty());
+//		spieler1Ps.bind(spieler1.obereKartePsProperty());
 		
 	}
 	
@@ -128,7 +132,7 @@ public class Spiel {
 	}
 	
 	
-	// noch überlegen, ob auf int verzichten
+	// noch ï¿½berlegen, ob auf int verzichten
 	public int ermittleRundenergebnis(String attribut) {
 		if(!spielende) {
 			int rundenergebnis = vergleicheAttribut(attribut);
@@ -265,7 +269,7 @@ public class Spiel {
 			aktiverSpieler1Boolean = false;
 			
 		}
-		// später löschen, wenn wir auf Properties in der Klasse Spiel verzichten
+		// spï¿½ter lï¿½schen, wenn wir auf Properties in der Klasse Spiel verzichten
 		aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 	}
 	
@@ -325,6 +329,15 @@ public class Spiel {
 			return this.aktiverSpieler1;
 	
 	}
+
+	
+	public StringProperty getSpieler1NameProperty () {
+		return this.spieler1Name;
+	}
+	public StringProperty getSpieler2NameProperty () {
+		return this.spieler2Name;
+	}
+	
 	
 }
 

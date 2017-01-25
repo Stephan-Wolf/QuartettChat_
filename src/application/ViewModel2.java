@@ -21,7 +21,7 @@ public class ViewModel2 {
 	// wenn falls dann spieler2
 	private BooleanProperty aktiverSpieler1 = new SimpleBooleanProperty();
 	
-	
+	final String NAME = "name";
 	final String PS = "ps";
 	final String KMH = "kmh";
 	final String VERBRAUCH = "verbrauch";
@@ -29,6 +29,8 @@ public class ViewModel2 {
 	final String BESCHLEUNIGUNG = "beschleunigung";
 	
 	// Werte der aufgedeckten Karte vom Spieler1
+	
+	private StringProperty spieler1Name =  new SimpleStringProperty();
 	private StringProperty spieler1Ps =  new SimpleStringProperty();
 	private StringProperty spieler1Kmh =  new SimpleStringProperty();
 	private StringProperty spieler1Verbrauch =  new SimpleStringProperty();
@@ -39,6 +41,7 @@ public class ViewModel2 {
 	
 
 	// Werte der aufgedeckten Karte vom Spieler2
+	private StringProperty spieler2Name =  new SimpleStringProperty();
 	private StringProperty spieler2Ps =  new SimpleStringProperty();
 	private StringProperty spieler2Kmh =  new SimpleStringProperty();
 	private StringProperty spieler2Verbrauch =  new SimpleStringProperty();
@@ -56,7 +59,7 @@ public class ViewModel2 {
 	
 		 public ViewModel2(Spiel model) {
 			 this.model = model;
-			 
+			 	spieler1Name.bind(model.getSpieler1NameProperty());
 				spieler1Ps.bind(model.getSpieler1PsProperty());
 				spieler1Kmh.bind(model.getSpieler1KmhProperty());
 				spieler1Verbrauch.bind(model.getSpieler1VerbrauchProperty());
@@ -64,6 +67,7 @@ public class ViewModel2 {
 				spieler1Beschleunigung.bind(model.getSpieler1BeschleunigungProperty());
 				spieler1Img.bind(model.getSpieler1Img());
 				
+				spieler2Name.bind(model.getSpieler2NameProperty());
 				spieler2Ps.bind(model.getSpieler2PsProperty());
 				spieler2Kmh.bind(model.getSpieler2KmhProperty());
 				spieler2Verbrauch.bind(model.getSpieler2VerbrauchProperty());
@@ -143,6 +147,13 @@ public class ViewModel2 {
 			// Refactoring??? read only??
 			public ObjectProperty<javafx.scene.image.Image> getSpieler2Img () {
 				return this.spieler2Img;
+			}
+			
+			public StringProperty getSpieler1NameProperty () {
+				return this.spieler1Name;
+			}
+			public StringProperty getSpieler2NameProperty () {
+				return this.spieler2Name;
 			}
 		 
 		 

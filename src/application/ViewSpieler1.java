@@ -24,9 +24,6 @@ import javafx.scene.text.TextFlow;
 
 public class ViewSpieler1 {
 	
-
-	
-	
 	final String PS = "ps";
 	final String KMH = "kmh";
 	final String VERBRAUCH = "verbrauch";
@@ -36,19 +33,19 @@ public class ViewSpieler1 {
 	private ViewModel2 viewmodel;
 	
 	@FXML
-	private Text spieler1labelPS, spieler1labelKMH, spieler1labelVerbrauch, spieler1labelCCM, spieler1labelBeschleunigung;
+	private Text spieler1labelName, spieler1labelPS, spieler1labelKMH, spieler1labelVerbrauch, spieler1labelCCM, spieler1labelBeschleunigung;
 	
 	@FXML
 	private Button spieler1ButtonPS, spieler1ButtonKMH, spieler1ButtonVerbrauch, spieler1ButtonCCM, spieler1ButtonBeschleunigung;
 	
 	@FXML
-	private Text spieler2labelPS, spieler2labelKMH, spieler2labelVerbrauch, spieler2labelCCM, spieler2labelBeschleunigung;
+	private Text spieler2labelName, spieler2labelPS, spieler2labelKMH, spieler2labelVerbrauch, spieler2labelCCM, spieler2labelBeschleunigung;
 	
 	@FXML
 	private Button spieler2ButtonPS, spieler2ButtonKMH, spieler2ButtonVerbrauch, spieler2ButtonCCM, spieler2ButtonBeschleunigung;
 		
 	@FXML
-	private ImageView imageDisplay;
+	private ImageView spieler1imageDisplay, spieler2imageDisplay;
 	
 	@FXML
 	private AnchorPane setImage;
@@ -70,12 +67,13 @@ public class ViewSpieler1 {
 	@FXML
     public void initialize() {
 		textArea.setEditable(false);
-		
+		spieler1labelName.textProperty().bind(viewmodel.getSpieler1NameProperty());
 		spieler1labelPS.textProperty().bind(viewmodel.getSpieler1PsProperty());
 		spieler1labelKMH.textProperty().bind(viewmodel.getSpieler1KmhProperty());
 		spieler1labelVerbrauch.textProperty().bind(viewmodel.getSpieler1VerbrauchProperty());
 		spieler1labelCCM.textProperty().bind(viewmodel.getSpieler1CcmProperty());
 		spieler1labelBeschleunigung.textProperty().bind(viewmodel.getSpieler1BeschleunigungProperty());
+		spieler1imageDisplay.imageProperty().bind(viewmodel.getSpieler1Img());
 	
 		// Buttons deaktivieren?
 //		spieler1ButtonPS.disableProperty().bind(viewmodel.aktiverSpieler1Property());
@@ -86,12 +84,13 @@ public class ViewSpieler1 {
 
 		
 		// bind(viewmodel.getSpieler1Img());
-		
+		spieler2labelName.textProperty().bind(viewmodel.getSpieler2NameProperty());
 		spieler2labelPS.textProperty().bind(viewmodel.getSpieler2PsProperty());
 		spieler2labelKMH.textProperty().bind(viewmodel.getSpieler2KmhProperty());
 		spieler2labelVerbrauch.textProperty().bind(viewmodel.getSpieler2VerbrauchProperty());
 		spieler2labelCCM.textProperty().bind(viewmodel.getSpieler2CcmProperty());
 		spieler2labelBeschleunigung.textProperty().bind(viewmodel.getSpieler2BeschleunigungProperty());
+		spieler2imageDisplay.imageProperty().bind(viewmodel.getSpieler2Img());
 //		
 		// Buttons deaktivieren?
 //		spieler2ButtonPS.disableProperty().bind(viewmodel.aktiverSpieler1Property().not());

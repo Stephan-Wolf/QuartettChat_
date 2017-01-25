@@ -39,12 +39,12 @@
                               <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="340.0" layoutX="66.0" layoutY="14.0" stroke="BLACK" width="218.0">
                                  </Rectangle>
                               <Rectangle fill="WHITE" height="26.0" layoutX="66.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="218.0" />
-                              <Text fx:id="label0" layoutX="83.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="185.0">
+                              <Text fx:id="spieler1labelName" layoutX="83.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="185.0">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Text>
-                              <ImageView fx:id="imageDisplay" fitHeight="147.0" fitWidth="200.0" layoutX="75.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="spieler1imageDisplay" fitHeight="147.0" fitWidth="200.0" layoutX="75.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Img/BMWZ1.jpg" />
                                  </image>
@@ -126,12 +126,12 @@
                               <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="340.0" layoutX="66.0" layoutY="14.0" stroke="BLACK" width="218.0">
                                  </Rectangle>
                               <Rectangle fill="WHITE" height="26.0" layoutX="66.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="218.0" />
-                              <Text fx:id="label0" layoutX="83.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="185.0">
+                              <Text fx:id="spieler2labelName" layoutX="83.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="185.0">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                               </Text>
-                              <ImageView fx:id="imageDisplay" fitHeight="147.0" fitWidth="200.0" layoutX="75.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="spieler2imageDisplay" fitHeight="147.0" fitWidth="200.0" layoutX="75.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Img/BMWZ1.jpg" />
                                  </image>

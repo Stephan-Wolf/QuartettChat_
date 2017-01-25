@@ -4,10 +4,12 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 
 public class Spieler {
 	
-	private StringProperty obereKartePs;
+	private StringProperty obereKarteName = new SimpleStringProperty();
+	private StringProperty obereKartePs = new SimpleStringProperty();
 	private StringProperty obereKarteKmh =  new SimpleStringProperty();
 	private StringProperty obereKarteVerbrauch =  new SimpleStringProperty();
 	private StringProperty obereKarteCcm =  new SimpleStringProperty();	
@@ -51,7 +53,7 @@ public class Spieler {
 	
 	public void obereKarteAufdecken() {
 		Karte obereKarte =  spielerstapel.gebeObereKarte();
-		
+		obereKarteName.setValue(obereKarte.getNameProperty().getValue());
 		obereKartePs.setValue(obereKarte.getPsProperty().getValue());
 		obereKarteKmh.setValue(obereKarte.getKmhProperty().getValue());
 		obereKarteVerbrauch.setValue(obereKarte.getVerbrauchProperty().getValue());  
@@ -88,7 +90,11 @@ public class Spieler {
 	public ObjectProperty<javafx.scene.image.Image> obereKarteImgProperty () {
 		return this.obereKarteImg;
 	}
+
 	
+	public StringProperty obereKarteNameProperty() {
+		return this.obereKarteName;
+	}
 
 	
 }
