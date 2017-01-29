@@ -46,6 +46,9 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	private StringProperty spieler1Verbrauch =  new SimpleStringProperty();
 	private StringProperty spieler1Ccm =  new SimpleStringProperty();	
 	private StringProperty spieler1Beschleunigung =  new SimpleStringProperty();
+	private StringProperty spieler1JpgUrl =  new SimpleStringProperty();
+	
+	
 	private ObjectProperty<javafx.scene.image.Image> spieler1Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 1 als StringProperty
 	private StringProperty spieler1Kartenanzahl = new SimpleStringProperty();
@@ -58,6 +61,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	private StringProperty spieler2Verbrauch =  new SimpleStringProperty();
 	private StringProperty spieler2Ccm =  new SimpleStringProperty();	
 	private StringProperty spieler2Beschleunigung =  new SimpleStringProperty();
+	private StringProperty spieler2JpgUrl =  new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.image.Image> spieler2Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 2 als StringProperty
 	private StringProperty spieler2Kartenanzahl = new SimpleStringProperty();
@@ -86,6 +90,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		spieler1Ccm.bind(spieler1.obereKarteCcmProperty());
 		spieler1Beschleunigung.bind(spieler1.obereKarteBeschleunigungProperty());
 		spieler1Img.bind(spieler1.obereKarteImgProperty());
+		spieler1JpgUrl.bind(spieler1.obereKarteJpgUrlProperty());
 		
 		spieler2Name.bind(spieler2.obereKarteNameProperty());
 		spieler2Ps.bind(spieler2.obereKartePsProperty());
@@ -94,6 +99,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		spieler2Ccm.bind(spieler2.obereKarteCcmProperty());
 		spieler2Beschleunigung.bind(spieler2.obereKarteBeschleunigungProperty());
 		spieler2Img.bind(spieler2.obereKarteImgProperty());
+		spieler2JpgUrl.bind(spieler2.obereKarteJpgUrlProperty());
 		
 //		spieler1Ps.bind(spieler1.obereKartePsProperty());
 		
@@ -309,6 +315,12 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		return this.spieler1Img;
 	}
 	
+	
+	public StringProperty getSpieler1JpgUrlProperty () {
+		return this.spieler1JpgUrl;
+	}
+	
+	
 	// Refactoring??? read only??
 	public StringProperty getSpieler2PsProperty () {
 		return this.spieler2Ps;
@@ -334,6 +346,11 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		return this.spieler2Img;
 	}
 	
+	public StringProperty getSpieler2JpgUrlProperty () {
+		return this.spieler2JpgUrl;
+	}
+	
+	
 	public BooleanProperty getAktiverSpieler1Boolean () {
 			return this.aktiverSpieler1;
 	
@@ -345,6 +362,15 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	}
 	public StringProperty getSpieler2NameProperty () {
 		return this.spieler2Name;
+	}
+	
+	
+	public StringProperty getSpieler1KartenanzahlProperty () {
+		return this.spieler1Kartenanzahl;
+	}
+	
+	public StringProperty getSpieler2KartenanzahlProperty () {
+		return this.spieler2Kartenanzahl;
 	}
 	
 	

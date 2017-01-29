@@ -21,7 +21,7 @@ import java.io.Serializable;
 
 
 
-public class ViewModel2 extends UnicastRemoteObject  implements IViewModel2, Serializable{
+public class ViewModel2 extends UnicastRemoteObject  implements IViewModel, Serializable{
 
 	/**
 	 * 
@@ -50,7 +50,9 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel2, Ser
 	private StringProperty spieler1Kmh =  new SimpleStringProperty();
 	private StringProperty spieler1Verbrauch =  new SimpleStringProperty();
 	private StringProperty spieler1Ccm =  new SimpleStringProperty();	
+	private StringProperty spieler1Kartenanzahl =  new SimpleStringProperty();
 	private StringProperty spieler1Beschleunigung =  new SimpleStringProperty();
+	private StringProperty spieler1JpgUrl =  new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.image.Image> spieler1Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 1 als StringProperty
 	
@@ -62,6 +64,8 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel2, Ser
 	private StringProperty spieler2Verbrauch =  new SimpleStringProperty();
 	private StringProperty spieler2Ccm =  new SimpleStringProperty();	
 	private StringProperty spieler2Beschleunigung =  new SimpleStringProperty();
+	private StringProperty spieler2JpgUrl =  new SimpleStringProperty();
+	private StringProperty spieler2Kartenanzahl =  new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.image.Image> spieler2Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 2 als StringProperty
 	
@@ -82,6 +86,8 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel2, Ser
 				spieler1Verbrauch.bind(model.getSpieler1VerbrauchProperty());
 				spieler1Ccm.bind(model.getSpieler1CcmProperty());
 				spieler1Beschleunigung.bind(model.getSpieler1BeschleunigungProperty());
+				spieler1Kartenanzahl.bind(model.getSpieler1KartenanzahlProperty());
+				spieler1JpgUrl.bind(model.getSpieler1JpgUrlProperty());
 				// spieler1Img.bind(model.getSpieler1Img());
 				
 				spieler2Name.bind(model.getSpieler2NameProperty());
@@ -90,6 +96,8 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel2, Ser
 				spieler2Verbrauch.bind(model.getSpieler2VerbrauchProperty());
 				spieler2Ccm.bind(model.getSpieler2CcmProperty());
 				spieler2Beschleunigung.bind(model.getSpieler2BeschleunigungProperty());
+				spieler2Kartenanzahl.bind(model.getSpieler2KartenanzahlProperty());
+				spieler2JpgUrl.bind(model.getSpieler2JpgUrlProperty());
 				// spieler2Img.bind(model.getSpieler2Img());
 				
 				
@@ -214,8 +222,11 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel2, Ser
 				String ccm = spieler1Ccm.getValue();
 				String beschleunigung = spieler1Beschleunigung.getValue();
 				boolean gewinner = aktiverSpieler1.getValue();
+				String kartenanzahl = spieler1Kartenanzahl.getValue();
+				String jpgUrl = spieler1JpgUrl.getValue();
 				
-				spieler1.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner);	
+				
+				spieler1.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl);	
 				
 //				name = spieler2Name.getValue();
 //				ps = spieler2Ps.getValue();
@@ -235,8 +246,10 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel2, Ser
 				String ccm = spieler2Ccm.getValue();
 				String beschleunigung = spieler2Beschleunigung.getValue();
 				boolean gewinner =! aktiverSpieler1.getValue();
+				String kartenanzahl = spieler2Kartenanzahl.getValue();
+				String jpgUrl = spieler2JpgUrl.getValue();
 				
-				spieler2.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner);
+				spieler2.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl);
 				
 			}
 }

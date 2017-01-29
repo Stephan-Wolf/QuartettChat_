@@ -20,8 +20,8 @@ public class Server extends Application
     {
     	final IModel model = new Spiel ();
         final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
-        final IViewModel2 modelview = new ViewModel2(model);
-        registry.rebind(IViewModel2.IMODELVIEW, modelview);
+        final IViewModel modelview = new ViewModel2(model);
+        registry.rebind(IViewModel.IMODELVIEW, modelview);
         launch(args);
     }
     
@@ -29,9 +29,9 @@ public class Server extends Application
     public void start(Stage primaryStage) throws Exception
     {
         final Registry registry = LocateRegistry.getRegistry("localhost");
-        final IViewModel2 viewmodel = (IViewModel2) registry.lookup(IViewModel2.IMODELVIEW);
+        final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
 
-        ViewSpieler anwender = new ViewSpieler(viewmodel);
+        View anwender = new View(viewmodel);
         viewmodel.setBeobachter_1(anwender);
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));

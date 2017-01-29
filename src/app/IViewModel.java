@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public interface IViewModel2 extends Remote {
+public interface IViewModel extends Remote {
 
     String IMODELVIEW = "QuartettChat";
 	

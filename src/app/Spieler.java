@@ -14,9 +14,10 @@ public class Spieler {
 	private StringProperty obereKarteVerbrauch =  new SimpleStringProperty();
 	private StringProperty obereKarteCcm =  new SimpleStringProperty();	
 	private StringProperty obereKarteBeschleunigung =  new SimpleStringProperty();
+	private StringProperty obereKarteJpgUrl =  new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.image.Image> obereKarteImg = new SimpleObjectProperty<>();
 	
-	
+	//jgpUrlProperty
 	// public?? brauchen wir die Variable?
 	// public Karte obereKarte;
 	private Spielerstapel spielerstapel = new Spielerstapel();
@@ -59,6 +60,7 @@ public class Spieler {
 		obereKarteVerbrauch.setValue(obereKarte.getVerbrauchProperty().getValue());  
 		obereKarteCcm.setValue(obereKarte.getCcmProperty().getValue());
 		obereKarteBeschleunigung.setValue(obereKarte.getBeschleunigungProperty().getValue());
+		obereKarteJpgUrl.setValue(obereKarte.getJgpUrlProperty().getValue());
 		obereKarteImg.setValue(obereKarte.getImageProperty().getValue());
 		
 	}
@@ -96,5 +98,8 @@ public class Spieler {
 		return this.obereKarteName;
 	}
 
+	public StringProperty obereKarteJpgUrlProperty() {
+		return this.obereKarteJpgUrl;
+	}
 	
 }

@@ -13,6 +13,7 @@ public class Karte {
     private ObjectProperty<javafx.scene.image.Image> imageProperty = new SimpleObjectProperty<>();
 
     private String image;
+    private StringProperty jpgUrl = new SimpleStringProperty();
 	private StringProperty ps = new SimpleStringProperty();
 	private StringProperty kmh = new SimpleStringProperty();
 	private StringProperty verbrauch = new SimpleStringProperty();
@@ -22,7 +23,8 @@ public class Karte {
     public Karte (String name, String bildUrl, String ps, String kmh, String verbrauch, String ccm, String beschleunigung){
     
         // TODO Auto-generated constructor stub
-        this.name.setValue(name);
+    	this.jpgUrl.setValue(bildUrl);
+    	this.name.setValue(name);
         this.image = new String(bildUrl);
         Image imageUse = new Image(image);
         this.imageProperty.set(imageUse);
@@ -129,6 +131,10 @@ public class Karte {
 	
 	public StringProperty getCcmProperty(){
 		return ccm;
+	}
+	
+	public StringProperty getJgpUrlProperty(){
+		return jpgUrl;
 	}
 
 	public String getBeschleunigung() {

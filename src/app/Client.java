@@ -21,9 +21,9 @@ public class Client extends Application {
 		try {
 
 	        final Registry registry = LocateRegistry.getRegistry("localhost");
-	        final IViewModel2 viewmodel = (IViewModel2) registry.lookup(IViewModel2.IMODELVIEW);
+	        final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
 
-	        ViewSpieler anwender = new ViewSpieler(viewmodel);
+	        View anwender = new View(viewmodel);
 	        viewmodel.setBeobachter_2(anwender);
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));

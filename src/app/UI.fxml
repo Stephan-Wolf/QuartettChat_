@@ -99,7 +99,7 @@
                                  </padding>
                               </GridPane>
                               <Label layoutX="7.0" layoutY="359.0" text="Anzahl Karten:" />
-                              <Text fx:id="anzahlKarten" layoutX="100.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="16.682918548583984" />
+                              <Text fx:id="labelKartenanzahl" layoutX="100.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="16.682918548583984" />
                            </children>
                            <styleClass>
                               <String fx:value="-fx-border-radius: 10 10 10 10;" />
