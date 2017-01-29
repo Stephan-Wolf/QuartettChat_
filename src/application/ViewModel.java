@@ -1,6 +1,7 @@
 package application;
 
 import java.io.File;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.List;
 
@@ -32,8 +33,9 @@ public class ViewModel  {
 	Spieler spieler1;
 	Spielerstapel stapel1;
 	
-	
+//	boolean isServer = true;
 	boolean isServer = false;
+	
 	
 	
 	private NetworkConnection connection = isServer ? createServer() : createClient();
@@ -60,6 +62,13 @@ public class ViewModel  {
     public void initialize() throws Exception {
 		textArea.setEditable(false);
 		connection.startConnection();
+		System.out.println("ich spring in die initialize"+counter);
+//		if(isServer == false && counter==0){
+//			Spiel spiel = new Spiel();
+//			spiel.starten();
+//			counter++;
+//			
+//		}
     }
 	
 	@FXML
@@ -74,6 +83,12 @@ public class ViewModel  {
 		label5.textProperty().bind(karte.beschleunigungProperty());
 		kartenstapel.entferneErsteKarte();
 		System.out.println("Stapelgröße: " + kartenstapel.getList().size());
+		try {
+			String message = "0" + karte.psProperty().getValue();
+			connection.send(message);
+		} catch (Exception e) {
+			textArea.appendText("Failed to send\n");
+		}
 	}
 	
 	
@@ -90,13 +105,20 @@ public class ViewModel  {
 	private Server createServer() {
 		return new Server(55555, data -> {
 			Platform.runLater(() -> {
-				textArea.appendText(data.toString()+ "\n");
+				if(data.toString().contains("PS")){
+					
+					System.out.println("Vergleiche label0 von Server mit label0 von Client");
+				}
+				else{
+					textArea.appendText(data.toString()+ "\n");
+				}
 			});
 		});
 	}
 	
 	@FXML
 	private Client createClient() {
+		
 		return new Client("localhost", 55555, data -> {
 			Platform.runLater(() -> {
 				textArea.appendText(data.toString()+ "\n");

@@ -37,8 +37,8 @@ public class Main extends Application {
 //	        btnClient.setOnAction(e-> ButtonClicked(e));
         
 		try {
-			Spiel spiel = new Spiel();
-			spiel.starten();
+//			Spiel spiel = new Spiel();
+//			spiel.starten();
 			Parent root = FXMLLoader.load(getClass().getResource("UI.fxml"));
 //			Parent root2 = FXMLLoader.load(getClass().getResource("UIStart.fxml"));
 //			scene0 = new Scene(root2);
@@ -59,8 +59,9 @@ public class Main extends Application {
 	 
 	
 	public static void main(String[] args) {
+		Spiel spiel = new Spiel();
+		spiel.starten();
 		launch(args);
-		
 	}
 	
 	
