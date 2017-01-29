@@ -28,6 +28,7 @@
                         <Font name="Helvetica" size="24.0" />
                      </font>
                   </Label>
+                  <Button fx:id="buttonStart" layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#startGame" text="Spiel Starten" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -97,6 +98,8 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                               </GridPane>
+                              <Label layoutX="7.0" layoutY="359.0" text="Anzahl Karten:" />
+                              <Text fx:id="anzahlKarten" layoutX="100.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="16.682918548583984" />
                            </children>
                            <styleClass>
                               <String fx:value="-fx-border-radius: 10 10 10 10;" />
@@ -105,8 +108,8 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
                               <TextArea fx:id="textArea" layoutX="16.0" layoutY="14.0" prefHeight="251.0" prefWidth="200.0" />
-                              <TextField fx:id="textField" layoutX="16.0" layoutY="273.0" prefHeight="47.0" prefWidth="200.0"/>
-                              <Button  layoutX="16.0" layoutY="330.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="Senden" onAction="#senden" />
+                              <TextField fx:id="textField" layoutX="16.0" layoutY="273.0" prefHeight="47.0" prefWidth="200.0" />
+                              <Button layoutX="16.0" layoutY="330.0" mnemonicParsing="false" onAction="#senden" prefHeight="26.0" prefWidth="200.0" text="Senden" />
                            </children>
                         </AnchorPane>
                     </items>
