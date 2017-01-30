@@ -1,4 +1,4 @@
-package application;
+package application.copy;
 
 import java.io.File;
 import java.lang.reflect.Array;

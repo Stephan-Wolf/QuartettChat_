@@ -1,4 +1,4 @@
-package chat;
+package application.copy;
 
 import java.util.LinkedList;
 import java.util.List;

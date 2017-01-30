@@ -1,4 +1,4 @@
-package chat;
+package application.copy;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

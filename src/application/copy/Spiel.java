@@ -1,4 +1,4 @@
-package chat;
+package application.copy;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

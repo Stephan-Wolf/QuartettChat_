@@ -1,5 +1,5 @@
 
-package application;
+package application.copy;
 
 public class Chat {
 	

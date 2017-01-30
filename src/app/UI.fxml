@@ -28,7 +28,6 @@
                         <Font name="Helvetica" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="buttonStart" layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#startGame" text="Spiel Starten" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

@@ -1,4 +1,4 @@
-package chat;
+package application.copy;
 
 import java.io.File;
 import java.io.Serializable;
@@ -33,8 +33,8 @@ public class ViewModel  {
 	Spieler spieler1;
 	Spielerstapel stapel1;
 	
-	boolean isServer = true;
-//	boolean isServer = false;
+//	boolean isServer = true;
+	boolean isServer = false;
 	
 	
 	
@@ -62,6 +62,13 @@ public class ViewModel  {
     public void initialize() throws Exception {
 		textArea.setEditable(false);
 		connection.startConnection();
+		System.out.println("ich spring in die initialize"+counter);
+//		if(isServer == false && counter==0){
+//			Spiel spiel = new Spiel();
+//			spiel.starten();
+//			counter++;
+//			
+//		}
     }
 	
 	@FXML
@@ -85,6 +92,9 @@ public class ViewModel  {
 	}
 	
 	
+//	public void init() throws Exception {
+//		
+//	}
 	
 	
 	public void stop() throws Exception {

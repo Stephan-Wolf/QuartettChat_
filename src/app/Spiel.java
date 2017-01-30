@@ -186,7 +186,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 			
 		} else if(attribut.equals("verbrauch")) {
 			
-			int ergebnis = liefereVergleichsergebnis(spieler1Verbrauch, spieler2Verbrauch);
+			int ergebnis = liefereVergleichsergebnisKleiner(spieler1Verbrauch, spieler2Verbrauch);
 			
 			return ergebnis;
 			
@@ -197,7 +197,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 			
 		} else if(attribut.equals("beschleunigung")) {
 			
-			int ergebnis = liefereVergleichsergebnis(spieler1Beschleunigung, spieler2Beschleunigung);
+			int ergebnis = liefereVergleichsergebnisKleiner(spieler1Beschleunigung, spieler2Beschleunigung);
 			return ergebnis;
 		}
 		
@@ -213,6 +213,20 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		if (attributwert1Float > attributwert2Float) {
 			return SIEGER_SPIELER_1;
 		} else if (attributwert2Float > attributwert1Float) {
+			return SIEGER_SPIELER_2;
+		}
+		else { 
+			return GLEICHSTAND;
+		}
+	}
+	
+	private int liefereVergleichsergebnisKleiner(StringProperty attributwert1, StringProperty attributwert2) {
+		float attributwert1Float = Float.parseFloat(attributwert1.getValue());
+		float attributwert2Float = Float.parseFloat(attributwert2.getValue());
+		
+		if (attributwert1Float < attributwert2Float) {
+			return SIEGER_SPIELER_1;
+		} else if (attributwert2Float < attributwert1Float) {
 			return SIEGER_SPIELER_2;
 		}
 		else { 

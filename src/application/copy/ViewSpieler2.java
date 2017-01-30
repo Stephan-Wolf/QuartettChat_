@@ -1,4 +1,4 @@
-package application;
+package application.copy;
 
 public class ViewSpieler2 {
 
