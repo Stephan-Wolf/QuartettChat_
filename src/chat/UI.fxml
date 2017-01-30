@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="453.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="453.0" prefWidth="593.0" style=": 5px; : #999999;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ViewModel">
    <children>
       <SplitPane dividerPositions="0.1419068736141907" orientation="VERTICAL" prefHeight="453.0" prefWidth="593.0" style="-fx-background-color: #999999;">
         <items>
@@ -28,7 +28,6 @@
                         <Font name="Helvetica" size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="buttonStart" layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#startGame" text="Spiel Starten" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -40,7 +39,7 @@
                               <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="340.0" layoutX="66.0" layoutY="14.0" stroke="BLACK" width="218.0">
                                  </Rectangle>
                               <Rectangle fill="WHITE" height="26.0" layoutX="66.0" layoutY="33.0" stroke="BLACK" strokeType="INSIDE" width="218.0" />
-                              <Text fx:id="labelName" layoutX="83.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="185.0">
+                              <Text fx:id="label0" layoutX="83.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="185.0">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -63,43 +62,41 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                 	 <Button fx:id="buttonPS" mnemonicParsing="false" onAction="#comparePS" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
+                                 	 <Button mnemonicParsing="false" onAction="#compare" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="buttonKMH" mnemonicParsing="false" onAction="#compareKMH" prefHeight="26.0" prefWidth="100.0" text="KM/H" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <Button mnemonicParsing="false" onAction="#compare" prefHeight="26.0" prefWidth="100.0" text="KM/H" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="buttonVerbrauch" mnemonicParsing="false" onAction="#compareVerbrauch" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <Button mnemonicParsing="false" onAction="#compare" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="buttonCCM" mnemonicParsing="false" onAction="#compareCCM" prefHeight="26.0" prefWidth="100.0" text="CCM" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <Button mnemonicParsing="false" onAction="#compare" prefHeight="26.0" prefWidth="100.0" text="CCM" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="buttonBeschleunigung" mnemonicParsing="false" onAction="#compareBeschleunigung" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <Button mnemonicParsing="false" onAction="#compare" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <font>
                                           <Font name="Helvetica" size="11.0" />
                                        </font>
                                     </Button>
-                                    <Text fx:id="labelPS" strokeType="OUTSIDE" strokeWidth="0.0" />
-                                    <Text fx:id="labelKMH" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
-                                    <Text fx:id="labelVerbrauch" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
-                                    <Text fx:id="labelCCM" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
-                                    <Text fx:id="labelBeschleunigung" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4" />
+                                    <Text fx:id="label1" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                    <Text fx:id="label2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
+                                    <Text fx:id="label3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
+                                    <Text fx:id="label4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
+                                    <Text fx:id="label5" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4" />
                                  </children>
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                               </GridPane>
-                              <Label layoutX="7.0" layoutY="359.0" text="Anzahl Karten:" />
-                              <Text fx:id="labelKartenanzahl" layoutX="100.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="16.682918548583984" />
                            </children>
                            <styleClass>
                               <String fx:value="-fx-border-radius: 10 10 10 10;" />
@@ -108,8 +105,8 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
                               <TextArea fx:id="textArea" layoutX="16.0" layoutY="14.0" prefHeight="251.0" prefWidth="200.0" />
-                              <TextField fx:id="textField" layoutX="16.0" layoutY="273.0" prefHeight="47.0" prefWidth="200.0" />
-                              <Button layoutX="16.0" layoutY="330.0" mnemonicParsing="false" onAction="#senden" prefHeight="26.0" prefWidth="200.0" text="Senden" />
+                              <TextField fx:id="textField" layoutX="16.0" layoutY="273.0" prefHeight="47.0" prefWidth="200.0"/>
+                              <Button  layoutX="16.0" layoutY="330.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="Senden" onAction="#senden" />
                            </children>
                         </AnchorPane>
                     </items>
