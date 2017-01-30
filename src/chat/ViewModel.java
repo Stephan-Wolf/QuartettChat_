@@ -62,13 +62,6 @@ public class ViewModel  {
     public void initialize() throws Exception {
 		textArea.setEditable(false);
 		connection.startConnection();
-		System.out.println("ich spring in die initialize"+counter);
-//		if(isServer == false && counter==0){
-//			Spiel spiel = new Spiel();
-//			spiel.starten();
-//			counter++;
-//			
-//		}
     }
 	
 	@FXML
@@ -92,9 +85,6 @@ public class ViewModel  {
 	}
 	
 	
-//	public void init() throws Exception {
-//		
-//	}
 	
 	
 	public void stop() throws Exception {
