@@ -20,7 +20,7 @@ public class Server extends Application
     {
     	final IModel model = new Spiel ();
         final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
-        final IViewModel modelview = new ViewModel2(model);
+        final IViewModel modelview = new ViewModel(model);
         registry.rebind(IViewModel.IMODELVIEW, modelview);
         launch(args);
     }

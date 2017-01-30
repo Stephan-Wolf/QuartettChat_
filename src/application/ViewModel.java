@@ -33,8 +33,8 @@ public class ViewModel  {
 	Spieler spieler1;
 	Spielerstapel stapel1;
 	
-//	boolean isServer = true;
-	boolean isServer = false;
+	boolean isServer = true;
+//	boolean isServer = false;
 	
 	
 	

@@ -21,7 +21,7 @@ import java.io.Serializable;
 
 
 
-public class ViewModel2 extends UnicastRemoteObject  implements IViewModel, Serializable{
+public class ViewModel extends UnicastRemoteObject  implements IViewModel, Serializable{
 
 	/**
 	 * 
@@ -72,11 +72,11 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel, Seri
 	private IModel model;
 	 
 		// Konstruktor
-		public ViewModel2() throws RemoteException{
-			
-		}
+//		public ViewModel() throws RemoteException{
+//			
+//		}
 	
-		 public ViewModel2(IModel model) throws RemoteException {
+		 public ViewModel(IModel model) throws RemoteException {
 			 this.model = model;
 			 model.starten();
 			 
@@ -88,7 +88,6 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel, Seri
 				spieler1Beschleunigung.bind(model.getSpieler1BeschleunigungProperty());
 				spieler1Kartenanzahl.bind(model.getSpieler1KartenanzahlProperty());
 				spieler1JpgUrl.bind(model.getSpieler1JpgUrlProperty());
-				// spieler1Img.bind(model.getSpieler1Img());
 				
 				spieler2Name.bind(model.getSpieler2NameProperty());
 				spieler2Ps.bind(model.getSpieler2PsProperty());
@@ -98,7 +97,6 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel, Seri
 				spieler2Beschleunigung.bind(model.getSpieler2BeschleunigungProperty());
 				spieler2Kartenanzahl.bind(model.getSpieler2KartenanzahlProperty());
 				spieler2JpgUrl.bind(model.getSpieler2JpgUrlProperty());
-				// spieler2Img.bind(model.getSpieler2Img());
 				
 				
 				aktiverSpieler1.bind(model.getAktiverSpieler1Boolean());
@@ -106,80 +104,80 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel, Seri
 		 }
 
 		 
-			// Refactoring??? read only??
-			public StringProperty getSpieler1PsProperty () {
-				return this.spieler1Ps;
-			}
-			
-			// Refactoring??? read only??
-			public StringProperty getSpieler1KmhProperty () {
-				return this.spieler1Kmh;
-			}
-			
-			// Refactoring??? read only??
-			public StringProperty getSpieler1VerbrauchProperty () {
-				return this.spieler1Verbrauch;
-			}
-			
-			// Refactoring??? read only??
-			public StringProperty getSpieler1CcmProperty () {
-				return this.spieler1Ccm;
-			}
-			
-			// Refactoring??? read only??
-			public StringProperty getSpieler1BeschleunigungProperty () {
-				return this.spieler1Beschleunigung;
-			}
-			
-			
-			// Refactoring??? read only??
-			public ObjectProperty<javafx.scene.image.Image> getSpieler1Img () {
-				return this.spieler1Img;
-			}
-			
-			// Refactoring??? read only??
-			public StringProperty getSpieler2PsProperty () {
-				return this.spieler2Ps;
-			}
-			
-			
-			// Refactoring??? read only??
-			public StringProperty getSpieler2KmhProperty () {
-				return this.spieler2Kmh;
-			}
-			
-			
-			// Refactoring??? read only??
-			public StringProperty getSpieler2VerbrauchProperty () {
-				return this.spieler2Verbrauch;
-			}
-			
-			// Refactoring??? read only??
-			public StringProperty getSpieler2CcmProperty () {
-				return this.spieler2Ccm;
-			}
-			
-			// Refactoring??? read only??
-			public StringProperty getSpieler2BeschleunigungProperty () {
-				return this.spieler2Beschleunigung;
-			}
-			
-			// Refactoring??? read only??
-			public BooleanProperty aktiverSpieler1Property () {
-				return this.aktiverSpieler1;
-			}
-			
-			// Refactoring??? read only??
-			public ObjectProperty<javafx.scene.image.Image> getSpieler2Img () {
-				return this.spieler2Img;
-			}
-			
-			public StringProperty getSpieler1NameProperty () {
-				return this.spieler1Name;
-			}
-			public StringProperty getSpieler2NameProperty () {
-				return this.spieler2Name;
-			}
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler1PsProperty () {
+//				return this.spieler1Ps;
+//			}
+//			
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler1KmhProperty () {
+//				return this.spieler1Kmh;
+//			}
+//			
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler1VerbrauchProperty () {
+//				return this.spieler1Verbrauch;
+//			}
+//			
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler1CcmProperty () {
+//				return this.spieler1Ccm;
+//			}
+//			
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler1BeschleunigungProperty () {
+//				return this.spieler1Beschleunigung;
+//			}
+//			
+//			
+//			// Refactoring??? read only??
+//			public ObjectProperty<javafx.scene.image.Image> getSpieler1Img () {
+//				return this.spieler1Img;
+//			}
+//			
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler2PsProperty () {
+//				return this.spieler2Ps;
+//			}
+//			
+//			
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler2KmhProperty () {
+//				return this.spieler2Kmh;
+//			}
+//			
+//			
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler2VerbrauchProperty () {
+//				return this.spieler2Verbrauch;
+//			}
+//			
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler2CcmProperty () {
+//				return this.spieler2Ccm;
+//			}
+//			
+//			// Refactoring??? read only??
+//			public StringProperty getSpieler2BeschleunigungProperty () {
+//				return this.spieler2Beschleunigung;
+//			}
+//			
+//			// Refactoring??? read only??
+//			public BooleanProperty aktiverSpieler1Property () {
+//				return this.aktiverSpieler1;
+//			}
+//			
+//			// Refactoring??? read only??
+//			public ObjectProperty<javafx.scene.image.Image> getSpieler2Img () {
+//				return this.spieler2Img;
+//			}
+//			
+//			public StringProperty getSpieler1NameProperty () {
+//				return this.spieler1Name;
+//			}
+//			public StringProperty getSpieler2NameProperty () {
+//				return this.spieler2Name;
+//			}
 		 
 		 
 			public void change (String vergleichsattribut) throws RemoteException {
@@ -228,15 +226,6 @@ public class ViewModel2 extends UnicastRemoteObject  implements IViewModel, Seri
 				
 				spieler1.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl);	
 				
-//				name = spieler2Name.getValue();
-//				ps = spieler2Ps.getValue();
-//				kmh 	= spieler2Kmh.getValue();
-//				verbrauch= spieler2Verbrauch.getValue();
-//				ccm = spieler2Ccm.getValue();
-//				beschleunigung = spieler2Beschleunigung.getValue();
-//				gewinner = !gewinner;
-//				spieler2.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner);
-
 			}
 			void updateBeobachter_2() throws RemoteException { 
 				String name = spieler2Name.getValue();
