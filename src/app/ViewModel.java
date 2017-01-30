@@ -71,10 +71,6 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	
 	private IModel model;
 	 
-		// Konstruktor
-//		public ViewModel() throws RemoteException{
-//			
-//		}
 	
 		 public ViewModel(IModel model) throws RemoteException {
 			 this.model = model;
@@ -103,81 +99,6 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				System.out.println("Klasse ViewModel - Konstruktor, aktiverSpieler1Property: " + aktiverSpieler1.getValue());
 		 }
 
-		 
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler1PsProperty () {
-//				return this.spieler1Ps;
-//			}
-//			
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler1KmhProperty () {
-//				return this.spieler1Kmh;
-//			}
-//			
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler1VerbrauchProperty () {
-//				return this.spieler1Verbrauch;
-//			}
-//			
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler1CcmProperty () {
-//				return this.spieler1Ccm;
-//			}
-//			
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler1BeschleunigungProperty () {
-//				return this.spieler1Beschleunigung;
-//			}
-//			
-//			
-//			// Refactoring??? read only??
-//			public ObjectProperty<javafx.scene.image.Image> getSpieler1Img () {
-//				return this.spieler1Img;
-//			}
-//			
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler2PsProperty () {
-//				return this.spieler2Ps;
-//			}
-//			
-//			
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler2KmhProperty () {
-//				return this.spieler2Kmh;
-//			}
-//			
-//			
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler2VerbrauchProperty () {
-//				return this.spieler2Verbrauch;
-//			}
-//			
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler2CcmProperty () {
-//				return this.spieler2Ccm;
-//			}
-//			
-//			// Refactoring??? read only??
-//			public StringProperty getSpieler2BeschleunigungProperty () {
-//				return this.spieler2Beschleunigung;
-//			}
-//			
-//			// Refactoring??? read only??
-//			public BooleanProperty aktiverSpieler1Property () {
-//				return this.aktiverSpieler1;
-//			}
-//			
-//			// Refactoring??? read only??
-//			public ObjectProperty<javafx.scene.image.Image> getSpieler2Img () {
-//				return this.spieler2Img;
-//			}
-//			
-//			public StringProperty getSpieler1NameProperty () {
-//				return this.spieler1Name;
-//			}
-//			public StringProperty getSpieler2NameProperty () {
-//				return this.spieler2Name;
-//			}
 		 
 		 
 			public void change (String vergleichsattribut) throws RemoteException {
