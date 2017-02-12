@@ -74,8 +74,16 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		
 		// Spieler1 beginnt
 		// sp�ter �ndern -> nach Zufall
-		aktiverSpieler1Boolean= false;
-		aktiverSpieler1.setValue(aktiverSpieler1Boolean);
+		//random math 
+		int randomNumber = 1;
+		if (randomNumber == 0){
+			aktiverSpieler1Boolean = false;
+			aktiverSpieler1.setValue(aktiverSpieler1Boolean);
+		}
+		else{
+			aktiverSpieler1Boolean = true;
+			aktiverSpieler1.setValue(aktiverSpieler1Boolean);
+		}
 
 				
 		
@@ -268,6 +276,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 			spieler1KartenanzahlInt--;
 			spieler1Kartenanzahl.setValue(String.valueOf(spieler1KartenanzahlInt));
 			if (spieler1KartenanzahlInt == 0) {
+				
 				spielende = true;
 			} else {
 				spieler1.obereKarteAufdecken();
@@ -280,7 +289,10 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 			spieler2Kartenanzahl.setValue(String.valueOf(spieler2KartenanzahlInt));
 			this.spieler2.verschiebeObereKarteNachUnten();
 			spieler2.obereKarteAufdecken();
-		
+		}else if (e == SIEGER_SPIELER_1 && spielende == true){
+			System.out.println("SPiel Over und Gewinner ist Spieler 1");
+		}else if (e == SIEGER_SPIELER_2 && spielende == true){
+			System.out.println("SPiel Over und Gewinner ist Spieler 2");
 		} else {
 			this.spieler1.verschiebeObereKarteNachUnten();
 			spieler1.obereKarteAufdecken();

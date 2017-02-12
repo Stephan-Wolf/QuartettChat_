@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class App extends Application{
 	
-	static boolean isserver = true;
+	static boolean isserver = false;
 	
 	public static void main(final String[] args) throws IOException
     {	
