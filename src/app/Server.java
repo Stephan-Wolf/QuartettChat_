@@ -16,11 +16,12 @@ import javafx.stage.Stage;
 
 public class Server extends Application
 {
-    public static void main(final String[] args) throws IOException
+    public static void main(String [] args) throws IOException
     {
     	final IModel model = new Spiel ();
         final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
         final IViewModel modelview = new ViewModel(model);
+        System.out.println(registry);
         registry.rebind(IViewModel.IMODELVIEW, modelview);
         launch(args);
     }

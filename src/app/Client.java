@@ -15,13 +15,12 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class Client extends Application {
-	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-
 	        final Registry registry = LocateRegistry.getRegistry("localhost");
 	        final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
+	        System.out.println(viewmodel);
 
 	        View anwender = new View(viewmodel);
 	        viewmodel.setBeobachter_2(anwender);
