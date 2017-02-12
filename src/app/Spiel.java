@@ -75,8 +75,11 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		// Spieler1 beginnt
 		// sp�ter �ndern -> nach Zufall
 		//random math 
-		int randomNumber = 1;
-		if (randomNumber == 0){
+		int randomNumber;
+	    randomNumber = (int)(Math.random() * 2+1);
+	    System.out.println(randomNumber);
+	    
+		if (randomNumber == 1){
 			aktiverSpieler1Boolean = false;
 			aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 		}
