@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="453.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.StartController">
+   <children>
+      <SplitPane orientation="VERTICAL" prefHeight="453.0" prefWidth="593.0" style="-fx-background-color: #999999;">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="167.0" layoutY="17.0" prefHeight="29.0" prefWidth="257.0" text="QUARTETT MIT CHAT">
+                     <font>
+                        <Font name="Helvetica" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="95.0" layoutY="193.0" mnemonicParsing="false" onAction="#serverStart" text="Start als Server" />
+                  <Button layoutX="251.0" layoutY="193.0" mnemonicParsing="false" onAction="#clientStart" text="Start als Client" />
+                  <Button layoutX="150.0" layoutY="334.0" mnemonicParsing="false" onAction="#info" text="Info " />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

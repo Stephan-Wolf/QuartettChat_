@@ -23,7 +23,7 @@ public class Server extends Application
         final IViewModel modelview = new ViewModel(model);
         System.out.println(registry);
         registry.rebind(IViewModel.IMODELVIEW, modelview);
-        launch(args);
+//        launch(args);
     }
     
 
