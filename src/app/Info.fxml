@@ -61,7 +61,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <Text layoutX="34.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier finden sie Informationen zu den Köpfen hinter dem Quartett mit Chat. Das Programm dient nur der Vorführung in der Beuth Hochscule für Technik in Berlin und darf nicht weiter verbreitet werden." wrappingWidth="535.6829261779785" />
+                        <Text layoutX="34.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier finden sie Informationen zu den Köpfen hinter dem Quartett mit Chat. Das Programm dient nur der Vorführung in der Beuth Hochschule für Technik in Berlin und darf nicht weiter verbreitet werden." wrappingWidth="535.6829261779785" />
                      </children>
                      <styleClass>
                         <String fx:value="-fx-border-radius: 10 10 10 10;" />
