@@ -3,10 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="453.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.StartController">
+<AnchorPane prefHeight="453.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.StartController">
    <children>
       <SplitPane orientation="VERTICAL" prefHeight="453.0" prefWidth="593.0" style="-fx-background-color: #999999;">
         <items>
@@ -17,9 +19,14 @@
                         <Font name="Helvetica" size="24.0" />
                      </font>
                   </Label>
-                  <Button layoutX="95.0" layoutY="193.0" mnemonicParsing="false" onAction="#serverStart" text="Start als Server" />
-                  <Button layoutX="251.0" layoutY="193.0" mnemonicParsing="false" onAction="#clientStart" text="Start als Client" />
-                  <Button layoutX="150.0" layoutY="334.0" mnemonicParsing="false" onAction="#info" text="Info " />
+                  <ImageView fitHeight="451.0" fitWidth="299.0" layoutX="150.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Img/Quartett-Header.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="157.0" layoutY="375.0" mnemonicParsing="false" onAction="#serverStart" text="Start als Server" />
+                  <Button layoutX="276.0" layoutY="375.0" mnemonicParsing="false" onAction="#clientStart" prefHeight="26.0" prefWidth="109.0" text="Start als Client" />
+                  <Button layoutX="395.0" layoutY="375.0" mnemonicParsing="false" onAction="#info" prefHeight="11.0" prefWidth="46.0" text="Info " />
                </children>
             </AnchorPane>
         </items>
