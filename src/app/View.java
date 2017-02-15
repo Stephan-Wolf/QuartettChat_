@@ -8,7 +8,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -92,9 +95,13 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	@FXML
 	private void senden(ActionEvent event) throws RemoteException{
 		String message = textField.getText();
-		textArea.appendText("Name: "+ message  + "\n");		
+		textArea.appendText("Spieler: "+ message  + "\n");		
 		textField.clear();
 		viewmodel.changeChat(message, getID());
+	}
+	@FXML
+	private void enter(ActionEvent event) throws RemoteException{
+		this.senden(event);
 	}
 
 	@Override
@@ -150,7 +157,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		System.out.println("updateChat()");
 		thread = new Thread () {
 			public void run() {		
-				Platform.runLater(() -> textArea.appendText("Name: "+ message  + "\n"));
+				Platform.runLater(() -> textArea.appendText(message  + "\n"));
 
 				System.out.println("updateChat() run()");
 			}
