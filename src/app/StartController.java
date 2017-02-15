@@ -53,7 +53,7 @@ public class StartController  {
 		 IViewModel viewmodel;
 		try {
 			viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
-			View anwender = new View(viewmodel);
+			View anwender = new View(viewmodel,1);
 			viewmodel.setBeobachter_1(anwender);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));
 			loader.setController(anwender);
@@ -74,7 +74,7 @@ public class StartController  {
 			final Registry registry = LocateRegistry.getRegistry("localhost");
 			final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
 			System.out.println(registry);
-			View anwender = new View(viewmodel);
+			View anwender = new View(viewmodel,2);
 			viewmodel.setBeobachter_2(anwender);
 			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));

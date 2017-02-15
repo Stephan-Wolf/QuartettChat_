@@ -25,6 +25,8 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	final String CCM = "ccm";
 	final String BESCHLEUNIGUNG = "beschleunigung";
 	
+	private int id;
+	
 	private IViewModel viewmodel;
 	
 	@FXML
@@ -45,8 +47,9 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	
 	
-	public View (IViewModel viewmodel) throws RemoteException{
+	public View (IViewModel viewmodel, int id) throws RemoteException{
 		this.viewmodel = viewmodel;
+		this.id = id;
 	}
 	
 	@FXML
@@ -87,9 +90,11 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	
 	@FXML
-	private void senden(ActionEvent event){
-		textArea.appendText(textField.getText());
+	private void senden(ActionEvent event) throws RemoteException{
+		String message = textField.getText();
+		textArea.appendText("Name: "+ message  + "\n");		
 		textField.clear();
+		viewmodel.changeChat(message, getID());
 	}
 
 	@Override
@@ -132,6 +137,25 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		thread.setDaemon(true);
 		thread.start();
 		
+	}
+
+	@Override
+	public int getID() throws RemoteException{
+		return id;
+	}
+
+	@Override
+	public void updateChat(String message) throws RemoteException{
+		// oder lieber ein zweites Attribut definieren?? 
+		System.out.println("updateChat()");
+		thread = new Thread () {
+			public void run() {		
+				Platform.runLater(() -> textArea.appendText("Name: "+ message  + "\n"));
+
+				System.out.println("updateChat() run()");
+			}
+		};
+		thread.start();
 	}
 
 }

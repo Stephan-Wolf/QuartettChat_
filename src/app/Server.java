@@ -23,7 +23,7 @@ public class Server extends Application
         final IViewModel modelview = new ViewModel(model);
         System.out.println(registry);
         registry.rebind(IViewModel.IMODELVIEW, modelview);
-//        launch(args);
+        launch(args);
     }
     
 
@@ -32,7 +32,7 @@ public class Server extends Application
         final Registry registry = LocateRegistry.getRegistry("localhost");
         final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
 
-        View anwender = new View(viewmodel);
+        View anwender = new View(viewmodel, 1);
         viewmodel.setBeobachter_1(anwender);
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));

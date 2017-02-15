@@ -157,4 +157,14 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				spieler2.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl);
 				
 			}
+
+			@Override
+			public void changeChat(String message, int id) throws RemoteException {
+				if (id == spieler1.getID()) {
+					spieler2.updateChat(message);
+				} else {
+					spieler1.updateChat(message);
+				}
+				
+			}
 }

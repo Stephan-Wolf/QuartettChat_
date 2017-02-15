@@ -22,7 +22,7 @@ public class Client extends Application {
 	        final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
 	        System.out.println(viewmodel);
 
-	        View anwender = new View(viewmodel);
+	        View anwender = new View(viewmodel, 2);
 	        viewmodel.setBeobachter_2(anwender);
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));
