@@ -15,6 +15,5 @@ public interface IViewModel extends Remote {
 	public void setBeobachter_2 (Beobachter beobachter_2) throws RemoteException;
 	
 	void changeChat (String message, int id) throws RemoteException;
-	public void starten() throws RemoteException;
 	
 }
