@@ -124,7 +124,9 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	
 	// ???????????
 	public void spielWiederholen () {
-		
+		spielende = false;
+		this.kartenMischen();
+		this.kartenAusteilen();
 	}
 	
 	private void kartenMischen() {

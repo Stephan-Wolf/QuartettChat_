@@ -98,6 +98,8 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@FXML
 	private void restartGame (ActionEvent event) throws RemoteException{
+		hideOnEnd.setVisible(true);
+		showOnEnd.setVisible(false);
 	}
 	
 	@FXML
