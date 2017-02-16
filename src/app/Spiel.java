@@ -160,7 +160,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	
 	// noch �berlegen, ob auf int verzichten
 	public int ermittleRundenergebnis(String attribut) {
-		if(!spielende) {
+		if(spielende == false) {
 			int rundenergebnis = vergleicheAttribut(attribut);
 			this.spielerstapelAktualisieren(rundenergebnis);
 			this.aktualisiereAktuellerRundensieger(rundenergebnis);

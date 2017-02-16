@@ -10,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.rmi.RemoteException;
@@ -31,6 +33,12 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	private int id;
 	
 	private IViewModel viewmodel;
+	
+	@FXML
+	private GridPane hideOnEnd;
+	
+	@FXML
+	private Pane showOnEnd;
 	
 	@FXML
 	private Text labelName, labelPS, labelKMH, labelVerbrauch, labelCCM, labelBeschleunigung, labelKartenanzahl;
@@ -58,6 +66,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	@FXML
     public void initialize() {
 		textArea.setEditable(false);
+		showOnEnd.setVisible(false);
     }
 	
 	@FXML
@@ -88,9 +97,12 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	}
 	
 	@FXML
-	private void startGame (ActionEvent event) throws RemoteException{
+	private void restartGame (ActionEvent event) throws RemoteException{
 	}
 	
+	@FXML
+	private void endGame (ActionEvent event) throws RemoteException{
+	}
 	
 	@FXML
 	private void senden(ActionEvent event) throws RemoteException{
@@ -107,6 +119,27 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	@Override
 	public void update(String name, String ps, String kmh, String verbrauch, String ccm, String beschleunigung,
 			boolean aktiverSpieler, String kartenanzahl, String jpgUrl) throws RemoteException {
+			int i = Integer.parseInt(kartenanzahl);
+		if (i == 0 || i == 16){
+			hideOnEnd.setVisible(false);
+			showOnEnd.setVisible(true);
+			if(i == 0){
+				System.out.println("if i == 0" + i);
+				labelName.setText("CRASH Du hast verloren");
+				String image = new String("/Img/car_crash.jpg");
+		        Image imageUse = new Image(image);
+		        imageDisplay.setImage(imageUse);
+			}
+			if(i == 16){
+				System.out.println("if i == 16" + i);
+				labelName.setText("WINNER Du hast gewonnen");
+				String image = new String("/Img/Zielflagge.jpg");
+		        Image imageUse = new Image(image);
+		        imageDisplay.setImage(imageUse);
+			}
+			
+		}
+		else {
 		
 		System.out.println("ViewSpieler update");
 		System.out.println("Name: " + name);
@@ -143,7 +176,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		/// ????
 		thread.setDaemon(true);
 		thread.start();
-		
+		}
 	}
 
 	@Override
