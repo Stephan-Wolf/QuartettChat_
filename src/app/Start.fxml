@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="453.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.StartController">
+<AnchorPane prefHeight="453.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.StartController">
    <children>
       <SplitPane orientation="VERTICAL" prefHeight="453.0" prefWidth="593.0" style="-fx-background-color: #999999;">
         <items>
