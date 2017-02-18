@@ -44,7 +44,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	private Text labelName, labelPS, labelKMH, labelVerbrauch, labelCCM, labelBeschleunigung, labelKartenanzahl;
 	
 	@FXML
-	private Button buttonPS, buttonKMH, buttonVerbrauch, buttonCCM, buttonBeschleunigung;
+	private Button buttonPS, buttonKMH, buttonVerbrauch, buttonCCM, buttonBeschleunigung, restartButton, endGameButton;
 	
 	@FXML
 	private ImageView imageDisplay;
@@ -98,8 +98,13 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@FXML
 	private void restartGame (ActionEvent event) throws RemoteException{
-		hideOnEnd.setVisible(true);
-		showOnEnd.setVisible(false);
+		
+		viewmodel.spielWiederholen(this.getID());
+		restartButton.setDisable(true);
+		endGameButton.setDisable(true);
+		// jetzt in der methode updateSpielwiederoholung ()
+		// hideOnEnd.setVisible(true);
+		// showOnEnd.setVisible(false);
 	}
 	
 	@FXML
@@ -198,6 +203,26 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			}
 		};
 		thread.start();
+	}
+
+	@Override
+	public void updateSpielwiederholung() throws RemoteException {
+		thread = new Thread () {
+			public void run() {		
+				Platform.runLater(() -> hideOnEnd.setVisible(true));
+				Platform.runLater(() -> showOnEnd.setVisible(false));
+				Platform.runLater(() -> restartButton.setDisable(false));
+				Platform.runLater(() -> endGameButton.setDisable(false));
+//				showOnEnd.setVisible(false);
+//				restartButton.setDisable(false);
+//				endGameButton.setDisable(false);
+				
+				System.out.println("updateChat() run()");
+			}
+		};
+		thread.start();
+		
+	
 	}
 
 }

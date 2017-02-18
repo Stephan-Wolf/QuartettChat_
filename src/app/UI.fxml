@@ -101,8 +101,8 @@
                               <Label layoutX="7.0" layoutY="359.0" text="Anzahl Karten:" />
                               <Pane fx:id="showOnEnd" layoutX="75.0" layoutY="172.0" prefHeight="171.0" prefWidth="200.0">
                                  <children>
-                                    <Button layoutX="39.0" layoutY="47.0" mnemonicParsing="false" onAction="#restartGame" text="Spiel wiederholen" />
-                                    <Button layoutX="39.0" layoutY="86.0" mnemonicParsing="false" onAction="#endGame" prefHeight="26.0" prefWidth="123.0" text="Spiel beenden" />
+                                    <Button fx:id="restartButton" layoutX="39.0" layoutY="47.0" mnemonicParsing="false" onAction="#restartGame" text="Spiel wiederholen" />
+                                    <Button fx:id="endGameButton" layoutX="39.0" layoutY="86.0" mnemonicParsing="false" onAction="#endGame" prefHeight="26.0" prefWidth="123.0" text="Spiel beenden" />
                                  </children>
                               </Pane>
                               <Text fx:id="labelKartenanzahl" layoutX="100.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="16.682918548583984" />

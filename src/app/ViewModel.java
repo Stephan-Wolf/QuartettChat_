@@ -29,6 +29,10 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	private Beobachter spieler1;
 	private Beobachter spieler2;
 	
+	private boolean spieler1Bereit;
+	private boolean spieler2Bereit;
+	
+	
 	private BooleanProperty aktiverSpieler1 = new SimpleBooleanProperty();
 	
 	final String NAME = "name";
@@ -170,4 +174,29 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 
 
 
+			@Override
+			public void spielStarten() throws RemoteException {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void spielWiederholen(int id) throws RemoteException {
+				
+				if (id == spieler1.getID()) {
+					spieler1Bereit = true;
+				} else if(id == spieler2.getID()) {
+					spieler2Bereit = true;
+				}
+
+				if (spieler1Bereit == true && spieler2Bereit == true) {
+					model.spielWiederholen();
+					this.updateBeobachter_1();
+					this.updateBeobachter_2();
+					this.spieler1.updateSpielwiederholung();
+					this.spieler2.updateSpielwiederholung();
+					spieler1Bereit = false;
+					spieler2Bereit = false;
+				}
+			}
 }

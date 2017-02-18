@@ -74,20 +74,21 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		
 		// Spieler1 beginnt
 		// spï¿½ter ï¿½ndern -> nach Zufall
-		//random math 
+		//random math #
+		// Rafactoring, in eine Methode packen, verkürzen
 		int randomNumber;
 	    randomNumber = (int)(Math.random() * 2+1);
 	    System.out.println(randomNumber);
 	    
 		if (randomNumber == 1){
 			aktiverSpieler1Boolean = false;
-			aktiverSpieler1.setValue(aktiverSpieler1Boolean);
+			// aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 		}
 		else{
 			aktiverSpieler1Boolean = true;
-			aktiverSpieler1.setValue(aktiverSpieler1Boolean);
+			// aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 		}
-
+		aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 				
 		
 		
@@ -124,9 +125,31 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	
 	// ???????????
 	public void spielWiederholen () {
+		
+		// zuerst die alten  Kartenstapel-Objekt, Spielerstapel-Objekte löschen?
+		kartenstapel = new Kartenstapel();
 		spielende = false;
 		this.kartenMischen();
 		this.kartenAusteilen();
+		
+		// Spieler1 beginnt
+		// spï¿½ter ï¿½ndern -> nach Zufall
+		//random math #
+		// Rafactoring, in eine Methode packen, verkürzen
+		int randomNumber;
+	    randomNumber = (int)(Math.random() * 2+1);
+	    System.out.println(randomNumber);
+	    
+		if (randomNumber == 1){
+			aktiverSpieler1Boolean = false;
+			// aktiverSpieler1.setValue(aktiverSpieler1Boolean);
+		}
+		else{
+			aktiverSpieler1Boolean = true;
+			// aktiverSpieler1.setValue(aktiverSpieler1Boolean);
+		}
+		aktiverSpieler1.setValue(aktiverSpieler1Boolean);
+		
 	}
 	
 	private void kartenMischen() {

@@ -9,6 +9,7 @@ import javafx.beans.property.BooleanProperty;
 public interface IModel extends Remote
 {  
     void starten() throws RemoteException;
+    void spielWiederholen () throws RemoteException;
     
     int ermittleRundenergebnis(String attribut) throws RemoteException;
     
