@@ -29,7 +29,7 @@
                   <Rectangle fill="WHITE" height="26.0" layoutX="65.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="218.0" />
                   <Text fx:id="labelName" layoutX="82.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="185.0">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="Courier Bold" size="13.0" />
                      </font>
                   </Text>
                   <ImageView fx:id="imageDisplay" fitHeight="147.0" fitWidth="200.0" layoutX="74.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
@@ -52,34 +52,54 @@
                      <children>
                      	 <Button fx:id="buttonPS" mnemonicParsing="false" onAction="#comparePS" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
                            <font>
-                              <Font name="Helvetica" size="11.0" />
+                              <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
                         <Button fx:id="buttonKMH" mnemonicParsing="false" onAction="#compareKMH" prefHeight="26.0" prefWidth="100.0" text="KM/H" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
-                              <Font name="Helvetica" size="11.0" />
+                              <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
                         <Button fx:id="buttonVerbrauch" mnemonicParsing="false" onAction="#compareVerbrauch" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
-                              <Font name="Helvetica" size="11.0" />
+                              <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
                         <Button fx:id="buttonCCM" mnemonicParsing="false" onAction="#compareCCM" prefHeight="26.0" prefWidth="100.0" text="CCM" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
-                              <Font name="Helvetica" size="11.0" />
+                              <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
                         <Button fx:id="buttonBeschleunigung" mnemonicParsing="false" onAction="#compareBeschleunigung" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
-                              <Font name="KozMinPro-Medium" size="11.0" />
+                              <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
-                        <Text fx:id="labelPS" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <Text fx:id="labelKMH" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
-                        <Text fx:id="labelVerbrauch" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
-                        <Text fx:id="labelCCM" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
-                        <Text fx:id="labelBeschleunigung" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4" />
+                        <Text fx:id="labelPS" strokeType="OUTSIDE" strokeWidth="0.0">
+                        <font>
+                              <Font name="Courier" size="11.0" />
+                           </font>
+                        </Text>   
+                        <Text fx:id="labelKMH" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1">
+                         <font>
+                              <Font name="Courier" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="labelVerbrauch" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2">
+                         <font>
+                              <Font name="Courier" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="labelCCM" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3">
+                         <font>
+                              <Font name="Courier" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="labelBeschleunigung" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4">
+                         <font>
+                              <Font name="Courier" size="11.0" />
+                           </font>
+                        </Text>
                      </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -87,15 +107,33 @@
                   </GridPane>
                   <Pane fx:id="showOnEnd" layoutX="75.0" layoutY="172.0" prefHeight="171.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="restartButton" layoutX="39.0" layoutY="48.0" mnemonicParsing="false" onAction="#restartGame" text="Spiel wiederholen" />
-                        <Button fx:id="endGameButton" layoutX="39.0" layoutY="86.0" mnemonicParsing="false" onAction="#endGame" prefHeight="26.0" prefWidth="123.0" text="Spiel beenden" />
+                        <Button fx:id="restartButton" layoutX="25.0" layoutY="53.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="26.0" prefWidth="151.0" text="Spiel wiederholen">
+                           <font>
+                              <Font name="Courier" size="13.0" />
+                           </font></Button>
+                        <Button fx:id="endGameButton" layoutX="25.0" layoutY="93.0" mnemonicParsing="false" onAction="#endGame" prefHeight="26.0" prefWidth="151.0" text="Spiel beenden">
+                           <font>
+                              <Font name="Courier" size="13.0" />
+                           </font></Button>
                      </children>
                   </Pane>
                   <Pane fx:id="hideOnEnd2" layoutX="64.0" layoutY="380.0" prefHeight="71.0" prefWidth="219.0">
                      <children>
-                        <Label layoutX="6.0" layoutY="8.0" text="Anzahl Karten:" />
-                        <Text fx:id="labelKartenanzahl" layoutX="98.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="16.682918548583984" />
-                        <Text fx:id="labelRundenstatus" layoutX="6.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="113.68291854858398" />
+                        <Label layoutX="6.0" layoutY="8.0" text="Anzahl Karten:">
+                         <font>
+                              <Font name="Courier" size="13.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="labelKartenanzahl" layoutX="120.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="16.682918548583984">
+                         <font>
+                              <Font name="Courier" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="labelRundenstatus" layoutX="6.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="113.68291854858398">
+                         <font>
+                              <Font name="Courier" size="13.0" />
+                           </font>
+                        </Text>
                      </children>
                   </Pane>
                </children>
@@ -106,9 +144,21 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TextArea fx:id="textArea" layoutX="16.0" layoutY="14.0" prefHeight="326.0" prefWidth="200.0" />
-                  <TextField fx:id="textField" layoutX="16.0" layoutY="347.0" onAction="#enter" prefHeight="47.0" prefWidth="200.0" />
-                  <Button layoutX="16.0" layoutY="403.0" mnemonicParsing="false" onAction="#senden" prefHeight="26.0" prefWidth="200.0" text="Senden" />
+                  <TextArea fx:id="textArea" layoutX="16.0" layoutY="14.0" prefHeight="326.0" prefWidth="200.0">
+                   		<font>
+                              <Font name="Courier" size="11.0" />
+                        </font>
+                  </TextArea>
+                  <TextField fx:id="textField" layoutX="16.0" layoutY="347.0" onAction="#enter" prefHeight="47.0" prefWidth="200.0">
+                   <font>
+                              <Font name="Courier" size="11.0" />
+                           </font>
+                        </TextField>
+                  <Button layoutX="16.0" layoutY="403.0" mnemonicParsing="false" onAction="#senden" prefHeight="26.0" prefWidth="200.0" text="Senden">
+                   <font>
+                              <Font name="Courier" size="13.0" />
+                           </font>
+                  </Button>
                </children>
             </AnchorPane>
         </items>
