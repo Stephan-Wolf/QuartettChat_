@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.WindowEvent;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -121,6 +122,20 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	@FXML
 	private void enter(ActionEvent event) throws RemoteException{
 		this.senden(event);
+	}
+	
+	
+	@FXML
+	private void exitView(WindowEvent event){ 
+    	
+		Platform.exit();
+		
+		
+	}
+	@SuppressWarnings("deprecation")
+	public void stop(){
+		System.out.println("Stage closed!");
+		thread.stop();
 	}
 
 	@Override

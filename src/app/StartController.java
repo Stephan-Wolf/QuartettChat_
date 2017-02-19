@@ -62,6 +62,10 @@ public class StartController  {
 			Stage UI_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			UI_stage.setScene(UI_scene);
 			UI_stage.show();
+			UI_stage.setOnCloseRequest(e -> {
+				Platform.exit();
+				System.exit(0);
+			});
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,6 +88,10 @@ public class StartController  {
 			Stage UI_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			UI_stage.setScene(UI_scene);
 			UI_stage.show();
+			UI_stage.setOnCloseRequest(e -> {
+				Platform.exit();
+				System.exit(0);
+			});
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -98,5 +106,7 @@ public class StartController  {
 		info_stage.setScene(info_scene);
 		info_stage.show();
     }
+    
+    
 
 }
