@@ -40,10 +40,10 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	private GridPane hideOnEnd;
 	
 	@FXML
-	private Pane showOnEnd;
+	private Pane showOnEnd, hideOnEnd2;
 	
 	@FXML
-	private Text labelName, labelPS, labelKMH, labelVerbrauch, labelCCM, labelBeschleunigung, labelKartenanzahl;
+	private Text labelName, labelPS, labelKMH, labelVerbrauch, labelCCM, labelBeschleunigung, labelKartenanzahl, labelRundenstatus;
 	
 	@FXML
 	private Button buttonPS, buttonKMH, buttonVerbrauch, buttonCCM, buttonBeschleunigung, restartButton, endGameButton;
@@ -129,11 +129,13 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@Override
 	public void update(String name, String ps, String kmh, String verbrauch, String ccm, String beschleunigung,
-			boolean aktiverSpieler, String kartenanzahl, String jpgUrl) throws RemoteException {
+			boolean aktiverSpieler, String kartenanzahl, String jpgUrl, String status) throws RemoteException {
 			int i = Integer.parseInt(kartenanzahl);
 		if (i == 0 || i == 16){
 			hideOnEnd.setVisible(false);
+			hideOnEnd2.setVisible(false);
 			showOnEnd.setVisible(true);
+			
 			if(i == 0){
 				System.out.println("if i == 0" + i);
 				labelName.setText("CRASH Du hast verloren");
@@ -152,41 +154,42 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		}
 		else {
 		
-		System.out.println("ViewSpieler update");
-		System.out.println("Name: " + name);
-		System.out.println("PS: " + ps );
-		System.out.println("KMH: " + kmh);
-		System.out.println("VERBRAUCH: " + verbrauch);
-		System.out.println("CCM: " + ccm);
-		System.out.println("Beschleunigung: " + beschleunigung);
-		System.out.println("Kartenanzahl: " + kartenanzahl);
-		System.out.println("jpgUrl: " + jpgUrl);
-
-		
-        String image = new String(jpgUrl);
-        Image imageUse = new Image(image);
-        
-		
-		thread = new Thread () {
-			public void run() {		
-				Platform.runLater(() -> labelName.setText(name));
-				Platform.runLater(() -> labelPS.setText(ps));
-				Platform.runLater(() -> labelKMH.setText(kmh));
-				Platform.runLater(() -> labelVerbrauch.setText(verbrauch));
-				Platform.runLater(() -> labelCCM.setText(ccm));
-				Platform.runLater(() -> labelBeschleunigung.setText(beschleunigung));
-				Platform.runLater(() -> buttonPS.setDisable(!aktiverSpieler));
-				Platform.runLater(() -> buttonKMH.setDisable(!aktiverSpieler));
-				Platform.runLater(() -> buttonVerbrauch.setDisable(!aktiverSpieler));
-				Platform.runLater(() -> buttonCCM.setDisable(!aktiverSpieler));
-				Platform.runLater(() -> buttonBeschleunigung.setDisable(!aktiverSpieler));
-				Platform.runLater(() -> labelKartenanzahl.setText(kartenanzahl));
-				Platform.runLater(() -> imageDisplay.setImage(imageUse));	
-			}
-		};
-		/// ????
-		thread.setDaemon(true);
-		thread.start();
+			System.out.println("ViewSpieler update");
+			System.out.println("Name: " + name);
+			System.out.println("PS: " + ps );
+			System.out.println("KMH: " + kmh);
+			System.out.println("VERBRAUCH: " + verbrauch);
+			System.out.println("CCM: " + ccm);
+			System.out.println("Beschleunigung: " + beschleunigung);
+			System.out.println("Kartenanzahl: " + kartenanzahl);
+			System.out.println("jpgUrl: " + jpgUrl);
+	
+			
+	        String image = new String(jpgUrl);
+	        Image imageUse = new Image(image);
+	        
+			
+			thread = new Thread () {
+				public void run() {		
+					Platform.runLater(() -> labelName.setText(name));
+					Platform.runLater(() -> labelPS.setText(ps));
+					Platform.runLater(() -> labelKMH.setText(kmh));
+					Platform.runLater(() -> labelVerbrauch.setText(verbrauch));
+					Platform.runLater(() -> labelCCM.setText(ccm));
+					Platform.runLater(() -> labelBeschleunigung.setText(beschleunigung));
+					Platform.runLater(() -> buttonPS.setDisable(!aktiverSpieler));
+					Platform.runLater(() -> buttonKMH.setDisable(!aktiverSpieler));
+					Platform.runLater(() -> buttonVerbrauch.setDisable(!aktiverSpieler));
+					Platform.runLater(() -> buttonCCM.setDisable(!aktiverSpieler));
+					Platform.runLater(() -> buttonBeschleunigung.setDisable(!aktiverSpieler));
+					Platform.runLater(() -> labelKartenanzahl.setText(kartenanzahl));
+					Platform.runLater(() -> imageDisplay.setImage(imageUse));
+					Platform.runLater(() -> labelRundenstatus.setText(status));
+				}
+			};
+			/// ????
+			thread.setDaemon(true);
+			thread.start();
 		}
 	}
 
@@ -217,11 +220,13 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 				Platform.runLater(() -> showOnEnd.setVisible(false));
 				Platform.runLater(() -> restartButton.setDisable(false));
 				Platform.runLater(() -> endGameButton.setDisable(false));
+				Platform.runLater(() -> hideOnEnd2.setVisible(true));
+				Platform.runLater(() -> labelRundenstatus.setText("Jetzt gehts los"));
 //				showOnEnd.setVisible(false);
 //				restartButton.setDisable(false);
 //				endGameButton.setDisable(false);
 				
-				System.out.println("updateChat() run()");
+				System.out.println("updateSpielwiederholung() run()");
 			}
 		};
 		thread.start();

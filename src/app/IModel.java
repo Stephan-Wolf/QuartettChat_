@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.beans.property.BooleanProperty;
 
 public interface IModel extends Remote
@@ -21,6 +22,7 @@ public interface IModel extends Remote
 	public StringProperty getSpieler1BeschleunigungProperty () throws RemoteException;
 	public StringProperty getSpieler1KartenanzahlProperty () throws RemoteException;
 	public StringProperty getSpieler1JpgUrlProperty () throws RemoteException;
+	public StringProperty getSpieler1StatusProperty () throws RemoteException;
 
 	public StringProperty getSpieler2NameProperty () throws RemoteException;
 	public StringProperty getSpieler2PsProperty () throws RemoteException;
@@ -30,7 +32,8 @@ public interface IModel extends Remote
 	public StringProperty getSpieler2BeschleunigungProperty () throws RemoteException;
 	public StringProperty getSpieler2KartenanzahlProperty () throws RemoteException;
 	public StringProperty getSpieler2JpgUrlProperty () throws RemoteException;
-
+	public StringProperty getSpieler2StatusProperty () throws RemoteException;
+	
 	public BooleanProperty getAktiverSpieler1Boolean() throws RemoteException;
     
 }

@@ -52,6 +52,8 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	private StringProperty spieler1Kartenanzahl =  new SimpleStringProperty();
 	private StringProperty spieler1Beschleunigung =  new SimpleStringProperty();
 	private StringProperty spieler1JpgUrl =  new SimpleStringProperty();
+	private StringProperty spieler1Status =  new SimpleStringProperty();
+	
 	private ObjectProperty<javafx.scene.image.Image> spieler1Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 1 als StringProperty
 	
@@ -65,6 +67,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	private StringProperty spieler2Beschleunigung =  new SimpleStringProperty();
 	private StringProperty spieler2JpgUrl =  new SimpleStringProperty();
 	private StringProperty spieler2Kartenanzahl =  new SimpleStringProperty();
+	private StringProperty spieler2Status =  new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.image.Image> spieler2Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 2 als StringProperty
 	
@@ -83,6 +86,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				spieler1Beschleunigung.bind(model.getSpieler1BeschleunigungProperty());
 				spieler1Kartenanzahl.bind(model.getSpieler1KartenanzahlProperty());
 				spieler1JpgUrl.bind(model.getSpieler1JpgUrlProperty());
+				spieler1Status.bind(model.getSpieler1StatusProperty());
 				
 				spieler2Name.bind(model.getSpieler2NameProperty());
 				spieler2Ps.bind(model.getSpieler2PsProperty());
@@ -92,6 +96,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				spieler2Beschleunigung.bind(model.getSpieler2BeschleunigungProperty());
 				spieler2Kartenanzahl.bind(model.getSpieler2KartenanzahlProperty());
 				spieler2JpgUrl.bind(model.getSpieler2JpgUrlProperty());
+				spieler2Status.bind(model.getSpieler2StatusProperty());
 				
 				
 				aktiverSpieler1.bind(model.getAktiverSpieler1Boolean());
@@ -142,9 +147,10 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				boolean gewinner = aktiverSpieler1.getValue();
 				String kartenanzahl = spieler1Kartenanzahl.getValue();
 				String jpgUrl = spieler1JpgUrl.getValue();
+				String status = spieler1Status.getValue();
 				
 				
-				spieler1.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl);	
+				spieler1.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl, status);	
 				
 			}
 			void updateBeobachter_2() throws RemoteException { 
@@ -157,8 +163,9 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				boolean gewinner =! aktiverSpieler1.getValue();
 				String kartenanzahl = spieler2Kartenanzahl.getValue();
 				String jpgUrl = spieler2JpgUrl.getValue();
+				String status = spieler2Status.getValue();
 				
-				spieler2.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl);
+				spieler2.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl, status);
 				
 			}
 

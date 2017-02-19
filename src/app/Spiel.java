@@ -47,6 +47,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	private StringProperty spieler1Ccm =  new SimpleStringProperty();	
 	private StringProperty spieler1Beschleunigung =  new SimpleStringProperty();
 	private StringProperty spieler1JpgUrl =  new SimpleStringProperty();
+	private StringProperty spieler1Status = new SimpleStringProperty();
 	
 	
 	private ObjectProperty<javafx.scene.image.Image> spieler1Img = new SimpleObjectProperty<>();
@@ -62,6 +63,8 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	private StringProperty spieler2Ccm =  new SimpleStringProperty();	
 	private StringProperty spieler2Beschleunigung =  new SimpleStringProperty();
 	private StringProperty spieler2JpgUrl =  new SimpleStringProperty();
+	private StringProperty spieler2Status = new SimpleStringProperty();
+
 	private ObjectProperty<javafx.scene.image.Image> spieler2Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 2 als StringProperty
 	private StringProperty spieler2Kartenanzahl = new SimpleStringProperty();
@@ -75,7 +78,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		// Spieler1 beginnt
 		// spï¿½ter ï¿½ndern -> nach Zufall
 		//random math #
-		// Rafactoring, in eine Methode packen, verkürzen
+		// Rafactoring, in eine Methode packen, verkï¿½rzen
 		int randomNumber;
 	    randomNumber = (int)(Math.random() * 2+1);
 	    System.out.println(randomNumber);
@@ -126,7 +129,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	// ???????????
 	public void spielWiederholen () {
 		
-		// zuerst die alten  Kartenstapel-Objekt, Spielerstapel-Objekte löschen?
+		// zuerst die alten  Kartenstapel-Objekt, Spielerstapel-Objekte lï¿½schen?
 		kartenstapel = new Kartenstapel();
 		spielende = false;
 		this.kartenMischen();
@@ -135,18 +138,16 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		// Spieler1 beginnt
 		// spï¿½ter ï¿½ndern -> nach Zufall
 		//random math #
-		// Rafactoring, in eine Methode packen, verkürzen
+		// Rafactoring, in eine Methode packen, verkï¿½rzen
 		int randomNumber;
 	    randomNumber = (int)(Math.random() * 2+1);
 	    System.out.println(randomNumber);
 	    
 		if (randomNumber == 1){
 			aktiverSpieler1Boolean = false;
-			// aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 		}
 		else{
 			aktiverSpieler1Boolean = true;
-			// aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 		}
 		aktiverSpieler1.setValue(aktiverSpieler1Boolean);
 		
@@ -159,10 +160,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	
 
 	private void kartenAusteilen(){
-		// List<Karte> list = kartenstapel.getList();
 		Spielerstapel spielerstapel [] = kartenstapel.gebeSpielerstapel();
-		
-		// this.spieler1.hallo();
 
 		this.spieler1.empfangeStapel(spielerstapel[0]);
 		this.spieler1.obereKarteAufdecken();
@@ -332,9 +330,13 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	
 	private void aktualisiereAktuellerRundensieger(int rundenergebnis)  {
 		if (rundenergebnis == SIEGER_SPIELER_1) {
+			spieler1Status.setValue("Runde gewonnen");
+			spieler2Status.setValue("Runde verloren");
 			aktiverSpieler1Boolean = true;
 		}
 		else if (rundenergebnis == SIEGER_SPIELER_2) {
+			spieler1Status.setValue("Runde verloren");
+			spieler2Status.setValue("Runde gewonnen");
 			aktiverSpieler1Boolean = false;
 			
 		}
@@ -427,75 +429,16 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		return this.spieler2Kartenanzahl;
 	}
 	
+	public StringProperty getSpieler1StatusProperty () {
+		return this.spieler1Status;
+	}
+	
+	public StringProperty getSpieler2StatusProperty () {
+		return this.spieler2Status;
+	}
+
+	
+	
 	
 }
 
-
-/* 	
-
-public class Stapel {
-    public static void main(String[] args) {
-    	boolean StapelLi = true;
-
-    AutoKarten Stapel = new AutoKarten(1);
-    Stapel.printAll();
-    java.util.Collections.shuffle(Stapel.Karten);
-    System.out.println();
-    System.out.println("After shuffle");
-    Stapel.printAll();
-    
-    AutoKarten StapelL = new AutoKarten();
-    AutoKarten StapelR = new AutoKarten();
-    System.out.println();
-    
-    for(Karten aktKarte: Stapel.Karten){
-    	if(StapelLi){
-    		StapelL.addKarte(aktKarte);
-    	}else{
-    		StapelR.addKarte(aktKarte);
-    	}
-    	
-    	 StapelLi = !StapelLi;
-    	
-    }
-    
-    System.out.println();
-    System.out.println("Stapel Links");
-    StapelL.printAll();
-    
-    System.out.println();
-    System.out.println("Stapel Rechts");
-    StapelR.printAll();
-    
-    
-    }
-
-
-}
-
-Spielablauf:
-
-Spieler 1,2;
-Kartenstapel;
-Kartenstapel mischen;
-Kartenstapel teilen;
-Spieler 1 Kartenstapel links
-Spieler 2 Kartenstapel rechts
-
-Spieler1 wÃ¤hlt Elementattribut erster Karte Stapel links;
-	Attribut wird verglichen mit Attribut erster Karte Stapel rechts;
-	
-wenn Spieler 1 gewonnen dann wie vorher und Spieler 1 bekommt Karte von Spieler 2;
-
-wenn Spieler 2 gewonnen dann; 
-
-Spieler2 wÃ¤hlt Elementattribut neuer erster Karte Stapel rechts;
-	Attribut wird verglichen mit Attribut erster neuer Karte Stapel links;
-	
-wenn Spieler 2 gewonnen dann wie vorher und Spieler 2 bekommt Karte von Spieler 1;
-
-wenn Stapel links und rechts leer, Spieler mit den meistens karten hat gewonnen;
-
-
-
-*/
