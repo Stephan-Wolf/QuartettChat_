@@ -124,20 +124,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		this.senden(event);
 	}
 	
-	
-	@FXML
-	private void exitView(WindowEvent event){ 
-    	
-		Platform.exit();
-		
-		
-	}
-	@SuppressWarnings("deprecation")
-	public void stop(){
-		System.out.println("Stage closed!");
-		thread.stop();
-	}
-
 	@Override
 	public void update(String name, String ps, String kmh, String verbrauch, String ccm, String beschleunigung,
 			boolean aktiverSpieler, String kartenanzahl, String jpgUrl) throws RemoteException {
