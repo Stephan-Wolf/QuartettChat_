@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.WindowEvent;
 
+import java.awt.Frame;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -110,6 +111,8 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@FXML
 	private void endGame (ActionEvent event) throws RemoteException{
+		Platform.exit();
+		System.exit(0);
 	}
 	
 	@FXML
