@@ -12,6 +12,7 @@ public interface IModel extends Remote
     void starten() throws RemoteException;
     void spielWiederholen () throws RemoteException;
     
+    
     int ermittleRundenergebnis(String attribut) throws RemoteException;
     
 	public StringProperty getSpieler1NameProperty () throws RemoteException;

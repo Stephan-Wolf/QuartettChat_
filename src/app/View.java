@@ -3,7 +3,15 @@ package app;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -13,15 +21,20 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 import java.awt.Frame;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Optional;
 
 public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	private Thread thread;
+	
 	/**
 	 * 
 	 */
@@ -109,10 +122,20 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		// showOnEnd.setVisible(false);
 	}
 	
+	
 	@FXML
-	private void endGame (ActionEvent event) throws RemoteException{
-		Platform.exit();
-		System.exit(0);
+	private void endGame (ActionEvent event) throws Exception{
+		showAlert();
+		viewmodel.spielBeenden(getID());
+		
+		
+	}
+	@FXML
+	private void windowClosing(WindowEvent e) throws RemoteException{
+		showAlert();
+		viewmodel.spielBeenden(getID());
+		
+		
 	}
 	
 	@FXML
@@ -125,6 +148,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	@FXML
 	private void enter(ActionEvent event) throws RemoteException{
 		this.senden(event);
+		
 	}
 	
 	@Override
@@ -224,15 +248,37 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 				Platform.runLater(() -> labelRundenstatus.setText("Jetzt gehts los"));
 //				showOnEnd.setVisible(false);
 //				restartButton.setDisable(false);
-//				endGameButton.setDisable(false);
-				
+//				endGameButton.setDisable(false);			
 				System.out.println("updateSpielwiederholung() run()");
 			}
 		};
 		thread.start();
+	}
+	@Override
+	public void updateSpielBeenden() throws RemoteException {
+		thread = new Thread () {
+			public void run() {
+				Platform.runLater(() -> showAlert());
+			}
+		};
+		thread.start();
+	}
+	@FXML
+	public void showAlert() {
+		Alert alert = new Alert(AlertType.WARNING);
+		alert.setTitle("Verbindung");
+		alert.setHeaderText("Spiel Beendet!");
+		
+		ButtonType beenden = new ButtonType("Beenden");
+		
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == beenden){
+			
+			
+			}
+		}
+		
 		
 	
-	}
-
 }
 

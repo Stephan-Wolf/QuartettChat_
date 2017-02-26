@@ -18,6 +18,7 @@ public interface IViewModel extends Remote {
 	
 	void spielStarten () throws RemoteException;
 	void spielWiederholen (int id) throws RemoteException;
+	void spielBeenden(int id) throws RemoteException;
 	
 	
 }

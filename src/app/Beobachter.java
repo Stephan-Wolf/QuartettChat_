@@ -10,4 +10,5 @@ public interface Beobachter extends Remote {
 	int getID () throws RemoteException;
 	void updateChat(String message) throws RemoteException;
 	void updateSpielwiederholung() throws RemoteException;	
+	void updateSpielBeenden() throws RemoteException;
 }

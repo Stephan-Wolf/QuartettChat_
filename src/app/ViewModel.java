@@ -1,13 +1,13 @@
 package app;
 
 
-//import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+
 
 
 import java.rmi.RemoteException;
@@ -205,5 +205,18 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 					spieler1Bereit = false;
 					spieler2Bereit = false;
 				}
+			}
+
+
+
+			@Override
+			public void spielBeenden(int id) throws RemoteException {
+
+				if (id == spieler1.getID()) {
+					spieler2.updateSpielBeenden();
+				} else if (id == spieler2.getID()) {
+					spieler1.updateSpielBeenden();
+				}
+				
 			}
 }
