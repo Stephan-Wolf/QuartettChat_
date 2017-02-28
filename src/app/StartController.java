@@ -28,59 +28,8 @@ import javafx.stage.WindowEvent;
 
 public class StartController  {
 
-	@FXML
-    Button serverStart;
     @FXML
-    Button clientStart;
-    @FXML
-    Button info;
-    
-    
-    
-    
-    //Eventuell noch eine Abfrage einbauen welche prüft ob Server oder CLient um dann die Buttons in der initialize() zu disablen
-    @FXML
-    private void serverStart(ActionEvent event) throws IOException{
-    	final IModel model = new Spiel ();
-        final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
-        final IViewModel modelview = new ViewModel(model);
-        System.out.println(registry);
-        registry.rebind(IViewModel.IMODELVIEW, modelview);	
-    	
-        
-		 System.out.println(registry);   
-		 IViewModel viewmodel;
-		try {
-			viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
-			View anwender = new View(viewmodel,1);
-			viewmodel.setBeobachter_1(anwender);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));
-			loader.setController(anwender);
-			Parent root = loader.load();
-			Scene UI_scene = new Scene(root); 
-			Stage UI_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			UI_stage.setScene(UI_scene);
-			UI_stage.show();
-			UI_stage.setOnCloseRequest(e -> {
-				
-				try {
-					viewmodel.spielBeenden(anwender.getID());
-					showAlert(e);
-					
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			});
-			System.out.println("Server läuft!");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-
-    @FXML
-	private void clientStart(ActionEvent event) throws IOException{
+	private void start(ActionEvent event) throws IOException{
 		try {
 			final Registry registry = LocateRegistry.getRegistry("localhost");
 			final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
@@ -109,7 +58,42 @@ public class StartController  {
 			});
 			System.out.println("Client verbunden!");
 		} catch(Exception e) {
-			e.printStackTrace();
+			final IModel model = new Spiel ();
+	        final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
+	        final IViewModel modelview = new ViewModel(model);
+	        System.out.println(registry);
+	        registry.rebind(IViewModel.IMODELVIEW, modelview);	
+	    	
+	        
+			 System.out.println(registry);   
+			 IViewModel viewmodel;
+			try {
+				viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
+				View anwender = new View(viewmodel,1);
+				viewmodel.setBeobachter_1(anwender);
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));
+				loader.setController(anwender);
+				Parent root = loader.load();
+				Scene UI_scene = new Scene(root); 
+				Stage UI_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+				UI_stage.setScene(UI_scene);
+				UI_stage.show();
+				UI_stage.setOnCloseRequest(e2 -> {
+					
+					try {
+						viewmodel.spielBeenden(anwender.getID());
+						showAlert(e2);
+						
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				});
+				System.out.println("Server läuft!");
+			} catch (Exception e2) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
     }
     
@@ -128,7 +112,6 @@ public class StartController  {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Verbindung");
 		alert.setHeaderText("Wollen sie das Spiel wirklich beenden?");
-		alert.initModality(Modality.APPLICATION_MODAL);
 		ButtonType beenden = new ButtonType("Ja");
 		ButtonType nichtBeenden = new ButtonType("Nein");
 		

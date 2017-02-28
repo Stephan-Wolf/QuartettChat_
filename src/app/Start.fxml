@@ -24,15 +24,11 @@
                         <Image url="@../Img/Quartett-Header.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="157.0" layoutY="375.0" mnemonicParsing="false" onAction="#serverStart" text="Start als Server">
+                  <Button layoutX="167.0" layoutY="375.0" mnemonicParsing="false" onAction="#start" prefHeight="35.0" prefWidth="111.0" text="Start">
                      <font>
                         <Font name="Courier" size="10.0" />
                      </font></Button>
-                  <Button layoutX="274.0" layoutY="375.0" mnemonicParsing="false" onAction="#clientStart" prefHeight="20.0" prefWidth="111.0" text="Start als Client">
-                     <font>
-                        <Font name="Courier" size="10.0" />
-                     </font></Button>
-                  <Button layoutX="393.0" layoutY="375.0" mnemonicParsing="false" onAction="#info" prefHeight="11.0" prefWidth="46.0" text="Info ">
+                  <Button layoutX="313.0" layoutY="375.0" mnemonicParsing="false" onAction="#info" prefHeight="35.0" prefWidth="111.0" text="Info ">
                      <font>
                         <Font name="Courier" size="10.0" />
                      </font></Button>

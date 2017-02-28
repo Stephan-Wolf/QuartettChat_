@@ -162,6 +162,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				String kartenanzahl = spieler2Kartenanzahl.getValue();
 				String jpgUrl = spieler2JpgUrl.getValue();
 				String status = spieler2Status.getValue();
+				 
 				
 				spieler2.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl, status);
 				
