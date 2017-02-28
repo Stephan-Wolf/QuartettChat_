@@ -62,7 +62,15 @@ public class StartController  {
 			UI_stage.setScene(UI_scene);
 			UI_stage.show();
 			UI_stage.setOnCloseRequest(e -> {
-				showAlert(e);
+				
+				try {
+					viewmodel.spielBeenden(anwender.getID());
+					showAlert(e);
+					
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			});
 			System.out.println("Server läuft!");
 		} catch (Exception e) {
@@ -87,8 +95,17 @@ public class StartController  {
 			Stage UI_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			UI_stage.setScene(UI_scene);
 			UI_stage.show();
+			
 			UI_stage.setOnCloseRequest(e -> {
-				showAlert(e);
+				
+				try {
+					viewmodel.spielBeenden(anwender.getID());
+					showAlert(e);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			});
 			System.out.println("Client verbunden!");
 		} catch(Exception e) {

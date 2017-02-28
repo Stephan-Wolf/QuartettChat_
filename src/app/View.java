@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.EventObject;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class View  extends UnicastRemoteObject implements Beobachter {
@@ -121,17 +122,17 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@FXML
 	private void endGame (ActionEvent event) throws Exception{
-		showAlert();
 		viewmodel.spielBeenden(getID());
+		showAlert();
 		System.out.println("endGame");
 	}
 	
-	@FXML
-	private void windowClosing(WindowEvent e) throws RemoteException{
-		showAlert();
-		viewmodel.spielBeenden(getID());
-		System.out.println("windowClosing");
-	}
+//	@FXML
+//	private void windowClosing(WindowEvent e) throws RemoteException{
+//		showAlert();
+//		viewmodel.spielBeenden(getID());
+//		System.out.println("windowClosing");
+//	}
 	
 	@FXML
 	private void senden(ActionEvent event) throws RemoteException{
@@ -261,29 +262,36 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@FXML
 	public void showAlert() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Verbindung");
-		alert.setHeaderText("Wollen sie das Spiel wirklich beenden?");
-		
-		ButtonType beenden = new ButtonType("Ja");
-		ButtonType nichtBeenden = new ButtonType("Nein");
-		
-		alert.getButtonTypes().setAll(beenden, nichtBeenden);
-		
-		Optional<ButtonType> result = alert.showAndWait();
-		if(result.get() == beenden){
-				System.out.println("Beenden Button Macht auch was");
-				System.out.println("Beenden Button Macht auch was");
-			    Window stage = alert.getOwner().getScene().getWindow();
-			    System.out.println(stage);
-//			    stage.setOnCloseRequest(e -> {
-//					Platform.exit();
-//					System.exit(0);
-//				});
+		try {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Verbindung");
+			alert.setHeaderText("Spiel wurde beendet!");
+			
+			ButtonType beenden = new ButtonType("OK");
+			
+			
+			alert.getButtonTypes().setAll(beenden);
+			
+			Optional<ButtonType> result = alert.showAndWait();
+			if(result.get() == beenden){
+				    Window stage = alert.getOwner().getScene().getWindow();
+				    System.out.println(stage);
+//				    stage.setOnCloseRequest(e -> {
+//						Platform.exit();
+//						System.exit(0);
+//					});
+			}
+			else{
+				alert.hide();
+			}
+		} catch (Exception e) {
+			System.out.println("Hier muss das Fenster schließen!");
+			e.printStackTrace();
+			Platform.exit();
+			System.exit(0);
 		}
-		else{
-			alert.hide();
-		}
+		
+		
 	}
 		
 		
