@@ -72,7 +72,6 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	// Anzahl der Karten vom Spieler 2 als StringProperty
 	
 	private IModel model;
-	 
 	
 		 public ViewModel(IModel model) throws RemoteException {
 			 this.model = model;
@@ -149,10 +148,9 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				String jpgUrl = spieler1JpgUrl.getValue();
 				String status = spieler1Status.getValue();
 				
-				
 				spieler1.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl, status);	
-				
 			}
+			
 			void updateBeobachter_2() throws RemoteException { 
 				String name = spieler2Name.getValue();
 				String ps = spieler2Ps.getValue();
@@ -179,23 +177,18 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				
 			}
 
-
-
 			@Override
 			public void spielStarten() throws RemoteException {
 				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
 			public void spielWiederholen(int id) throws RemoteException {
-				
 				if (id == spieler1.getID()) {
 					spieler1Bereit = true;
 				} else if(id == spieler2.getID()) {
 					spieler2Bereit = true;
 				}
-
 				if (spieler1Bereit == true && spieler2Bereit == true) {
 					model.spielWiederholen();
 					this.updateBeobachter_1();
@@ -211,12 +204,10 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 
 			@Override
 			public void spielBeenden(int id) throws RemoteException {
-
 				if (id == spieler1.getID()) {
 					spieler2.updateSpielBeenden();
 				} else if (id == spieler2.getID()) {
 					spieler1.updateSpielBeenden();
 				}
-				
 			}
 }

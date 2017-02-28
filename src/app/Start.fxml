@@ -16,7 +16,7 @@
                <children>
                   <Label layoutX="167.0" layoutY="17.0" prefHeight="29.0" prefWidth="257.0" text="QUARTETT MIT CHAT">
                      <font>
-                        <Font name="Helvetica" size="24.0" />
+                        <Font name="Courier" size="24.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="451.0" fitWidth="299.0" layoutX="150.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
@@ -24,9 +24,18 @@
                         <Image url="@../Img/Quartett-Header.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="157.0" layoutY="375.0" mnemonicParsing="false" onAction="#serverStart" text="Start als Server" />
-                  <Button layoutX="276.0" layoutY="375.0" mnemonicParsing="false" onAction="#clientStart" prefHeight="26.0" prefWidth="109.0" text="Start als Client" />
-                  <Button layoutX="395.0" layoutY="375.0" mnemonicParsing="false" onAction="#info" prefHeight="11.0" prefWidth="46.0" text="Info " />
+                  <Button layoutX="157.0" layoutY="375.0" mnemonicParsing="false" onAction="#serverStart" text="Start als Server">
+                     <font>
+                        <Font name="Courier" size="10.0" />
+                     </font></Button>
+                  <Button layoutX="274.0" layoutY="375.0" mnemonicParsing="false" onAction="#clientStart" prefHeight="20.0" prefWidth="111.0" text="Start als Client">
+                     <font>
+                        <Font name="Courier" size="10.0" />
+                     </font></Button>
+                  <Button layoutX="393.0" layoutY="375.0" mnemonicParsing="false" onAction="#info" prefHeight="11.0" prefWidth="46.0" text="Info ">
+                     <font>
+                        <Font name="Courier" size="10.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
         </items>

@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -19,9 +21,9 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label layoutX="193.0" layoutY="16.0" prefHeight="29.0" prefWidth="206.0" text="INFORMATIONEN">
+                  <Label layoutX="152.0" layoutY="14.0" prefHeight="39.0" prefWidth="287.0" text="INFORMATIONEN">
                      <font>
-                        <Font name="Helvetica" size="24.0" />
+                        <Font name="Courier" size="36.0" />
                      </font>
                   </Label>
                </children>
@@ -32,10 +34,10 @@
                      <children>
                         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="210.0" layoutX="15.0" layoutY="137.0" stroke="BLACK" width="135.0">
                                  </Rectangle>
-                        <GridPane alignment="BASELINE_CENTER" hgap="2.0" layoutX="24.0" layoutY="235.0" prefHeight="99.0" prefWidth="116.0" style="-fx-border-color: #4d4d4d; -fx-border-radius: 5px;" vgap="2.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="235.0">
+                        <GridPane alignment="BASELINE_CENTER" hgap="2.0" layoutX="24.0" layoutY="242.0" prefHeight="86.0" prefWidth="116.0" style="-fx-border-color: #4d4d4d; -fx-border-radius: 5px;" vgap="2.0" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="242.0">
                           <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="48.0" />
+                            <ColumnConstraints hgrow="NEVER" maxWidth="54.0" minWidth="10.0" prefWidth="54.0" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -45,23 +47,36 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Text fx:id="labelPS" strokeType="OUTSIDE" strokeWidth="0.0" />
-                              <Text fx:id="labelKMH" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
+                              <Text fx:id="labelPS" strokeType="OUTSIDE" strokeWidth="0.0" text="Matrikelnummer:">
+                                 <font>
+                                    <Font name="Courier" size="10.0" />
+                                 </font></Text>
+                              <Text fx:id="labelKMH" strokeType="OUTSIDE" strokeWidth="0.0" text="849843" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier" size="10.0" />
+                                 </font></Text>
                               <Text fx:id="labelVerbrauch" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
                               <Text fx:id="labelCCM" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
-                              <Text fx:id="labelBeschleunigung" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </GridPane>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" layoutX="24.0" layoutY="154.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
-                        <Label layoutX="27.0" layoutY="154.0" text="Christian Hechtberger">
+                        <Label layoutX="31.0" layoutY="156.0" text="Chris Hechtberger">
                            <font>
-                              <Font size="11.0" />
+                              <Font name="Courier" size="10.0" />
                            </font>
                         </Label>
-                        <Text layoutX="34.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier finden sie Informationen zu den Köpfen hinter dem Quartett mit Chat. Das Programm dient nur der Vorführung in der Beuth Hochschule für Technik in Berlin und darf nicht weiter verbreitet werden." wrappingWidth="535.6829261779785" />
+                        <Text layoutX="34.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier finden sie Informationen zu den Köpfen hinter dem Quartett mit Chat. Das Programm dient nur der Vorführung in der Beuth Hochschule für Technik in Berlin und darf nicht weiter verbreitet werden." wrappingWidth="535.6829261779785">
+                           <font>
+                              <Font name="Courier" size="12.0" />
+                           </font></Text>
+                        <ImageView fitHeight="60.0" fitWidth="109.0" layoutX="37.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Img/Frankreich-FLagge.png" />
+                           </image>
+                        </ImageView>
                      </children>
                      <styleClass>
                         <String fx:value="-fx-border-radius: 10 10 10 10;" />
@@ -71,10 +86,10 @@
                   <AnchorPane fx:id="setPicture1" layoutX="140.0" layoutY="-29.0" minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="165.0">
                      <children>
                         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="210.0" layoutX="15.0" layoutY="137.0" stroke="BLACK" width="135.0" />
-                        <GridPane alignment="BASELINE_CENTER" hgap="2.0" layoutX="24.0" layoutY="235.0" prefHeight="99.0" prefWidth="116.0" style="-fx-border-color: #4d4d4d; -fx-border-radius: 5px;" vgap="2.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="235.0">
+                        <GridPane alignment="BASELINE_CENTER" hgap="2.0" layoutX="24.0" layoutY="242.0" prefHeight="86.0" prefWidth="116.0" style="-fx-border-color: #4d4d4d; -fx-border-radius: 5px;" vgap="2.0">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="48.0" />
+                              <ColumnConstraints hgrow="NEVER" maxWidth="54.0" minWidth="10.0" prefWidth="54.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -84,22 +99,34 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Text fx:id="labelPS1" strokeType="OUTSIDE" strokeWidth="0.0" />
-                              <Text fx:id="labelKMH1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
-                              <Text fx:id="labelVerbrauch1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
-                              <Text fx:id="labelCCM1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
-                              <Text fx:id="labelBeschleunigung1" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4" />
+                              <Text fx:id="labelPS4" strokeType="OUTSIDE" strokeWidth="0.0" text="Matrikelnummer:">
+                                 <font>
+                                    <Font name="Courier" size="10.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="labelKMH4" strokeType="OUTSIDE" strokeWidth="0.0" text="741003" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier" size="10.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="labelVerbrauch4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
+                              <Text fx:id="labelCCM4" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </GridPane>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" layoutX="24.0" layoutY="154.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
-                        <Label layoutX="48.0" layoutY="155.0" text="Stephan Wolf">
+                        <Label layoutX="46.0" layoutY="156.0" text="Stephan Wolf">
                            <font>
-                              <Font size="11.0" />
+                              <Font name="Courier" size="10.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="60.0" fitWidth="116.0" layoutX="32.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Img/flagge-berlin.gif" />
+                           </image>
+                        </ImageView>
                      </children>
                      <styleClass>
                         <String fx:value="-fx-border-radius: 10 10 10 10;" />
@@ -109,10 +136,10 @@
                   <AnchorPane fx:id="setPicture2" layoutX="434.0" layoutY="-29.0" minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="165.0">
                      <children>
                         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="210.0" layoutX="15.0" layoutY="137.0" stroke="BLACK" width="135.0" />
-                        <GridPane alignment="BASELINE_CENTER" hgap="2.0" layoutX="24.0" layoutY="235.0" prefHeight="99.0" prefWidth="116.0" style="-fx-border-color: #4d4d4d; -fx-border-radius: 5px;" vgap="2.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="235.0">
+                        <GridPane alignment="BASELINE_CENTER" hgap="2.0" layoutX="25.0" layoutY="242.0" prefHeight="86.0" prefWidth="116.0" style="-fx-border-color: #4d4d4d; -fx-border-radius: 5px;" vgap="2.0">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="48.0" />
+                              <ColumnConstraints hgrow="NEVER" maxWidth="54.0" minWidth="10.0" prefWidth="54.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -122,22 +149,34 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Text fx:id="labelPS2" strokeType="OUTSIDE" strokeWidth="0.0" />
-                              <Text fx:id="labelKMH2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
-                              <Text fx:id="labelVerbrauch2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
-                              <Text fx:id="labelCCM2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
-                              <Text fx:id="labelBeschleunigung2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4" />
+                              <Text fx:id="labelPS41" strokeType="OUTSIDE" strokeWidth="0.0" text="Matrikelnummer:">
+                                 <font>
+                                    <Font name="Courier" size="10.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="labelKMH41" strokeType="OUTSIDE" strokeWidth="0.0" text="842493" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier" size="10.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="labelVerbrauch41" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
+                              <Text fx:id="labelCCM41" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </GridPane>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" layoutX="24.0" layoutY="154.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
-                        <Label layoutX="52.0" layoutY="155.0" text="Oliver Dusel">
+                        <Label layoutX="46.0" layoutY="156.0" text="Oliver Dusel">
                            <font>
-                              <Font size="11.0" />
+                              <Font name="Courier" size="10.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="60.0" fitWidth="116.0" layoutX="37.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Img/Bayern-Flagge.jpg" />
+                           </image>
+                        </ImageView>
                      </children>
                      <styleClass>
                         <String fx:value="-fx-border-radius: 10 10 10 10;" />
@@ -147,10 +186,16 @@
                   <AnchorPane fx:id="setPicture3" layoutX="287.0" layoutY="-29.0" minHeight="0.0" minWidth="0.0" prefHeight="381.0" prefWidth="165.0">
                      <children>
                         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="210.0" layoutX="15.0" layoutY="137.0" stroke="BLACK" width="135.0" />
-                        <GridPane alignment="BASELINE_CENTER" hgap="2.0" layoutX="24.0" layoutY="235.0" prefHeight="99.0" prefWidth="116.0" style="-fx-border-color: #4d4d4d; -fx-border-radius: 5px;" vgap="2.0" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="235.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" layoutX="24.0" layoutY="154.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+                        <Label layoutX="28.0" layoutY="156.0" text="Artur Nowodrworski">
+                           <font>
+                              <Font name="Courier" size="10.0" />
+                           </font>
+                        </Label>
+                        <GridPane alignment="BASELINE_CENTER" hgap="2.0" layoutX="25.0" layoutY="242.0" prefHeight="86.0" prefWidth="116.0" style="-fx-border-color: #4d4d4d; -fx-border-radius: 5px;" vgap="2.0">
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="87.0" minWidth="10.0" prefWidth="48.0" />
+                              <ColumnConstraints hgrow="NEVER" maxWidth="54.0" minWidth="10.0" prefWidth="54.0" />
                            </columnConstraints>
                            <rowConstraints>
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -160,29 +205,38 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Text fx:id="labelPS3" strokeType="OUTSIDE" strokeWidth="0.0" />
-                              <Text fx:id="labelKMH3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
-                              <Text fx:id="labelVerbrauch3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
-                              <Text fx:id="labelCCM3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
-                              <Text fx:id="labelBeschleunigung3" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4" />
+                              <Text fx:id="labelPS411" strokeType="OUTSIDE" strokeWidth="0.0" text="Matrikelnummer:">
+                                 <font>
+                                    <Font name="Courier" size="10.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="labelKMH411" strokeType="OUTSIDE" strokeWidth="0.0" text="849843" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier" size="10.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="labelVerbrauch411" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2" />
+                              <Text fx:id="labelCCM411" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="3" />
                            </children>
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </GridPane>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" layoutX="24.0" layoutY="154.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
-                        <Label layoutX="68.0" layoutY="155.0" text="Artur ">
-                           <font>
-                              <Font size="11.0" />
-                           </font>
-                        </Label>
+                        <ImageView fitHeight="60.0" fitWidth="116.0" layoutX="35.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Img/Polen-Flagge.png" />
+                           </image>
+                        </ImageView>
                      </children>
                      <styleClass>
                         <String fx:value="-fx-border-radius: 10 10 10 10;" />
                         <String fx:value="-fx-background-radius: 10 10 10 10;" />
                      </styleClass>
                   </AnchorPane>
-                  <Button layoutX="7.0" layoutY="339.0" mnemonicParsing="false" onAction="#backbtn" text="Zurück zum Hauptmenü" />
+                  <Button layoutX="7.0" layoutY="339.0" mnemonicParsing="false" onAction="#backbtn" text="Zurück zum Hauptmenü">
+                     <font>
+                        <Font name="Courier" size="12.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
         </items>

@@ -29,6 +29,7 @@ import java.awt.Frame;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.EventObject;
 import java.util.Optional;
 
 public class View  extends UnicastRemoteObject implements Beobachter {
@@ -70,9 +71,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@FXML
 	private TextArea textArea = new TextArea();
-	
-	
-	
+
 	public View (IViewModel viewmodel, int id) throws RemoteException{
 		this.viewmodel = viewmodel;
 		this.id = id;
@@ -89,7 +88,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		viewmodel.change(PS);
 		System.out.println("View: comparePS");
 	}
-	
 	
 	@FXML
 	private void compareKMH(ActionEvent event) throws RemoteException{
@@ -113,7 +111,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@FXML
 	private void restartGame (ActionEvent event) throws RemoteException{
-		
 		viewmodel.spielWiederholen(this.getID());
 		restartButton.setDisable(true);
 		endGameButton.setDisable(true);
@@ -122,20 +119,18 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		// showOnEnd.setVisible(false);
 	}
 	
-	
 	@FXML
 	private void endGame (ActionEvent event) throws Exception{
 		showAlert();
 		viewmodel.spielBeenden(getID());
-		
-		
+		System.out.println("endGame");
 	}
+	
 	@FXML
 	private void windowClosing(WindowEvent e) throws RemoteException{
 		showAlert();
 		viewmodel.spielBeenden(getID());
-		
-		
+		System.out.println("windowClosing");
 	}
 	
 	@FXML
@@ -145,10 +140,10 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		textField.clear();
 		viewmodel.changeChat(message, getID());
 	}
+	
 	@FXML
 	private void enter(ActionEvent event) throws RemoteException{
 		this.senden(event);
-		
 	}
 	
 	@Override
@@ -263,22 +258,35 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		};
 		thread.start();
 	}
+	
 	@FXML
 	public void showAlert() {
-		Alert alert = new Alert(AlertType.WARNING);
+		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Verbindung");
-		alert.setHeaderText("Spiel Beendet!");
+		alert.setHeaderText("Wollen sie das Spiel wirklich beenden?");
 		
-		ButtonType beenden = new ButtonType("Beenden");
+		ButtonType beenden = new ButtonType("Ja");
+		ButtonType nichtBeenden = new ButtonType("Nein");
+		
+		alert.getButtonTypes().setAll(beenden, nichtBeenden);
 		
 		Optional<ButtonType> result = alert.showAndWait();
 		if(result.get() == beenden){
-			
-			
-			}
+				System.out.println("Beenden Button Macht auch was");
+				System.out.println("Beenden Button Macht auch was");
+			    Window stage = alert.getOwner().getScene().getWindow();
+			    System.out.println(stage);
+//			    stage.setOnCloseRequest(e -> {
+//					Platform.exit();
+//					System.exit(0);
+//				});
 		}
+		else{
+			alert.hide();
+		}
+	}
 		
 		
-	
-}
+}	
+
 

@@ -8,6 +8,8 @@ package app;
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Optional;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,8 +17,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 
 public class StartController  {
 
@@ -54,8 +62,7 @@ public class StartController  {
 			UI_stage.setScene(UI_scene);
 			UI_stage.show();
 			UI_stage.setOnCloseRequest(e -> {
-				Platform.exit();
-				System.exit(0);
+				showAlert(e);
 			});
 			System.out.println("Server läuft!");
 		} catch (Exception e) {
@@ -81,8 +88,7 @@ public class StartController  {
 			UI_stage.setScene(UI_scene);
 			UI_stage.show();
 			UI_stage.setOnCloseRequest(e -> {
-				Platform.exit();
-				System.exit(0);
+				showAlert(e);
 			});
 			System.out.println("Client verbunden!");
 		} catch(Exception e) {
@@ -98,6 +104,32 @@ public class StartController  {
 		info_stage.setScene(info_scene);
 		info_stage.show();
     }
+    
+    
+    
+	public void showAlert(WindowEvent e) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Verbindung");
+		alert.setHeaderText("Wollen sie das Spiel wirklich beenden?");
+		alert.initModality(Modality.APPLICATION_MODAL);
+		ButtonType beenden = new ButtonType("Ja");
+		ButtonType nichtBeenden = new ButtonType("Nein");
+		
+		
+		
+		alert.getButtonTypes().setAll(beenden, nichtBeenden);
+		
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == beenden){
+				Platform.exit();
+				System.exit(0);
+				e.consume();
+		}
+		else{
+			e.consume();
+		}
+		
+	}
     
     
 
