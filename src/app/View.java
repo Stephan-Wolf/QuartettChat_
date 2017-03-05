@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Optional;
@@ -221,16 +222,14 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Verbindung");
 			alert.setHeaderText("Spiel wurde beendet!");
-			
 			ButtonType beenden = new ButtonType("OK");
-			
-			
 			alert.getButtonTypes().setAll(beenden);
-			
 			Optional<ButtonType> result = alert.showAndWait();
+			
 			if(result.get() == beenden){
-				    Window stage = alert.getOwner().getScene().getWindow();
-				    System.out.println(stage);
+				Platform.exit();
+				System.exit(0);
+				
 			}
 			else{
 				alert.hide();

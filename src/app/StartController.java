@@ -109,24 +109,27 @@ public class StartController  {
     
     
 	public void showAlert(WindowEvent e) {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Verbindung");
-		alert.setHeaderText("Wollen sie das Spiel wirklich beenden?");
-		ButtonType beenden = new ButtonType("Ja");
-		ButtonType nichtBeenden = new ButtonType("Nein");
-		
-		
-		
-		alert.getButtonTypes().setAll(beenden, nichtBeenden);
-		
-		Optional<ButtonType> result = alert.showAndWait();
-		if(result.get() == beenden){
-				Platform.exit();
-				System.exit(0);
+		try {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Verbindung");
+			alert.setHeaderText("Spiel wurde beendet!");
+			ButtonType beenden = new ButtonType("OK");
+			alert.getButtonTypes().setAll(beenden);
+			Optional<ButtonType> result = alert.showAndWait();
+			
+			if(result.get() == beenden){
+					Platform.exit();
+					System.exit(0);
+					e.consume();
+			}
+			else{
 				e.consume();
-		}
-		else{
-			e.consume();
+			}
+		} catch (Exception e1) {
+			System.out.println("Hier muss das Fenster schließen!");
+			e1.printStackTrace();
+			Platform.exit();
+			System.exit(0);
 		}
 		
 	}
