@@ -7,7 +7,6 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -20,9 +19,9 @@
 
 <AnchorPane prefHeight="453.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane dividerPositions="0.599320882852292" prefHeight="453.0" prefWidth="591.0" style="-fx-background-color: #cccccc;">
+      <SplitPane dividerPositions="0.5939086294416244" prefHeight="453.0" prefWidth="593.0" style="-fx-background-color: #cccccc;">
         <items>
-          <AnchorPane fx:id="setPicture" minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="300.0">
+          <AnchorPane fx:id="setPicture" minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="260.0">
                <children>
                   <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" height="340.0" layoutX="65.0" layoutY="39.0" stroke="BLACK" width="218.0">
                                  </Rectangle>
@@ -32,11 +31,7 @@
                         <Font name="Courier Bold" size="13.0" />
                      </font>
                   </Text>
-                  <ImageView fx:id="imageDisplay" fitHeight="147.0" fitWidth="200.0" layoutX="74.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Img/BMWZ1.jpg" />
-                     </image>
-                  </ImageView>
+                  <ImageView fx:id="imageDisplay" fitHeight="147.0" fitWidth="200.0" layoutX="74.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
                   <GridPane fx:id="hideOnEnd" alignment="BASELINE_CENTER" hgap="2.0" layoutX="74.0" layoutY="196.0" prefHeight="171.0" prefWidth="200.0" style="-fx-border-color: #4d4d4d; -fx-border-radius: 5px;" vgap="2.0" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="196.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -142,19 +137,19 @@
                   <String fx:value="-fx-background-radius: 10 10 10 10;" />
                </styleClass>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="239.0">
                <children>
-                  <TextArea fx:id="textArea" layoutX="16.0" layoutY="14.0" prefHeight="326.0" prefWidth="200.0">
+                  <TextArea fx:id="textArea" layoutX="7.0" layoutY="14.0" prefHeight="326.0" prefWidth="219.0">
                    		<font>
                               <Font name="Courier" size="11.0" />
                         </font>
                   </TextArea>
-                  <TextField fx:id="textField" layoutX="16.0" layoutY="347.0" onAction="#enter" prefHeight="47.0" prefWidth="200.0">
+                  <TextField fx:id="textField" layoutX="7.0" layoutY="347.0" onAction="#enter" prefHeight="47.0" prefWidth="218.0">
                    <font>
                               <Font name="Courier" size="11.0" />
                            </font>
                         </TextField>
-                  <Button layoutX="16.0" layoutY="403.0" mnemonicParsing="false" onAction="#senden" prefHeight="26.0" prefWidth="200.0" text="Senden">
+                  <Button layoutX="7.0" layoutY="403.0" mnemonicParsing="false" onAction="#senden" prefHeight="26.0" prefWidth="218.0" text="Senden">
                    <font>
                               <Font name="Courier" size="13.0" />
                            </font>
