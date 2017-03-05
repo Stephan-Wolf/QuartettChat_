@@ -3,44 +3,27 @@ package app;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.stage.Window;
-import javafx.stage.WindowEvent;
-
-import java.awt.Frame;
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.EventObject;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	private Thread thread;
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	final String PS = "ps";
 	final String KMH = "kmh";
 	final String VERBRAUCH = "verbrauch";
@@ -115,9 +98,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		viewmodel.spielWiederholen(this.getID());
 		restartButton.setDisable(true);
 		endGameButton.setDisable(true);
-		// jetzt in der methode updateSpielwiederoholung ()
-		// hideOnEnd.setVisible(true);
-		// showOnEnd.setVisible(false);
 	}
 	
 	@FXML
@@ -126,13 +106,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		showAlert();
 		System.out.println("endGame");
 	}
-	
-//	@FXML
-//	private void windowClosing(WindowEvent e) throws RemoteException{
-//		showAlert();
-//		viewmodel.spielBeenden(getID());
-//		System.out.println("windowClosing");
-//	}
 	
 	@FXML
 	private void senden(ActionEvent event) throws RemoteException{
@@ -157,14 +130,12 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			showOnEnd.setVisible(true);
 			
 			if(i == 0){
-				System.out.println("if i == 0" + i);
 				labelName.setText("CRASH Du hast verloren");
 				String image = new String("/Img/car_crash.jpg");
 		        Image imageUse = new Image(image);
 		        imageDisplay.setImage(imageUse);
 			}
 			if(i == 16){
-				System.out.println("if i == 16" + i);
 				labelName.setText("WINNER Du hast gewonnen");
 				String image = new String("/Img/Zielflagge.jpg");
 		        Image imageUse = new Image(image);
@@ -173,17 +144,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			
 		}
 		else {
-		
-			System.out.println("ViewSpieler update");
-			System.out.println("Name: " + name);
-			System.out.println("PS: " + ps );
-			System.out.println("KMH: " + kmh);
-			System.out.println("VERBRAUCH: " + verbrauch);
-			System.out.println("CCM: " + ccm);
-			System.out.println("Beschleunigung: " + beschleunigung);
-			System.out.println("Kartenanzahl: " + kartenanzahl);
-			System.out.println("jpgUrl: " + jpgUrl);
-	
 			
 	        String image = new String(jpgUrl);
 	        Image imageUse = new Image(image);
@@ -207,8 +167,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 					Platform.runLater(() -> labelRundenstatus.setText(status));
 				}
 			};
-			/// ????
-			thread.setDaemon(true);
 			thread.start();
 		}
 	}
@@ -220,7 +178,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 
 	@Override
 	public void updateChat(String message) throws RemoteException{
-		// oder lieber ein zweites Attribut definieren?? 
 		System.out.println("updateChat()");
 		thread = new Thread () {
 			public void run() {		
@@ -242,14 +199,12 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 				Platform.runLater(() -> endGameButton.setDisable(false));
 				Platform.runLater(() -> hideOnEnd2.setVisible(true));
 				Platform.runLater(() -> labelRundenstatus.setText("Jetzt gehts los"));
-//				showOnEnd.setVisible(false);
-//				restartButton.setDisable(false);
-//				endGameButton.setDisable(false);			
 				System.out.println("updateSpielwiederholung() run()");
 			}
 		};
 		thread.start();
 	}
+	
 	@Override
 	public void updateSpielBeenden() throws RemoteException {
 		thread = new Thread () {
@@ -276,10 +231,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			if(result.get() == beenden){
 				    Window stage = alert.getOwner().getScene().getWindow();
 				    System.out.println(stage);
-//				    stage.setOnCloseRequest(e -> {
-//						Platform.exit();
-//						System.exit(0);
-//					});
 			}
 			else{
 				alert.hide();
@@ -291,9 +242,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			System.exit(0);
 		}
 		
-		
 	}
-		
 		
 }	
 
