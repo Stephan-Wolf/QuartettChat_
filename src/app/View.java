@@ -191,7 +191,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	}
 
 	@Override
-	public void updateSpielwiederholung() throws RemoteException {
+	public void updateRestartGame() throws RemoteException {
 		thread = new Thread () {
 			public void run() {		
 				Platform.runLater(() -> hideOnEnd.setVisible(true));
@@ -207,7 +207,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	}
 	
 	@Override
-	public void updateSpielBeenden() throws RemoteException {
+	public void updateQuitGame() throws RemoteException {
 		thread = new Thread () {
 			public void run() {
 				Platform.runLater(() -> showAlert());

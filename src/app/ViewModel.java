@@ -194,8 +194,8 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 					model.spielWiederholen();
 					this.updateBeobachter_1();
 					this.updateBeobachter_2();
-					this.spieler1.updateSpielwiederholung();
-					this.spieler2.updateSpielwiederholung();
+					this.spieler1.updateRestartGame();
+					this.spieler2.updateRestartGame();
 					spieler1Bereit = false;
 					spieler2Bereit = false;
 				}
@@ -206,9 +206,9 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 			@Override
 			public void spielBeenden(int id) throws RemoteException {
 				if (id == spieler1.getID()) {
-					spieler2.updateSpielBeenden();
+					spieler2.updateQuitGame();
 				} else if (id == spieler2.getID()) {
-					spieler1.updateSpielBeenden();
+					spieler1.updateQuitGame();
 				}
 			}
 }
