@@ -1,4 +1,5 @@
 package app;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -9,4 +10,5 @@ public interface Beobachter extends Remote {
 	void updateChat(String message) throws RemoteException;
 	void updateSpielwiederholung() throws RemoteException;	
 	void updateSpielBeenden() throws RemoteException;
+	
 }

@@ -2,16 +2,13 @@ package app;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.beans.property.BooleanProperty;
 
 public interface IModel extends Remote
 {  
     void starten() throws RemoteException;
     void spielWiederholen () throws RemoteException;
-    
     
     int ermittleRundenergebnis(String attribut) throws RemoteException;
     

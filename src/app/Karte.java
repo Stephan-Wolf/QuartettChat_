@@ -5,7 +5,6 @@ import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.image.Image;
 
 public class Karte {
@@ -22,7 +21,6 @@ public class Karte {
     
     public Karte (String name, String bildUrl, String ps, String kmh, String verbrauch, String ccm, String beschleunigung){
     
-        // TODO Auto-generated constructor stub
     	this.jpgUrl.setValue(bildUrl);
     	this.name.setValue(name);
         this.image = new String(bildUrl);
@@ -34,6 +32,16 @@ public class Karte {
 		this.ccm.setValue(ccm);
 		this.beschleunigung.setValue(beschleunigung);
     }
+    
+//    BRAUCHEN WIR BEIDE?
+//    public ReadOnlyStringProperty kmhProperty(){
+//		return kmh;
+//	}
+//	
+//	public StringProperty getKmhProperty(){
+//		return kmh;
+//	}
+    
     
     public ObjectProperty<javafx.scene.image.Image> getImageProperty() {
 		return imageProperty;
@@ -150,7 +158,7 @@ public class Karte {
 	}	
 	
 	public StringProperty getBeschleunigungProperty(){
-			return beschleunigung;
-		}	
+		return beschleunigung;
+	}	
 }
 

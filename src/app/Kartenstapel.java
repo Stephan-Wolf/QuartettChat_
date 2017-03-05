@@ -1,15 +1,11 @@
 package app;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.LinkedList;
 import java.util.Collections;
 
  public class Kartenstapel {
 	
-	// LinkedList statt List und ArrayList
-	 // dadurch k�nnen wir sehr einfach am Ende / Anfang einf�gen / entfernen
-	 // die letzten 5 Werten von Karten auf float �ndern!!
-	private LinkedList<Karte> list;// hier vom typ der Karten-Klasse
+	private LinkedList<Karte> list;
 	Karte a1 = new Karte("Audi-V8","/Img/Audi-V8.jpg", "500", "250","16.5","6500","4");
 	Karte a2 = new Karte("BMW Z1","/Img/BMWZ1.jpg", "200", "220","12.5","6200","8");
 	Karte a3 = new Karte("Honda NSX","/Img/HondaNSX.jpg", "400", "210","6.5","4500","9");
@@ -26,9 +22,7 @@ import java.util.Collections;
 	Karte a14 = new Karte("Mitsubishi_Lancer_WRC","/Img/Mitsubishi_Lancer_WRC.jpg","300","280", "15","1999","4.4");
 	Karte a15 = new Karte("Skoda_Fabia_WRC","/Img/Skoda_Fabia_WRC.jpg","295","275","17","1999","4.6");
 	Karte a16 = new Karte("Opel_Vectra_GTS","/Img/Opel_Vectra_GTS.jpg","465","285", "21","3998","4.4");
-
 	
-	//  Karte (String name, String bildUrl, String ps, String kmh, String verbrauch, String ccm, String beschleunigung)
 	public Kartenstapel() {
 		list = new LinkedList<Karte>();
 		list.add(a1);
@@ -47,8 +41,6 @@ import java.util.Collections;
 		list.add(a14);
 		list.add(a15);
 		list.add(a16);
-		
-
 	}
 	
 	public Karte getKarte(int id){
@@ -70,7 +62,7 @@ import java.util.Collections;
 	}
 	
 	
-	public LinkedList<Karte> getList() {
+	public LinkedList<Karte> getList(){
 	       return list;
 	}
 	
@@ -80,7 +72,7 @@ import java.util.Collections;
 		}
 	}
 	
-	public void mischen () {
+	public void mischen(){
 		Collections.shuffle(list);
 	}
 	
@@ -97,13 +89,11 @@ import java.util.Collections;
 				spieler1Stapel.fuegeKarteObenHinzu(k);
 			} else {
 				Karte k = list.removeLast();
-				// k.printKarte();
 				spieler2Stapel.fuegeKarteObenHinzu(k);
 			}
 		}
 		spielerstapel[0]  = spieler1Stapel;
 		spielerstapel[1]  = spieler2Stapel;
-		// return (new Spielerstapel [] {spieler1Stapel, spieler2Stapel});
 		return spielerstapel;
 	}
     
