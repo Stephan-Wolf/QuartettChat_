@@ -71,34 +71,34 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	private ObjectProperty<javafx.scene.image.Image> spieler2Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 2 als StringProperty
 	
-	private IModel model;
+	private IGame model;
 	
-		 public ViewModel(IModel model) throws RemoteException {
+		 public ViewModel(IGame model) throws RemoteException {
 			 this.model = model;
-			 model.starten();
+			 model.startGame();
 			 
-			 	spieler1Name.bind(model.getSpieler1NameProperty());
-				spieler1Ps.bind(model.getSpieler1PsProperty());
-				spieler1Kmh.bind(model.getSpieler1KmhProperty());
-				spieler1Verbrauch.bind(model.getSpieler1VerbrauchProperty());
-				spieler1Ccm.bind(model.getSpieler1CcmProperty());
-				spieler1Beschleunigung.bind(model.getSpieler1BeschleunigungProperty());
-				spieler1Kartenanzahl.bind(model.getSpieler1KartenanzahlProperty());
-				spieler1JpgUrl.bind(model.getSpieler1JpgUrlProperty());
-				spieler1Status.bind(model.getSpieler1StatusProperty());
+			 	spieler1Name.bind(model.players1CardNameProperty());
+				spieler1Ps.bind(model.players1HpProperty());
+				spieler1Kmh.bind(model.players1KmhProperty());
+				spieler1Verbrauch.bind(model.palyers1ConsumptionProperty());
+				spieler1Ccm.bind(model.players1CcmProperty());
+				spieler1Beschleunigung.bind(model.players1AccelerationProperty());
+				spieler1Kartenanzahl.bind(model.players1NumberOfCardsProperty());
+				spieler1JpgUrl.bind(model.players1SourceOfJpgProperty());
+				spieler1Status.bind(model.players1StatusProperty());
 				
-				spieler2Name.bind(model.getSpieler2NameProperty());
-				spieler2Ps.bind(model.getSpieler2PsProperty());
-				spieler2Kmh.bind(model.getSpieler2KmhProperty());
-				spieler2Verbrauch.bind(model.getSpieler2VerbrauchProperty());
-				spieler2Ccm.bind(model.getSpieler2CcmProperty());
-				spieler2Beschleunigung.bind(model.getSpieler2BeschleunigungProperty());
-				spieler2Kartenanzahl.bind(model.getSpieler2KartenanzahlProperty());
-				spieler2JpgUrl.bind(model.getSpieler2JpgUrlProperty());
-				spieler2Status.bind(model.getSpieler2StatusProperty());
+				spieler2Name.bind(model.players2CardNameProperty());
+				spieler2Ps.bind(model.players2HpProperty());
+				spieler2Kmh.bind(model.players2KmhProperty());
+				spieler2Verbrauch.bind(model.players2ConsumptionProperty());
+				spieler2Ccm.bind(model.players2CcmProperty());
+				spieler2Beschleunigung.bind(model.players2AccelerationProperty());
+				spieler2Kartenanzahl.bind(model.players2NumberOfCardsProperty());
+				spieler2JpgUrl.bind(model.players2SourceOfJpgProperty());
+				spieler2Status.bind(model.players2StatusProperty());
 				
 				
-				aktiverSpieler1.bind(model.getAktiverSpieler1Boolean());
+				aktiverSpieler1.bind(model.activePlayer1Property());
 				System.out.println("Klasse ViewModel - Konstruktor, aktiverSpieler1Property: " + aktiverSpieler1.getValue());
 		 }
 
@@ -107,15 +107,15 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 			public void change (String vergleichsattribut) throws RemoteException {
 				
 				if(vergleichsattribut.equals(PS)) {
-					model.ermittleRundenergebnis(PS);
+					model.calculateRoundResult(PS);
 				} else if (vergleichsattribut.equals(KMH)) {
-					model.ermittleRundenergebnis(KMH);
+					model.calculateRoundResult(KMH);
 				} else if (vergleichsattribut.equals(VERBRAUCH)) {
-					model.ermittleRundenergebnis(VERBRAUCH);
+					model.calculateRoundResult(VERBRAUCH);
 				} else if (vergleichsattribut.equals(CCM)) {
-					model.ermittleRundenergebnis(CCM);
+					model.calculateRoundResult(CCM);
 				} else if (vergleichsattribut.equals(BESCHLEUNIGUNG)) {
-					model.ermittleRundenergebnis(BESCHLEUNIGUNG);
+					model.calculateRoundResult(BESCHLEUNIGUNG);
 				}	
 				System.out.println("ViewModel: change()");
 				this.updateBeobachter_1();
@@ -191,7 +191,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 					spieler2Bereit = true;
 				}
 				if (spieler1Bereit == true && spieler2Bereit == true) {
-					model.spielWiederholen();
+					model.repeatGame();
 					this.updateBeobachter_1();
 					this.updateBeobachter_2();
 					this.spieler1.updateRestartGame();

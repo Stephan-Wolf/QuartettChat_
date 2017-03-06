@@ -1,24 +1,14 @@
 package app;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.BooleanProperty;
-
-import java.util.List;
-
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.SimpleFloatProperty;
-
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 
-public class Spiel extends UnicastRemoteObject implements IModel {
+public class Spiel extends UnicastRemoteObject implements IGame {
 	
 	/**
 	 * 
@@ -40,32 +30,32 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	private BooleanProperty aktiverSpieler1 = new SimpleBooleanProperty();
 	
 	// Werte der aufgedeckten Karte vom Spieler1
-	private StringProperty spieler1Name =  new SimpleStringProperty();
-	private StringProperty spieler1Ps =  new SimpleStringProperty();
-	private StringProperty spieler1Kmh =  new SimpleStringProperty();
-	private StringProperty spieler1Verbrauch =  new SimpleStringProperty();
-	private StringProperty spieler1Ccm =  new SimpleStringProperty();	
-	private StringProperty spieler1Beschleunigung =  new SimpleStringProperty();
-	private StringProperty spieler1JpgUrl =  new SimpleStringProperty();
+	// private StringProperty spieler1Name =  new SimpleStringProperty();
+	// private StringProperty spieler1Ps =  new SimpleStringProperty();
+	// private StringProperty spieler1Kmh =  new SimpleStringProperty();
+	// private StringProperty spieler1Verbrauch =  new SimpleStringProperty();
+	// private StringProperty spieler1Ccm =  new SimpleStringProperty();	
+	// private StringProperty spieler1Beschleunigung =  new SimpleStringProperty();
+	// private StringProperty spieler1JpgUrl =  new SimpleStringProperty();
 	private StringProperty spieler1Status = new SimpleStringProperty();
 	
 	
-	private ObjectProperty<javafx.scene.image.Image> spieler1Img = new SimpleObjectProperty<>();
+	// private ObjectProperty<javafx.scene.image.Image> spieler1Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 1 als StringProperty
 	private StringProperty spieler1Kartenanzahl = new SimpleStringProperty();
 	
 
 	// Werte der aufgedeckten Karte vom Spieler2
-	private StringProperty spieler2Name =  new SimpleStringProperty();
-	private StringProperty spieler2Ps =  new SimpleStringProperty();
-	private StringProperty spieler2Kmh =  new SimpleStringProperty();
-	private StringProperty spieler2Verbrauch =  new SimpleStringProperty();
-	private StringProperty spieler2Ccm =  new SimpleStringProperty();	
-	private StringProperty spieler2Beschleunigung =  new SimpleStringProperty();
-	private StringProperty spieler2JpgUrl =  new SimpleStringProperty();
+	// private StringProperty spieler2Name =  new SimpleStringProperty();
+	// private StringProperty spieler2Ps =  new SimpleStringProperty();
+	// private StringProperty spieler2Kmh =  new SimpleStringProperty();
+	// private StringProperty spieler2Verbrauch =  new SimpleStringProperty();
+	// private StringProperty spieler2Ccm =  new SimpleStringProperty();	
+	// private StringProperty spieler2Beschleunigung =  new SimpleStringProperty();
+	// private StringProperty spieler2JpgUrl =  new SimpleStringProperty();
 	private StringProperty spieler2Status = new SimpleStringProperty();
 
-	private ObjectProperty<javafx.scene.image.Image> spieler2Img = new SimpleObjectProperty<>();
+	// private ObjectProperty<javafx.scene.image.Image> spieler2Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 2 als StringProperty
 	private StringProperty spieler2Kartenanzahl = new SimpleStringProperty();
 	
@@ -98,36 +88,36 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		// sp�ter erstetzen durch eine Funktion der Klasse Spieler, mit der der Spieler
 		// ein array mit den Werten der oberen Karte liefert
 		// und dann werden die Daten im Spiel aktualisiert bzw. an das ViewModel im Rahmen von updates weiter geschickt
-		spieler1Name.bind(spieler1.obereKarteNameProperty());
-		spieler1Ps.bind(spieler1.obereKartePsProperty());
-		spieler1Kmh.bind(spieler1.obereKarteKmhProperty()); 
-		spieler1Verbrauch.bind(spieler1.obereKarteVerbrauchProperty());
-		spieler1Ccm.bind(spieler1.obereKarteCcmProperty());
-		spieler1Beschleunigung.bind(spieler1.obereKarteBeschleunigungProperty());
-		spieler1Img.bind(spieler1.obereKarteImgProperty());
-		spieler1JpgUrl.bind(spieler1.obereKarteJpgUrlProperty());
+		// spieler1Name.bind(spieler1.obereKarteNameProperty());
+		// spieler1Ps.bind(spieler1.obereKartePsProperty());
+		// spieler1Kmh.bind(spieler1.obereKarteKmhProperty()); 
+		// spieler1Verbrauch.bind(spieler1.obereKarteVerbrauchProperty());
+		// spieler1Ccm.bind(spieler1.obereKarteCcmProperty());
+		// spieler1Beschleunigung.bind(spieler1.obereKarteBeschleunigungProperty());
+		// spieler1Img.bind(spieler1.obereKarteImgProperty());
+		// spieler1JpgUrl.bind(spieler1.obereKarteJpgUrlProperty());
 		
-		spieler2Name.bind(spieler2.obereKarteNameProperty());
-		spieler2Ps.bind(spieler2.obereKartePsProperty());
-		spieler2Kmh.bind(spieler2.obereKarteKmhProperty()); 
-		spieler2Verbrauch.bind(spieler2.obereKarteVerbrauchProperty());
-		spieler2Ccm.bind(spieler2.obereKarteCcmProperty());
-		spieler2Beschleunigung.bind(spieler2.obereKarteBeschleunigungProperty());
-		spieler2Img.bind(spieler2.obereKarteImgProperty());
-		spieler2JpgUrl.bind(spieler2.obereKarteJpgUrlProperty());
+		// spieler2Name.bind(spieler2.obereKarteNameProperty());
+		// spieler2Ps.bind(spieler2.obereKartePsProperty());
+		// spieler2Kmh.bind(spieler2.obereKarteKmhProperty()); 
+		// spieler2Verbrauch.bind(spieler2.obereKarteVerbrauchProperty());
+		// spieler2Ccm.bind(spieler2.obereKarteCcmProperty());
+		// spieler2Beschleunigung.bind(spieler2.obereKarteBeschleunigungProperty());
+		// spieler2Img.bind(spieler2.obereKarteImgProperty());
+		// spieler2JpgUrl.bind(spieler2.obereKarteJpgUrlProperty());
 		
 //		spieler1Ps.bind(spieler1.obereKartePsProperty());
 		
 	}
 	
-	public void starten () {
+	public void startGame () {
 		spielende = false;
 		this.kartenMischen();
 		this.kartenAusteilen();
 	}
 	
 	// ???????????
-	public void spielWiederholen () {
+	public void repeatGame () {
 		
 		// zuerst die alten  Kartenstapel-Objekt, Spielerstapel-Objekte l�schen?
 		kartenstapel = new Kartenstapel();
@@ -182,7 +172,7 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	
 	
 	// noch �berlegen, ob auf int verzichten
-	public int ermittleRundenergebnis(String attribut) {
+	public int calculateRoundResult(String attribut) {
 		if(spielende == false) {
 			int rundenergebnis = vergleicheAttribut(attribut);
 			this.spielerstapelAktualisieren(rundenergebnis);
@@ -209,29 +199,29 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 		
 		if(attribut.equals("ps")) {
 			
-			int ergebnis = liefereVergleichsergebnis(spieler1Ps, spieler2Ps);
+			int ergebnis = liefereVergleichsergebnis(spieler1.obereKartePsProperty(), spieler2.obereKartePsProperty());
 			
 			return ergebnis;
 			
 		} else if(attribut.equals("kmh")) {
 			
-			int ergebnis = liefereVergleichsergebnis(spieler1Kmh, spieler2Kmh);
+			int ergebnis = liefereVergleichsergebnis(spieler1.obereKarteKmhProperty(), spieler2.obereKarteKmhProperty());
 			return ergebnis;
 			
 		} else if(attribut.equals("verbrauch")) {
 			
-			int ergebnis = liefereVergleichsergebnisKleiner(spieler1Verbrauch, spieler2Verbrauch);
+			int ergebnis = liefereVergleichsergebnisKleiner(spieler1.obereKarteVerbrauchProperty(), spieler2.obereKarteVerbrauchProperty());
 			
 			return ergebnis;
 			
 		} else if(attribut.equals("ccm")) {
 			
-			int ergebnis = liefereVergleichsergebnis(spieler1Ccm, spieler2Ccm);
+			int ergebnis = liefereVergleichsergebnis(spieler1.obereKarteCcmProperty(), spieler2.obereKarteCcmProperty());
 			return ergebnis;
 			
 		} else if(attribut.equals("beschleunigung")) {
 			
-			int ergebnis = liefereVergleichsergebnisKleiner(spieler1Beschleunigung, spieler2Beschleunigung);
+			int ergebnis = liefereVergleichsergebnisKleiner(spieler1.obereKarteBeschleunigungProperty(), spieler2.obereKarteBeschleunigungProperty());
 			return ergebnis;
 		}
 		
@@ -346,99 +336,95 @@ public class Spiel extends UnicastRemoteObject implements IModel {
 	
 	
 	// Refactoring??? read only??
-	public StringProperty getSpieler1PsProperty () {
-		return this.spieler1Ps;
+	public StringProperty players1HpProperty () {
+		return this.spieler1.obereKartePsProperty();
 	}
 	
-	public StringProperty getSpieler1KmhProperty () {
-		return this.spieler1Kmh;
+	public StringProperty players1KmhProperty () {
+		return this.spieler1.obereKarteKmhProperty();
 	}
 	
-	public StringProperty getSpieler1VerbrauchProperty () {
-		return this.spieler1Verbrauch;
+	public StringProperty palyers1ConsumptionProperty () {
+		return this.spieler1.obereKarteVerbrauchProperty();
 	}
 	
-	public StringProperty getSpieler1CcmProperty () {
-		return this.spieler1Ccm;
+	public StringProperty players1CcmProperty () {
+		return this.spieler1.obereKarteCcmProperty();
 	}
 	
-	public StringProperty getSpieler1BeschleunigungProperty () {
-		return this.spieler1Beschleunigung;
-	}
-	
-	
-	public ObjectProperty<javafx.scene.image.Image> getSpieler1Img () {
-		return this.spieler1Img;
+	public StringProperty players1AccelerationProperty () {
+		return this.spieler1.obereKarteBeschleunigungProperty();
 	}
 	
 	
-	public StringProperty getSpieler1JpgUrlProperty () {
-		return this.spieler1JpgUrl;
+//	public ObjectProperty<javafx.scene.image.Image> getSpieler1Img () {
+//		return this.spieler1Img;
+//	}
+	
+	
+	public StringProperty players1SourceOfJpgProperty () {
+		return this.spieler1.obereKarteJpgUrlProperty();
 	}
 	
 	
 	// Refactoring??? read only??
-	public StringProperty getSpieler2PsProperty () {
-		return this.spieler2Ps;
+	public StringProperty players2HpProperty () {
+		return this.spieler2.obereKartePsProperty();
 	}
 	
-	public StringProperty getSpieler2KmhProperty () {
-		return this.spieler2Kmh;
+	public StringProperty players2KmhProperty () {
+		return this.spieler2.obereKarteKmhProperty();
 	}
 	
-	public StringProperty getSpieler2VerbrauchProperty () {
-		return this.spieler2Verbrauch;
+	public StringProperty players2ConsumptionProperty () {
+		return this.spieler2.obereKarteVerbrauchProperty();
 	}
 	
-	public StringProperty getSpieler2CcmProperty () {
-		return this.spieler2Ccm;
+	public StringProperty players2CcmProperty () {
+		return this.spieler2.obereKarteCcmProperty();
 	}
 	
-	public StringProperty getSpieler2BeschleunigungProperty () {
-		return this.spieler2Beschleunigung;
+	public StringProperty players2AccelerationProperty () {
+		return this.spieler2.obereKarteBeschleunigungProperty();
 	}
 	
-	public ObjectProperty<javafx.scene.image.Image> getSpieler2Img () {
-		return this.spieler2Img;
+//	public ObjectProperty<javafx.scene.image.Image> getSpieler2Img () {
+//		return this.spieler2Img;
+//	}
+	
+	public StringProperty players2SourceOfJpgProperty () {
+		return this.spieler2.obereKarteJpgUrlProperty();
 	}
 	
-	public StringProperty getSpieler2JpgUrlProperty () {
-		return this.spieler2JpgUrl;
-	}
 	
-	
-	public BooleanProperty getAktiverSpieler1Boolean () {
+	public BooleanProperty activePlayer1Property () {
 			return this.aktiverSpieler1;
 	
 	}
 
 	
-	public StringProperty getSpieler1NameProperty () {
-		return this.spieler1Name;
+	public StringProperty players1CardNameProperty () {
+		return this.spieler1.obereKarteNameProperty();
 	}
-	public StringProperty getSpieler2NameProperty () {
-		return this.spieler2Name;
+	
+	public StringProperty players2CardNameProperty () {
+		return this.spieler2.obereKarteNameProperty();
 	}
 	
 	
-	public StringProperty getSpieler1KartenanzahlProperty () {
+	public StringProperty players1NumberOfCardsProperty () {
 		return this.spieler1Kartenanzahl;
 	}
 	
-	public StringProperty getSpieler2KartenanzahlProperty () {
+	public StringProperty players2NumberOfCardsProperty () {
 		return this.spieler2Kartenanzahl;
 	}
 	
-	public StringProperty getSpieler1StatusProperty () {
+	public StringProperty players1StatusProperty () {
 		return this.spieler1Status;
 	}
 	
-	public StringProperty getSpieler2StatusProperty () {
+	public StringProperty players2StatusProperty () {
 		return this.spieler2Status;
 	}
-
-	
-	
-	
 }
-
