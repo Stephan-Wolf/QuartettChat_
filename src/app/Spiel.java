@@ -268,7 +268,7 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 		if (roundResult == ROUNDWINNER_PLAYER_1) {
 			
 			// spieler2
-			Karte karte = this.player2.giveCard();
+			Card karte = this.player2.giveCard();
 			System.out.println("Aufruf spieler2.gebeKarteZurueck()");
 			players2NumberOfCards--;
 			spieler2Kartenanzahl.setValue(String.valueOf(players2NumberOfCards));
@@ -290,7 +290,7 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 		} else if (roundResult == ROUNDWINNER_PLAYER_2){
 			
 			// spieler1
-			Karte k = this.player1.giveCard();
+			Card k = this.player1.giveCard();
 			System.out.println("Aufruf spieler1.gebeKarteZurueck()");
 			players1NumberOfCards--;
 			spieler1Kartenanzahl.setValue(String.valueOf(players1NumberOfCards));

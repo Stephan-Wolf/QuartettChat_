@@ -6,36 +6,36 @@ import java.util.Collections;
 
 public class PlayerCardStack {
 	
-	private LinkedList<Karte> stapel;
+	private LinkedList<Card> stapel;
 	
 	public PlayerCardStack() {
-		stapel = new LinkedList<Karte> ();
+		stapel = new LinkedList<Card> ();
 	}
 	
-	public Karte entferneKarte(){
+	public Card entferneKarte(){
 		return stapel.removeLast();
 	}
 	
-	void fuegeKarteObenHinzu (Karte k) {
+	void fuegeKarteObenHinzu (Card k) {
 		// hinten anh�ngen ?? adlast??
 		stapel.addLast(k);
 		
 	}
 	
-	public LinkedList<Karte> getList() {
+	public LinkedList<Card> getList() {
 	       return stapel;
 	}
 	
-	void fuegeKarteUntenHinzu (Karte k) {
+	void fuegeKarteUntenHinzu (Card k) {
 		// vorne anh�ngen
 		stapel.addFirst(k);
 	}
 	
-	void setStapel (LinkedList<Karte> k) {
+	void setStapel (LinkedList<Card> k) {
 		stapel = k;
 	}
 	
-	public Karte gebeObereKarte() {
+	public Card gebeObereKarte() {
 		return stapel.getLast();
 	}
 	

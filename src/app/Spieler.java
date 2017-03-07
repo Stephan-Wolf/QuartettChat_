@@ -15,7 +15,7 @@ public class Spieler {
 	private StringProperty ccmAttributeOfTopCard =  new SimpleStringProperty();	
 	private StringProperty accelerationAttributeOfTopCard =  new SimpleStringProperty();
 	private StringProperty jpgSourceOfTopCard =  new SimpleStringProperty();
-	private ObjectProperty<javafx.scene.image.Image> obereKarteImg = new SimpleObjectProperty<>();
+	// private ObjectProperty<javafx.scene.image.Image> obereKarteImg = new SimpleObjectProperty<>();
 	
 	//jgpUrlProperty
 	// public?? brauchen wir die Variable?
@@ -34,7 +34,7 @@ public class Spieler {
 		playerCardStack.zeigeKarten();
 	}
 	
-	public void receiveCard(Karte card){
+	public void receiveCard(Card card){
 		playerCardStack.fuegeKarteUntenHinzu(card);
 	}
 	
@@ -42,26 +42,26 @@ public class Spieler {
 		this.playerCardStack = playerCardStack;
 	}
 	
-	public Karte giveCard(){
+	public Card giveCard(){
 		return playerCardStack.entferneKarte();
 	}
 
 	public void moveTopCardDownwards() {
-		Karte card = playerCardStack.entferneKarte();
+		Card card = playerCardStack.entferneKarte();
 		playerCardStack.fuegeKarteUntenHinzu(card);
 		
 	}
 	
 	public void uncoverTopCard() {
-		Karte topCard =  playerCardStack.gebeObereKarte();
-		nameOfTopCard.setValue(topCard.getNameProperty().getValue());
-		hpAttributeOfTopCard.setValue(topCard.getPsProperty().getValue());
-		kmhAttributeOfTopCard.setValue(topCard.getKmhProperty().getValue());
-		consumptionAttributeOfTopCard.setValue(topCard.getVerbrauchProperty().getValue());  
-		ccmAttributeOfTopCard.setValue(topCard.getCcmProperty().getValue());
-		accelerationAttributeOfTopCard.setValue(topCard.getBeschleunigungProperty().getValue());
-		jpgSourceOfTopCard.setValue(topCard.getJgpUrlProperty().getValue());
-		obereKarteImg.setValue(topCard.getImageProperty().getValue());
+		Card topCard =  playerCardStack.gebeObereKarte();
+		nameOfTopCard.setValue(topCard.getName());
+		hpAttributeOfTopCard.setValue(topCard.getHp());
+		kmhAttributeOfTopCard.setValue(topCard.getKmh());
+		consumptionAttributeOfTopCard.setValue(topCard.getConsumption());  
+		ccmAttributeOfTopCard.setValue(topCard.getCcm());
+		accelerationAttributeOfTopCard.setValue(topCard.getAcceleration());
+		jpgSourceOfTopCard.setValue(topCard.getSrcOfJpG());
+		// obereKarteImg.setValue(topCard.getImageProperty().getValue());
 		
 	}
 	
