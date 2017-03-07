@@ -8,98 +8,95 @@ import javafx.beans.value.ObservableValue;
 
 public class Spieler {
 	
-	private StringProperty obereKarteName = new SimpleStringProperty();
-	private StringProperty obereKartePs = new SimpleStringProperty();
-	private StringProperty obereKarteKmh =  new SimpleStringProperty();
-	private StringProperty obereKarteVerbrauch =  new SimpleStringProperty();
-	private StringProperty obereKarteCcm =  new SimpleStringProperty();	
-	private StringProperty obereKarteBeschleunigung =  new SimpleStringProperty();
-	private StringProperty obereKarteJpgUrl =  new SimpleStringProperty();
+	private StringProperty nameOfTopCard = new SimpleStringProperty();
+	private StringProperty hpAttributeOfTopCard = new SimpleStringProperty();
+	private StringProperty kmhAttributeOfTopCard =  new SimpleStringProperty();
+	private StringProperty consumptionAttributeOfTopCard =  new SimpleStringProperty();
+	private StringProperty ccmAttributeOfTopCard =  new SimpleStringProperty();	
+	private StringProperty accelerationAttributeOfTopCard =  new SimpleStringProperty();
+	private StringProperty jpgSourceOfTopCard =  new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.image.Image> obereKarteImg = new SimpleObjectProperty<>();
 	
 	//jgpUrlProperty
 	// public?? brauchen wir die Variable?
 	// public Karte obereKarte;
-	private Spielerstapel spielerstapel = new Spielerstapel();
-	private int spielerId;
-	private boolean hatKarte;
-	private boolean connencted;
+	private PlayerCardStack playerCardStack = new PlayerCardStack();
+//	private int spielerId;
+//	private boolean hatKarte;
+//	private boolean connencted;
 	
 	
 	public Spieler () {
 	}
 	
 	// TEstMEthode
-	public void AlleKartenAusgeben() {
-		spielerstapel.zeigeKarten();
+	public void printAllCards() {
+		playerCardStack.zeigeKarten();
 	}
 	
-	public void empfangeKarte(Karte karte){
-		spielerstapel.fuegeKarteUntenHinzu(karte);
+	public void receiveCard(Karte card){
+		playerCardStack.fuegeKarteUntenHinzu(card);
 	}
 	
-	public void empfangeStapel(Spielerstapel s){
-		spielerstapel = s;
+	public void setPlayerCardStack(PlayerCardStack playerCardStack){
+		this.playerCardStack = playerCardStack;
 	}
 	
-	public Karte gebeKarteZurueck(){
-		return spielerstapel.entferneKarte();
+	public Karte giveCard(){
+		return playerCardStack.entferneKarte();
 	}
 
-	public void verschiebeObereKarteNachUnten() {
-		Karte k = spielerstapel.entferneKarte();
-		spielerstapel.fuegeKarteUntenHinzu(k);
+	public void moveTopCardDownwards() {
+		Karte card = playerCardStack.entferneKarte();
+		playerCardStack.fuegeKarteUntenHinzu(card);
 		
 	}
 	
-	public void obereKarteAufdecken() {
-		Karte obereKarte =  spielerstapel.gebeObereKarte();
-		obereKarteName.setValue(obereKarte.getNameProperty().getValue());
-		obereKartePs.setValue(obereKarte.getPsProperty().getValue());
-		obereKarteKmh.setValue(obereKarte.getKmhProperty().getValue());
-		obereKarteVerbrauch.setValue(obereKarte.getVerbrauchProperty().getValue());  
-		obereKarteCcm.setValue(obereKarte.getCcmProperty().getValue());
-		obereKarteBeschleunigung.setValue(obereKarte.getBeschleunigungProperty().getValue());
-		obereKarteJpgUrl.setValue(obereKarte.getJgpUrlProperty().getValue());
-		obereKarteImg.setValue(obereKarte.getImageProperty().getValue());
+	public void uncoverTopCard() {
+		Karte topCard =  playerCardStack.gebeObereKarte();
+		nameOfTopCard.setValue(topCard.getNameProperty().getValue());
+		hpAttributeOfTopCard.setValue(topCard.getPsProperty().getValue());
+		kmhAttributeOfTopCard.setValue(topCard.getKmhProperty().getValue());
+		consumptionAttributeOfTopCard.setValue(topCard.getVerbrauchProperty().getValue());  
+		ccmAttributeOfTopCard.setValue(topCard.getCcmProperty().getValue());
+		accelerationAttributeOfTopCard.setValue(topCard.getBeschleunigungProperty().getValue());
+		jpgSourceOfTopCard.setValue(topCard.getJgpUrlProperty().getValue());
+		obereKarteImg.setValue(topCard.getImageProperty().getValue());
 		
 	}
 	
 	
-	public final StringProperty obereKartePsProperty () {
-        if (obereKartePs == null) { 
-        	obereKartePs = new SimpleStringProperty(""); 
-        } 
-        return obereKartePs; 
+	public final StringProperty hpAttributeOfTopCardProperty () {
+        return hpAttributeOfTopCard; 
 	}
 	
-	public StringProperty obereKarteKmhProperty() {
-		return this.obereKarteKmh;
+	public StringProperty kmhAttributeOfTopCardProperty() {
+		return this.kmhAttributeOfTopCard;
 	}
 	
-	public StringProperty obereKarteVerbrauchProperty() {
-		return this.obereKarteVerbrauch;
+	public StringProperty consumptionAttributeOfTopCardProperty() {
+		return this.consumptionAttributeOfTopCard;
 	}
 	
-	public StringProperty obereKarteCcmProperty() {
-		return this.obereKarteCcm;
+	public StringProperty ccmAttributeOfTopCardProperty() {
+		return this.ccmAttributeOfTopCard;
 	}
 	
-	public StringProperty obereKarteBeschleunigungProperty() {
-		return this.obereKarteBeschleunigung;
+	public StringProperty accelerationAttributeOfTopCardProperty() {
+		return this.accelerationAttributeOfTopCard;
 	}
 	
-	public ObjectProperty<javafx.scene.image.Image> obereKarteImgProperty () {
-		return this.obereKarteImg;
-	}
+//	public ObjectProperty<javafx.scene.image.Image> obereKarteImgProperty () {
+//		return this.obereKarteImg;
+//	}
 
 	
-	public StringProperty obereKarteNameProperty() {
-		return this.obereKarteName;
+	public StringProperty nameOfTopCardProperty() {
+		return this.nameOfTopCard;
 	}
 
-	public StringProperty obereKarteJpgUrlProperty() {
-		return this.obereKarteJpgUrl;
+	public StringProperty jpgSourceOfTopCardProperty() {
+		return this.jpgSourceOfTopCard;
 	}
 	
 }

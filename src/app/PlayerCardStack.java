@@ -4,11 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Collections;
 
-public class Spielerstapel {
+public class PlayerCardStack {
 	
 	private LinkedList<Karte> stapel;
 	
-	public Spielerstapel() {
+	public PlayerCardStack() {
 		stapel = new LinkedList<Karte> ();
 	}
 	

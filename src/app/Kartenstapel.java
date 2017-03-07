@@ -76,10 +76,10 @@ import java.util.Collections;
 		Collections.shuffle(list);
 	}
 	
-	public Spielerstapel [] gebeSpielerstapel () {
-		Spielerstapel [] spielerstapel = new Spielerstapel [2];
-		Spielerstapel spieler1Stapel = new Spielerstapel();
-		Spielerstapel spieler2Stapel = new Spielerstapel();
+	public PlayerCardStack [] gebeSpielerstapel () {
+		PlayerCardStack [] spielerstapel = new PlayerCardStack [2];
+		PlayerCardStack spieler1Stapel = new PlayerCardStack();
+		PlayerCardStack spieler2Stapel = new PlayerCardStack();
 		
 		int listSize = list.size();
 		
