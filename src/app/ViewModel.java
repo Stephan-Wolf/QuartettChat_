@@ -35,12 +35,12 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	
 	private BooleanProperty aktiverSpieler1 = new SimpleBooleanProperty();
 	
-	final String NAME = "name";
-	final String PS = "ps";
-	final String KMH = "kmh";
-	final String VERBRAUCH = "verbrauch";
-	final String CCM = "ccm";
-	final String BESCHLEUNIGUNG = "beschleunigung";
+//	final String NAME = "name";
+//	final String PS = "ps";
+//	final String KMH = "kmh";
+//	final String VERBRAUCH = "verbrauch";
+//	final String CCM = "ccm";
+//	final String BESCHLEUNIGUNG = "beschleunigung";
 	
 	// Werte der aufgedeckten Karte vom Spieler1
 	
@@ -105,18 +105,19 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 		 
 		 
 			public void change (String vergleichsattribut) throws RemoteException {
+				model.calculateRoundResult(vergleichsattribut);
 				
-				if(vergleichsattribut.equals(PS)) {
-					model.calculateRoundResult(PS);
-				} else if (vergleichsattribut.equals(KMH)) {
-					model.calculateRoundResult(KMH);
-				} else if (vergleichsattribut.equals(VERBRAUCH)) {
-					model.calculateRoundResult(VERBRAUCH);
-				} else if (vergleichsattribut.equals(CCM)) {
-					model.calculateRoundResult(CCM);
-				} else if (vergleichsattribut.equals(BESCHLEUNIGUNG)) {
-					model.calculateRoundResult(BESCHLEUNIGUNG);
-				}	
+//				if(vergleichsattribut.equals(PS)) {
+//					model.calculateRoundResult(PS);
+//				} else if (vergleichsattribut.equals(KMH)) {
+//					model.calculateRoundResult(KMH);
+//				} else if (vergleichsattribut.equals(VERBRAUCH)) {
+//					model.calculateRoundResult(VERBRAUCH);
+//				} else if (vergleichsattribut.equals(CCM)) {
+//					model.calculateRoundResult(CCM);
+//				} else if (vergleichsattribut.equals(BESCHLEUNIGUNG)) {
+//					model.calculateRoundResult(BESCHLEUNIGUNG);
+//				}	
 				System.out.println("ViewModel: change()");
 				this.updateBeobachter_1();
 				this.updateBeobachter_2();
