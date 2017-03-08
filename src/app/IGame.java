@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import javafx.beans.property.StringProperty;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 
 public interface IGame extends Remote
 {  
@@ -18,7 +19,7 @@ public interface IGame extends Remote
 	public StringProperty palyers1ConsumptionProperty () throws RemoteException;
 	public StringProperty players1CcmProperty () throws RemoteException;
 	public StringProperty players1AccelerationProperty () throws RemoteException;
-	public StringProperty players1NumberOfCardsProperty () throws RemoteException;
+	public IntegerProperty players1NumberOfCardsProperty () throws RemoteException;
 	public StringProperty players1SourceOfJpgProperty () throws RemoteException;
 	public StringProperty players1StatusProperty () throws RemoteException;
 
@@ -28,7 +29,7 @@ public interface IGame extends Remote
 	public StringProperty players2ConsumptionProperty () throws RemoteException;
 	public StringProperty players2CcmProperty () throws RemoteException;
 	public StringProperty players2AccelerationProperty () throws RemoteException;
-	public StringProperty players2NumberOfCardsProperty () throws RemoteException;
+	public IntegerProperty players2NumberOfCardsProperty () throws RemoteException;
 	public StringProperty players2SourceOfJpgProperty () throws RemoteException;
 	public StringProperty players2StatusProperty () throws RemoteException;
 }

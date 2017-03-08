@@ -123,20 +123,20 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@Override
 	public void update(String name, String ps, String kmh, String verbrauch, String ccm, String beschleunigung,
-			boolean aktiverSpieler, String kartenanzahl, String jpgUrl, String status) throws RemoteException {
-			int i = Integer.parseInt(kartenanzahl);
-		if (i == 0 || i == 16){
+			boolean aktiverSpieler, int kartenanzahl, String jpgUrl, String status) throws RemoteException {
+
+		if (kartenanzahl == 0 || kartenanzahl == 16){
 			hideOnEnd.setVisible(false);
 			hideOnEnd2.setVisible(false);
 			showOnEnd.setVisible(true);
 			
-			if(i == 0){
+			if(kartenanzahl == 0){
 				labelName.setText("CRASH Du hast verloren");
 				String image = new String("/Img/car_crash.jpg");
 		        Image imageUse = new Image(image);
 		        imageDisplay.setImage(imageUse);
 			}
-			if(i == 16){
+			if(kartenanzahl == 16){
 				labelName.setText("WINNER Du hast gewonnen");
 				String image = new String("/Img/Zielflagge.jpg");
 		        Image imageUse = new Image(image);
@@ -163,7 +163,7 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 					Platform.runLater(() -> buttonVerbrauch.setDisable(!aktiverSpieler));
 					Platform.runLater(() -> buttonCCM.setDisable(!aktiverSpieler));
 					Platform.runLater(() -> buttonBeschleunigung.setDisable(!aktiverSpieler));
-					Platform.runLater(() -> labelKartenanzahl.setText(kartenanzahl));
+					Platform.runLater(() -> labelKartenanzahl.setText(String.valueOf(kartenanzahl)));
 					Platform.runLater(() -> imageDisplay.setImage(imageUse));
 					Platform.runLater(() -> labelRundenstatus.setText(status));
 				}

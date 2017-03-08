@@ -2,8 +2,10 @@ package app;
 
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -49,7 +51,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	private StringProperty spieler1Kmh =  new SimpleStringProperty();
 	private StringProperty spieler1Verbrauch =  new SimpleStringProperty();
 	private StringProperty spieler1Ccm =  new SimpleStringProperty();	
-	private StringProperty spieler1Kartenanzahl =  new SimpleStringProperty();
+	private IntegerProperty spieler1Kartenanzahl =  new SimpleIntegerProperty();
 	private StringProperty spieler1Beschleunigung =  new SimpleStringProperty();
 	private StringProperty spieler1JpgUrl =  new SimpleStringProperty();
 	private StringProperty spieler1Status =  new SimpleStringProperty();
@@ -66,7 +68,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	private StringProperty spieler2Ccm =  new SimpleStringProperty();	
 	private StringProperty spieler2Beschleunigung =  new SimpleStringProperty();
 	private StringProperty spieler2JpgUrl =  new SimpleStringProperty();
-	private StringProperty spieler2Kartenanzahl =  new SimpleStringProperty();
+	private IntegerProperty spieler2Kartenanzahl =  new SimpleIntegerProperty();
 	private StringProperty spieler2Status =  new SimpleStringProperty();
 	private ObjectProperty<javafx.scene.image.Image> spieler2Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 2 als StringProperty
@@ -145,7 +147,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				String ccm = spieler1Ccm.getValue();
 				String beschleunigung = spieler1Beschleunigung.getValue();
 				boolean gewinner = aktiverSpieler1.getValue();
-				String kartenanzahl = spieler1Kartenanzahl.getValue();
+				int kartenanzahl = spieler1Kartenanzahl.getValue();
 				String jpgUrl = spieler1JpgUrl.getValue();
 				String status = spieler1Status.getValue();
 				
@@ -160,7 +162,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				String ccm = spieler2Ccm.getValue();
 				String beschleunigung = spieler2Beschleunigung.getValue();
 				boolean gewinner =! aktiverSpieler1.getValue();
-				String kartenanzahl = spieler2Kartenanzahl.getValue();
+				int kartenanzahl = spieler2Kartenanzahl.getValue();
 				String jpgUrl = spieler2JpgUrl.getValue();
 				String status = spieler2Status.getValue();
 				 

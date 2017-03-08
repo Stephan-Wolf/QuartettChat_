@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -28,8 +30,8 @@ public class Game extends UnicastRemoteObject implements IGame {
 	private Player player1;
 	private Player player2;
 	private GameCardStack cardStack;
-	private int players1NumberOfCards;
-	private int players2NumberOfCards;
+//	private int players1NumberOfCardsInt;
+//	private int players2NumberOfCardsInt;
 	private boolean gameover = false;
 	
 	private BooleanProperty player1IsActive = new SimpleBooleanProperty();
@@ -47,7 +49,7 @@ public class Game extends UnicastRemoteObject implements IGame {
 	
 	// private ObjectProperty<javafx.scene.image.Image> spieler1Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 1 als StringProperty
-	private StringProperty spieler1Kartenanzahl = new SimpleStringProperty();
+	// private StringProperty spieler1Kartenanzahl = new SimpleStringProperty();
 	
 
 	// Werte der aufgedeckten Karte vom Spieler2
@@ -62,7 +64,7 @@ public class Game extends UnicastRemoteObject implements IGame {
 
 	// private ObjectProperty<javafx.scene.image.Image> spieler2Img = new SimpleObjectProperty<>();
 	// Anzahl der Karten vom Spieler 2 als StringProperty
-	private StringProperty spieler2Kartenanzahl = new SimpleStringProperty();
+	// private StringProperty spieler2Kartenanzahl = new SimpleStringProperty();
 	
 	
 	public Game () throws RemoteException {
@@ -156,14 +158,16 @@ public class Game extends UnicastRemoteObject implements IGame {
 		PlayerCardStack playerCardStack [] = cardStack.getPlayerCardStacks();
 
 		this.player1.setPlayerCardStack(playerCardStack[0]);
+		player1.updateNumberOfCards();
 		this.player1.uncoverTopCard();
-		players1NumberOfCards = playerCardStack[0].getNumberOfCards();
-		spieler1Kartenanzahl.setValue(String.valueOf(players1NumberOfCards)); 
+		// players1NumberOfCardsInt = playerCardStack[0].getNumberOfCards();
+		//spieler1Kartenanzahl.setValue(String.valueOf(player1.numberOfCardsProperty().getValue())); 
 		
 		this.player2.setPlayerCardStack(playerCardStack [1]);
+		player2.updateNumberOfCards();
 		this.player2.uncoverTopCard();
-		players2NumberOfCards = playerCardStack [1].getNumberOfCards();
-		spieler2Kartenanzahl.setValue(String.valueOf(players2NumberOfCards));
+		// players2NumberOfCardsInt = playerCardStack [1].getNumberOfCards();
+		// spieler2Kartenanzahl.setValue(String.valueOf(player2.numberOfCardsProperty().getValue()));
 		System.out.println();
 		System.out.println("kartenAusteilen()");
 		System.out.println("Spielerstapel Spieler1:");
@@ -270,10 +274,11 @@ public class Game extends UnicastRemoteObject implements IGame {
 			// spieler2
 			Card karte = this.player2.giveCard();
 			System.out.println("Aufruf spieler2.gebeKarteZurueck()");
-			players2NumberOfCards--;
-			spieler2Kartenanzahl.setValue(String.valueOf(players2NumberOfCards));
+			// players2NumberOfCardsInt--;
+			player2.updateNumberOfCards();
+			// spieler2Kartenanzahl.setValue(String.valueOf(player2.numberOfCardsProperty().getValue()));
 			
-			if (players2NumberOfCards == 0) {
+			if (player2.numberOfCardsProperty().getValue() == 0) {
 				gameover = true;
 			} else {
 				player2.uncoverTopCard();
@@ -282,8 +287,9 @@ public class Game extends UnicastRemoteObject implements IGame {
 			// spieler1
 			this.player1.receiveCard(karte);
 			System.out.println("Aufruf spieler1.empfangeKarte(k)");
-			players1NumberOfCards++;
-			spieler1Kartenanzahl.setValue(String.valueOf(players1NumberOfCards));
+			// players1NumberOfCardsInt++;
+			player1.updateNumberOfCards();
+			// spieler1Kartenanzahl.setValue(String.valueOf(player1.numberOfCardsProperty().getValue()));
 			this.player1.moveTopCardDownwards();
 			player1.uncoverTopCard();
 			
@@ -292,9 +298,10 @@ public class Game extends UnicastRemoteObject implements IGame {
 			// spieler1
 			Card k = this.player1.giveCard();
 			System.out.println("Aufruf spieler1.gebeKarteZurueck()");
-			players1NumberOfCards--;
-			spieler1Kartenanzahl.setValue(String.valueOf(players1NumberOfCards));
-			if (players1NumberOfCards == 0) {
+			// players1NumberOfCardsInt--;
+			player1.updateNumberOfCards();
+			// spieler1Kartenanzahl.setValue(String.valueOf(player1.numberOfCardsProperty().getValue()));
+			if (player1.numberOfCardsProperty().getValue() == 0) {
 				
 				gameover = true;
 			} else {
@@ -304,8 +311,9 @@ public class Game extends UnicastRemoteObject implements IGame {
 			// spieler2
 			this.player2.receiveCard(k);
 			System.out.println("Aufruf spieler2.empfangeKarte(k)");
-			players2NumberOfCards++;
-			spieler2Kartenanzahl.setValue(String.valueOf(players2NumberOfCards));
+			// players2NumberOfCardsInt++;
+			player2.updateNumberOfCards();
+			// spieler2Kartenanzahl.setValue(String.valueOf(player2.numberOfCardsProperty().getValue()));
 			this.player2.moveTopCardDownwards();
 			player2.uncoverTopCard();
 		}else if (roundResult == ROUNDWINNER_PLAYER_1 && gameover == true){
@@ -416,12 +424,12 @@ public class Game extends UnicastRemoteObject implements IGame {
 	}
 	
 	
-	public StringProperty players1NumberOfCardsProperty () {
-		return this.spieler1Kartenanzahl;
+	public IntegerProperty players1NumberOfCardsProperty () {
+		return this.player1.numberOfCardsProperty();
 	}
 	
-	public StringProperty players2NumberOfCardsProperty () {
-		return this.spieler2Kartenanzahl;
+	public IntegerProperty players2NumberOfCardsProperty () {
+		return this.player2.numberOfCardsProperty();
 	}
 	
 	public StringProperty players1StatusProperty () {
