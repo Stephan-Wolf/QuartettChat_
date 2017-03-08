@@ -1,5 +1,7 @@
 package app;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -12,6 +14,7 @@ public class Player {
 	private StringProperty ccmAttributeOfTopCard =  new SimpleStringProperty();	
 	private StringProperty accelerationAttributeOfTopCard =  new SimpleStringProperty();
 	private StringProperty jpgSourceOfTopCard =  new SimpleStringProperty();
+	private IntegerProperty numberOfCards = new SimpleIntegerProperty();
 	// private ObjectProperty<javafx.scene.image.Image> obereKarteImg = new SimpleObjectProperty<>();
 	
 	//jgpUrlProperty
@@ -94,6 +97,14 @@ public class Player {
 
 	public StringProperty jpgSourceOfTopCardProperty() {
 		return this.jpgSourceOfTopCard;
+	}
+	
+	public IntegerProperty numberOfCardsProperty() {
+		return numberOfCards;
+	}
+	
+	public void updateNumberOfCards() {
+		numberOfCards.set(playerCardStack.getNumberOfCards());
 	}
 	
 }
