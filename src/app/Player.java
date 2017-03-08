@@ -1,12 +1,9 @@
 package app;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 
-public class Spieler {
+public class Player {
 	
 	private StringProperty nameOfTopCard = new SimpleStringProperty();
 	private StringProperty hpAttributeOfTopCard = new SimpleStringProperty();
@@ -26,7 +23,7 @@ public class Spieler {
 //	private boolean connencted;
 	
 	
-	public Spieler () {
+	public Player () {
 	}
 	
 	// TEstMEthode

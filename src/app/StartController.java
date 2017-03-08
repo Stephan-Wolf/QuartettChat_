@@ -58,7 +58,7 @@ public class StartController  {
 			});
 			System.out.println("Client verbunden!");
 		} catch(Exception e) {
-			final IGame model = new Spiel ();
+			final IGame model = new Game ();
 	        final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
 	        final IViewModel modelview = new ViewModel(model);
 	        System.out.println(registry);

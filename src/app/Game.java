@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
 
-public class Spiel extends UnicastRemoteObject implements IGame {
+public class Game extends UnicastRemoteObject implements IGame {
 	
 	/**
 	 * 
@@ -25,8 +25,8 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 	final String ACCELERATION = "beschleunigung";
 	
 	// boolean aktiverSpieler1Boolean;
-	private Spieler player1;
-	private Spieler player2;
+	private Player player1;
+	private Player player2;
 	private GameCardStack cardStack;
 	private int players1NumberOfCards;
 	private int players2NumberOfCards;
@@ -65,10 +65,10 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 	private StringProperty spieler2Kartenanzahl = new SimpleStringProperty();
 	
 	
-	public Spiel () throws RemoteException {
+	public Game () throws RemoteException {
 		cardStack = new GameCardStack();
-		player1 = new Spieler();
-		player2 = new Spieler();
+		player1 = new Player();
+		player2 = new Player();
 		determineGameInitiator();
 		// Spieler1 beginnt
 		// sp�ter �ndern -> nach Zufall
@@ -320,7 +320,7 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 		}
 	}
 	
-	private void transferCard (Spieler winner, Spieler loser) {
+	private void transferCard (Player winner, Player loser) {
 		
 	}
 	

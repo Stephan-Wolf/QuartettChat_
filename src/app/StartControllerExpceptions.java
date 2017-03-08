@@ -43,7 +43,7 @@ public class StartControllerExpceptions  {
     //Eventuell noch eine Abfrage einbauen welche prüft ob Server oder CLient um dann die Buttons in der initialize() zu disablen
     @FXML
     private void serverStart(ActionEvent event) throws IOException{
-    	final IGame model = new Spiel ();
+    	final IGame model = new Game ();
         final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
         final IViewModel modelview = new ViewModel(model);
         System.out.println(registry);
@@ -98,7 +98,7 @@ public class StartControllerExpceptions  {
 			System.out.println("Hello Wordl");
 			e.printStackTrace();
 			
-		    	final IGame model = new Spiel ();
+		    	final IGame model = new Game ();
 		        final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
 		        final IViewModel modelview = new ViewModel(model);
 		        System.out.println(registry);
