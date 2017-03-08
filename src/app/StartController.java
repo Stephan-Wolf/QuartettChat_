@@ -48,7 +48,7 @@ public class StartController  {
 			UI_stage.setOnCloseRequest(e -> {
 				
 				try {
-					viewmodel.spielBeenden(anwender.getID());
+					viewmodel.quitGame(anwender.getID());
 					showAlert(e);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -81,7 +81,7 @@ public class StartController  {
 				UI_stage.setOnCloseRequest(e2 -> {
 					
 					try {
-						viewmodel.spielBeenden(anwender.getID());
+						viewmodel.quitGame(anwender.getID());
 						showAlert(e2);
 						
 					} catch (Exception e1) {
@@ -113,11 +113,11 @@ public class StartController  {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Verbindung");
 			alert.setHeaderText("Spiel wurde beendet!");
-			ButtonType beenden = new ButtonType("OK");
-			alert.getButtonTypes().setAll(beenden);
+			ButtonType close = new ButtonType("OK");
+			alert.getButtonTypes().setAll(close);
 			Optional<ButtonType> result = alert.showAndWait();
 			
-			if(result.get() == beenden){
+			if(result.get() == close){
 					Platform.exit();
 					System.exit(0);
 					e.consume();

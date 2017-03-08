@@ -14,8 +14,8 @@ public interface IViewModel extends Remote {
 	void changeChat (String message, int id) throws RemoteException;
 	
 	void spielStarten () throws RemoteException;
-	void spielWiederholen (int id) throws RemoteException;
-	void spielBeenden(int id) throws RemoteException;
+	void restartGame (int id) throws RemoteException;
+	void quitGame (int id) throws RemoteException;
 	
 	
 }

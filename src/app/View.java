@@ -14,8 +14,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Window;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Optional;
@@ -23,37 +21,26 @@ import java.util.Optional;
 public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	private Thread thread;
-	private static final long serialVersionUID = 1L;
-	
-	final String PS = "ps";
+	final String HP = "ps";
 	final String KMH = "kmh";
-	final String VERBRAUCH = "verbrauch";
+	final String CONSUMPTION = "verbrauch";
 	final String CCM = "ccm";
-	final String BESCHLEUNIGUNG = "beschleunigung";
-	
+	final String ACCELERATION = "beschleunigung";
+	private static final long serialVersionUID = 1L;
 	private int id;
-	
 	private IViewModel viewmodel;
-	
 	@FXML
 	private GridPane hideOnEnd;
-	
 	@FXML
 	private Pane showOnEnd, hideOnEnd2;
-	
 	@FXML
-	private Text labelName, labelPS, labelKMH, labelVerbrauch, labelCCM, labelBeschleunigung, labelKartenanzahl, labelRundenstatus;
-	
+	private Text labelName, labelHP, labelKMH, labelConsumption, labelCCM, labelAcceleration, labelKartenanzahl, labelRundenstatus;
 	@FXML
-	private Button buttonPS, buttonKMH, buttonVerbrauch, buttonCCM, buttonBeschleunigung, restartButton, endGameButton;
-	
+	private Button buttonHP, buttonKMH, buttonConsumption, buttonCCM, buttonAcceleration, restartButton, endGameButton;
 	@FXML
 	private ImageView imageDisplay;
-	
-	
 	@FXML
 	private TextField textField = new TextField();
-	
 	@FXML
 	private TextArea textArea = new TextArea();
 
@@ -68,10 +55,14 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 		showOnEnd.setVisible(false);
     }
 	
+	@Override
+	public int getID() throws RemoteException{
+		return id;
+	}
+	
 	@FXML
-	private void comparePS(ActionEvent event) throws RemoteException{
-		viewmodel.change(PS);
-		System.out.println("View: comparePS");
+	private void compareHP(ActionEvent event) throws RemoteException{
+		viewmodel.change(HP);
 	}
 	
 	@FXML
@@ -80,8 +71,8 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	}
 	
 	@FXML
-	private void compareVerbrauch(ActionEvent event) throws RemoteException{
-		viewmodel.change(VERBRAUCH);
+	private void compareConsumption(ActionEvent event) throws RemoteException{
+		viewmodel.change(CONSUMPTION);
 	}
 	
 	@FXML
@@ -90,26 +81,25 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	}
 	
 	@FXML
-	private void compareBeschleunigung(ActionEvent event) throws RemoteException{
-		viewmodel.change(BESCHLEUNIGUNG);
+	private void compareAcceleration(ActionEvent event) throws RemoteException{
+		viewmodel.change(ACCELERATION);
 	}
 	
 	@FXML
 	private void restartGame (ActionEvent event) throws RemoteException{
-		viewmodel.spielWiederholen(this.getID());
+		viewmodel.restartGame(this.getID());
 		restartButton.setDisable(true);
 		endGameButton.setDisable(true);
 	}
 	
 	@FXML
 	private void endGame (ActionEvent event) throws Exception{
-		viewmodel.spielBeenden(getID());
+		viewmodel.quitGame(this.getID());
 		showAlert();
-		System.out.println("endGame");
 	}
 	
 	@FXML
-	private void senden(ActionEvent event) throws RemoteException{
+	private void send(ActionEvent event) throws RemoteException{
 		String message = textField.getText();
 		textArea.appendText("Spieler: "+ message  + "\n");		
 		textField.clear();
@@ -118,25 +108,25 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	
 	@FXML
 	private void enter(ActionEvent event) throws RemoteException{
-		this.senden(event);
+		this.send(event);
 	}
 	
 	@Override
 	public void update(String name, String ps, String kmh, String verbrauch, String ccm, String beschleunigung,
-			boolean aktiverSpieler, int kartenanzahl, String jpgUrl, String status) throws RemoteException {
+			boolean aktiverSpieler, int numberOfCards, String jpgUrl, String status) throws RemoteException {
 
-		if (kartenanzahl == 0 || kartenanzahl == 16){
+		if (numberOfCards == 0 || numberOfCards == 16){
 			hideOnEnd.setVisible(false);
 			hideOnEnd2.setVisible(false);
 			showOnEnd.setVisible(true);
 			
-			if(kartenanzahl == 0){
+			if(numberOfCards == 0){
 				labelName.setText("CRASH Du hast verloren");
 				String image = new String("/Img/car_crash.jpg");
 		        Image imageUse = new Image(image);
 		        imageDisplay.setImage(imageUse);
 			}
-			if(kartenanzahl == 16){
+			if(numberOfCards == 16){
 				labelName.setText("WINNER Du hast gewonnen");
 				String image = new String("/Img/Zielflagge.jpg");
 		        Image imageUse = new Image(image);
@@ -153,17 +143,17 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			thread = new Thread () {
 				public void run() {		
 					Platform.runLater(() -> labelName.setText(name));
-					Platform.runLater(() -> labelPS.setText(ps));
+					Platform.runLater(() -> labelHP.setText(ps));
 					Platform.runLater(() -> labelKMH.setText(kmh));
-					Platform.runLater(() -> labelVerbrauch.setText(verbrauch));
+					Platform.runLater(() -> labelConsumption.setText(verbrauch));
 					Platform.runLater(() -> labelCCM.setText(ccm));
-					Platform.runLater(() -> labelBeschleunigung.setText(beschleunigung));
-					Platform.runLater(() -> buttonPS.setDisable(!aktiverSpieler));
+					Platform.runLater(() -> labelAcceleration.setText(beschleunigung));
+					Platform.runLater(() -> buttonHP.setDisable(!aktiverSpieler));
 					Platform.runLater(() -> buttonKMH.setDisable(!aktiverSpieler));
-					Platform.runLater(() -> buttonVerbrauch.setDisable(!aktiverSpieler));
+					Platform.runLater(() -> buttonConsumption.setDisable(!aktiverSpieler));
 					Platform.runLater(() -> buttonCCM.setDisable(!aktiverSpieler));
-					Platform.runLater(() -> buttonBeschleunigung.setDisable(!aktiverSpieler));
-					Platform.runLater(() -> labelKartenanzahl.setText(String.valueOf(kartenanzahl)));
+					Platform.runLater(() -> buttonAcceleration.setDisable(!aktiverSpieler));
+					Platform.runLater(() -> labelKartenanzahl.setText(String.valueOf(numberOfCards)));
 					Platform.runLater(() -> imageDisplay.setImage(imageUse));
 					Platform.runLater(() -> labelRundenstatus.setText(status));
 				}
@@ -171,20 +161,12 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			thread.start();
 		}
 	}
-
-	@Override
-	public int getID() throws RemoteException{
-		return id;
-	}
-
+	
 	@Override
 	public void updateChat(String message) throws RemoteException{
-		System.out.println("updateChat()");
 		thread = new Thread () {
 			public void run() {		
 				Platform.runLater(() -> textArea.appendText(message  + "\n"));
-
-				System.out.println("updateChat() run()");
 			}
 		};
 		thread.start();
@@ -200,7 +182,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 				Platform.runLater(() -> endGameButton.setDisable(false));
 				Platform.runLater(() -> hideOnEnd2.setVisible(true));
 				Platform.runLater(() -> labelRundenstatus.setText("Jetzt gehts los"));
-				System.out.println("updateSpielwiederholung() run()");
 			}
 		};
 		thread.start();
@@ -222,11 +203,11 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Verbindung");
 			alert.setHeaderText("Spiel wurde beendet!");
-			ButtonType beenden = new ButtonType("OK");
-			alert.getButtonTypes().setAll(beenden);
+			ButtonType close = new ButtonType("OK");
+			alert.getButtonTypes().setAll(close);
 			Optional<ButtonType> result = alert.showAndWait();
 			
-			if(result.get() == beenden){
+			if(result.get() == close){
 				Platform.exit();
 				System.exit(0);
 				
@@ -235,7 +216,6 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 				alert.hide();
 			}
 		} catch (Exception e) {
-			System.out.println("Hier muss das Fenster schließen!");
 			e.printStackTrace();
 			Platform.exit();
 			System.exit(0);

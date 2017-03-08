@@ -28,11 +28,11 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	// wenn true, dann spieler1
 	// wenn falls dann spieler2
 	
-	private Beobachter spieler1;
-	private Beobachter spieler2;
+	private Beobachter player1;
+	private Beobachter player2;
 	
-	private boolean spieler1Bereit;
-	private boolean spieler2Bereit;
+	private boolean player1Ready;
+	private boolean player2Ready;
 	
 	
 	private BooleanProperty aktiverSpieler1 = new SimpleBooleanProperty();
@@ -127,14 +127,14 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 
 			@Override
 			public void setBeobachter_1(Beobachter beobachter) throws RemoteException {
-				spieler1 = beobachter;
+				player1 = beobachter;
 				updateBeobachter_1();
 				
 			}
 			
 			@Override
 			public void setBeobachter_2(Beobachter beobachter) throws RemoteException {
-				spieler2 = beobachter;
+				player2 = beobachter;
 				updateBeobachter_2();
 				
 			}
@@ -147,11 +147,11 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				String ccm = spieler1Ccm.getValue();
 				String beschleunigung = spieler1Beschleunigung.getValue();
 				boolean gewinner = aktiverSpieler1.getValue();
-				int kartenanzahl = spieler1Kartenanzahl.getValue();
+				int numberofCards = spieler1Kartenanzahl.getValue();
 				String jpgUrl = spieler1JpgUrl.getValue();
 				String status = spieler1Status.getValue();
 				
-				spieler1.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl, status);	
+				player1.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, numberofCards, jpgUrl, status);	
 			}
 			
 			void updateBeobachter_2() throws RemoteException { 
@@ -162,21 +162,21 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 				String ccm = spieler2Ccm.getValue();
 				String beschleunigung = spieler2Beschleunigung.getValue();
 				boolean gewinner =! aktiverSpieler1.getValue();
-				int kartenanzahl = spieler2Kartenanzahl.getValue();
+				int numberofCards = spieler2Kartenanzahl.getValue();
 				String jpgUrl = spieler2JpgUrl.getValue();
 				String status = spieler2Status.getValue();
 				 
 				
-				spieler2.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, kartenanzahl, jpgUrl, status);
+				player2.update(name, ps, kmh, verbrauch, ccm, beschleunigung, gewinner, numberofCards, jpgUrl, status);
 				
 			}
 
 			@Override
 			public void changeChat(String message, int id) throws RemoteException {
-				if (id == spieler1.getID()) {
-					spieler2.updateChat("Gegner: " + message);
+				if (id == player1.getID()) {
+					player2.updateChat("Gegner: " + message);
 				} else {
-					spieler1.updateChat("Gegner: " + message);
+					player1.updateChat("Gegner: " + message);
 				}
 				
 			}
@@ -187,31 +187,31 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 			}
 
 			@Override
-			public void spielWiederholen(int id) throws RemoteException {
-				if (id == spieler1.getID()) {
-					spieler1Bereit = true;
-				} else if(id == spieler2.getID()) {
-					spieler2Bereit = true;
+			public void restartGame(int id) throws RemoteException {
+				if (id == player1.getID()) {
+					player1Ready = true;
+				} else if(id == player2.getID()) {
+					player2Ready = true;
 				}
-				if (spieler1Bereit == true && spieler2Bereit == true) {
+				if (player1Ready == true && player2Ready == true) {
 					model.repeatGame();
 					this.updateBeobachter_1();
 					this.updateBeobachter_2();
-					this.spieler1.updateRestartGame();
-					this.spieler2.updateRestartGame();
-					spieler1Bereit = false;
-					spieler2Bereit = false;
+					this.player1.updateRestartGame();
+					this.player2.updateRestartGame();
+					player1Ready = false;
+					player2Ready = false;
 				}
 			}
 
 
 
 			@Override
-			public void spielBeenden(int id) throws RemoteException {
-				if (id == spieler1.getID()) {
-					spieler2.updateQuitGame();
-				} else if (id == spieler2.getID()) {
-					spieler1.updateQuitGame();
+			public void quitGame(int id) throws RemoteException {
+				if (id == player1.getID()) {
+					player2.updateQuitGame();
+				} else if (id == player2.getID()) {
+					player1.updateQuitGame();
 				}
 			}
 }

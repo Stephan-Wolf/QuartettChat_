@@ -45,7 +45,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                     	 <Button fx:id="buttonPS" mnemonicParsing="false" onAction="#comparePS" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
+                     	 <Button fx:id="buttonHP" mnemonicParsing="false" onAction="#compareHP" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
                            <font>
                               <Font name="Courier" size="11.0" />
                            </font>
@@ -55,7 +55,7 @@
                               <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buttonVerbrauch" mnemonicParsing="false" onAction="#compareVerbrauch" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="buttonConsumption" mnemonicParsing="false" onAction="#compareConsumption" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Courier" size="11.0" />
                            </font>
@@ -65,12 +65,12 @@
                               <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buttonBeschleunigung" mnemonicParsing="false" onAction="#compareBeschleunigung" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Button fx:id="buttonAcceleration" mnemonicParsing="false" onAction="#compareAcceleration" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
-                        <Text fx:id="labelPS" strokeType="OUTSIDE" strokeWidth="0.0">
+                        <Text fx:id="labelHP" strokeType="OUTSIDE" strokeWidth="0.0">
                         <font>
                               <Font name="Courier" size="11.0" />
                            </font>
@@ -80,7 +80,7 @@
                               <Font name="Courier" size="11.0" />
                            </font>
                         </Text>
-                        <Text fx:id="labelVerbrauch" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2">
+                        <Text fx:id="labelConsumption" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2">
                          <font>
                               <Font name="Courier" size="11.0" />
                            </font>
@@ -90,7 +90,7 @@
                               <Font name="Courier" size="11.0" />
                            </font>
                         </Text>
-                        <Text fx:id="labelBeschleunigung" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4">
+                        <Text fx:id="labelAcceleration" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="4">
                          <font>
                               <Font name="Courier" size="11.0" />
                            </font>
@@ -149,7 +149,7 @@
                               <Font name="Courier" size="11.0" />
                            </font>
                         </TextField>
-                  <Button layoutX="7.0" layoutY="403.0" mnemonicParsing="false" onAction="#senden" prefHeight="26.0" prefWidth="218.0" text="Senden">
+                  <Button layoutX="7.0" layoutY="403.0" mnemonicParsing="false" onAction="#send" prefHeight="26.0" prefWidth="218.0" text="Senden">
                    <font>
                               <Font name="Courier" size="13.0" />
                            </font>
