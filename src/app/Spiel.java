@@ -27,7 +27,7 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 	// boolean aktiverSpieler1Boolean;
 	private Spieler player1;
 	private Spieler player2;
-	private Kartenstapel cardStack;
+	private GameCardStack cardStack;
 	private int players1NumberOfCards;
 	private int players2NumberOfCards;
 	private boolean gameover = false;
@@ -66,7 +66,7 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 	
 	
 	public Spiel () throws RemoteException {
-		cardStack = new Kartenstapel();
+		cardStack = new GameCardStack();
 		player1 = new Spieler();
 		player2 = new Spieler();
 		determineGameInitiator();
@@ -123,7 +123,7 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 	public void repeatGame () {
 		
 		// zuerst die alten  Kartenstapel-Objekt, Spielerstapel-Objekte l�schen?
-		cardStack = new Kartenstapel();
+		cardStack = new GameCardStack();
 		gameover = false;
 		this.mixCards();
 		this.dealCards();
@@ -148,12 +148,12 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 	
 	private void mixCards() {
 		System.out.println("kartenMischen()");
-		this.cardStack.mischen();
+		this.cardStack.mix();
 	}
 	
 
 	private void dealCards(){
-		PlayerCardStack playerCardStack [] = cardStack.gebeSpielerstapel();
+		PlayerCardStack playerCardStack [] = cardStack.getPlayerCardStacks();
 
 		this.player1.setPlayerCardStack(playerCardStack[0]);
 		this.player1.uncoverTopCard();
