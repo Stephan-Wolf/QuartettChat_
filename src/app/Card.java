@@ -101,7 +101,7 @@ public class Card {
 //	}
 	
 
-	public void printKarte(){
+	public void printCard(){
     	System.out.println(this.getName());
     }
     

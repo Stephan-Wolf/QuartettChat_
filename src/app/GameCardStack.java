@@ -68,7 +68,7 @@ import java.util.Collections;
 	
 	public void printAllCards(){
 		for(Card card: cards){
-			card.printKarte();
+			card.printCard();
 		}
 	}
 	
@@ -86,10 +86,10 @@ import java.util.Collections;
 		for(int i = 0; i < numberOfCards; i++) {
 			if (i%2 == 0) {
 				Card card = cards.removeLast();
-				players1CardStack.fuegeKarteObenHinzu(card);
+				players1CardStack.addCardOnTop(card);
 			} else {
 				Card card = cards.removeLast();
-				players2CardStack.fuegeKarteObenHinzu(card);
+				players2CardStack.addCardOnTop(card);
 			}
 		}
 		playerCardStacks[0]  = players1CardStack;

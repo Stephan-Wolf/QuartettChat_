@@ -157,12 +157,12 @@ public class Spiel extends UnicastRemoteObject implements IGame {
 
 		this.player1.setPlayerCardStack(playerCardStack[0]);
 		this.player1.uncoverTopCard();
-		players1NumberOfCards = playerCardStack[0].liefereKartenanzahl();
+		players1NumberOfCards = playerCardStack[0].getNumberOfCards();
 		spieler1Kartenanzahl.setValue(String.valueOf(players1NumberOfCards)); 
 		
 		this.player2.setPlayerCardStack(playerCardStack [1]);
 		this.player2.uncoverTopCard();
-		players2NumberOfCards = playerCardStack [1].liefereKartenanzahl();
+		players2NumberOfCards = playerCardStack [1].getNumberOfCards();
 		spieler2Kartenanzahl.setValue(String.valueOf(players2NumberOfCards));
 		System.out.println();
 		System.out.println("kartenAusteilen()");

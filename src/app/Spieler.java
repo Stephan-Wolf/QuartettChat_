@@ -31,11 +31,11 @@ public class Spieler {
 	
 	// TEstMEthode
 	public void printAllCards() {
-		playerCardStack.zeigeKarten();
+		playerCardStack.printCards();
 	}
 	
 	public void receiveCard(Card card){
-		playerCardStack.fuegeKarteUntenHinzu(card);
+		playerCardStack.addCardAtTheBottom(card);
 	}
 	
 	public void setPlayerCardStack(PlayerCardStack playerCardStack){
@@ -43,17 +43,17 @@ public class Spieler {
 	}
 	
 	public Card giveCard(){
-		return playerCardStack.entferneKarte();
+		return playerCardStack.removeCard();
 	}
 
 	public void moveTopCardDownwards() {
-		Card card = playerCardStack.entferneKarte();
-		playerCardStack.fuegeKarteUntenHinzu(card);
+		Card card = playerCardStack.removeCard();
+		playerCardStack.addCardAtTheBottom(card);
 		
 	}
 	
 	public void uncoverTopCard() {
-		Card topCard =  playerCardStack.gebeObereKarte();
+		Card topCard =  playerCardStack.getTopCard();
 		nameOfTopCard.setValue(topCard.getName());
 		hpAttributeOfTopCard.setValue(topCard.getHp());
 		kmhAttributeOfTopCard.setValue(topCard.getKmh());

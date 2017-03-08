@@ -1,52 +1,50 @@
 package app;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Collections;
 
 public class PlayerCardStack {
 	
-	private LinkedList<Card> stapel;
+	private LinkedList<Card> cards;
 	
 	public PlayerCardStack() {
-		stapel = new LinkedList<Card> ();
+		cards = new LinkedList<Card> ();
 	}
 	
-	public Card entferneKarte(){
-		return stapel.removeLast();
+	public Card removeCard(){
+		return cards.removeLast();
 	}
 	
-	void fuegeKarteObenHinzu (Card k) {
+	void addCardOnTop (Card card) {
 		// hinten anh�ngen ?? adlast??
-		stapel.addLast(k);
+		cards.addLast(card);
 		
 	}
 	
-	public LinkedList<Card> getList() {
-	       return stapel;
+	public LinkedList<Card> getAllCards() {
+	       return cards;
 	}
 	
-	void fuegeKarteUntenHinzu (Card k) {
+	void addCardAtTheBottom (Card card) {
 		// vorne anh�ngen
-		stapel.addFirst(k);
+		cards.addFirst(card);
 	}
 	
-	void setStapel (LinkedList<Card> k) {
-		stapel = k;
+//	void setCards (LinkedList<Card> cards) {
+//		this.cards = cards;
+//	}
+	
+	public Card getTopCard() {
+		return cards.getLast();
 	}
 	
-	public Card gebeObereKarte() {
-		return stapel.getLast();
+	public int getNumberOfCards () {
+		int numberOfCards = cards.size();
+		return numberOfCards;
 	}
 	
-	public int liefereKartenanzahl () {
-		int kartenanzahl = stapel.size();
-		return kartenanzahl;
-	}
-	
-	public void zeigeKarten() {
-		for (int i = 0; i < stapel.size(); i++) {
-			stapel.get(i).printKarte();
+	public void printCards() {
+		for (int i = 0; i < cards.size(); i++) {
+			cards.get(i).printCard();
 		}
 	}
 	
