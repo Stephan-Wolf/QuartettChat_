@@ -27,7 +27,6 @@ public class StartController  {
 			final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
 			View user = new View(viewmodel,2);
 			viewmodel.setObserver2(user);
-			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));
 			loader.setController(user);
 			Parent root = loader.load();
@@ -35,19 +34,14 @@ public class StartController  {
 			Stage UI_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			UI_stage.setScene(UI_scene);
 			UI_stage.show();
-			
 			UI_stage.setOnCloseRequest(e -> {
-				
 				try {
 					viewmodel.quitGame(user.getID());
 					showAlert(e);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
 			});
-			System.out.println("Client verbunden!");
 		} catch(Exception e) {
 			final IGame model = new Game ();
 	        final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
@@ -75,7 +69,6 @@ public class StartController  {
 						e1.printStackTrace();
 					}
 				});
-				System.out.println("Server läuft!");
 			} catch (Exception e2) {
 				e.printStackTrace();
 			}
@@ -90,8 +83,6 @@ public class StartController  {
 		info_stage.setScene(info_scene);
 		info_stage.show();
     }
-    
-    
     
 	public void showAlert(WindowEvent e) {
 		try {
@@ -115,9 +106,5 @@ public class StartController  {
 			Platform.exit();
 			System.exit(0);
 		}
-		
 	}
-    
-    
-
 }
