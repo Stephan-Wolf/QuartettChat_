@@ -12,9 +12,6 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class Game extends UnicastRemoteObject implements IGame {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private static final int ROUNDWINNER_PLAYER_1 = 1;

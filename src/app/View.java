@@ -18,7 +18,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Optional;
 
-public class View  extends UnicastRemoteObject implements Beobachter {
+public class View  extends UnicastRemoteObject implements Observer {
 	
 	private Thread thread;
 	final String HP = "ps";
@@ -112,8 +112,8 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 	}
 	
 	@Override
-	public void update(String name, String ps, String kmh, String verbrauch, String ccm, String beschleunigung,
-			boolean aktiverSpieler, int numberOfCards, String jpgUrl, String status) throws RemoteException {
+	public void update(String name, String hp, String kmh, String consumption, String ccm, String acceleration,
+			boolean isPlayerActive, int numberOfCards, String jpgUrl, String status) throws RemoteException {
 
 		if (numberOfCards == 0 || numberOfCards == 16){
 			hideOnEnd.setVisible(false);
@@ -143,16 +143,16 @@ public class View  extends UnicastRemoteObject implements Beobachter {
 			thread = new Thread () {
 				public void run() {		
 					Platform.runLater(() -> labelName.setText(name));
-					Platform.runLater(() -> labelHP.setText(ps));
+					Platform.runLater(() -> labelHP.setText(hp));
 					Platform.runLater(() -> labelKMH.setText(kmh));
-					Platform.runLater(() -> labelConsumption.setText(verbrauch));
+					Platform.runLater(() -> labelConsumption.setText(consumption));
 					Platform.runLater(() -> labelCCM.setText(ccm));
-					Platform.runLater(() -> labelAcceleration.setText(beschleunigung));
-					Platform.runLater(() -> buttonHP.setDisable(!aktiverSpieler));
-					Platform.runLater(() -> buttonKMH.setDisable(!aktiverSpieler));
-					Platform.runLater(() -> buttonConsumption.setDisable(!aktiverSpieler));
-					Platform.runLater(() -> buttonCCM.setDisable(!aktiverSpieler));
-					Platform.runLater(() -> buttonAcceleration.setDisable(!aktiverSpieler));
+					Platform.runLater(() -> labelAcceleration.setText(acceleration));
+					Platform.runLater(() -> buttonHP.setDisable(!isPlayerActive));
+					Platform.runLater(() -> buttonKMH.setDisable(!isPlayerActive));
+					Platform.runLater(() -> buttonConsumption.setDisable(!isPlayerActive));
+					Platform.runLater(() -> buttonCCM.setDisable(!isPlayerActive));
+					Platform.runLater(() -> buttonAcceleration.setDisable(!isPlayerActive));
 					Platform.runLater(() -> labelKartenanzahl.setText(String.valueOf(numberOfCards)));
 					Platform.runLater(() -> imageDisplay.setImage(imageUse));
 					Platform.runLater(() -> labelRundenstatus.setText(status));

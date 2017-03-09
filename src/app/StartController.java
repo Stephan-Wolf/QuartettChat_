@@ -35,7 +35,7 @@ public class StartController  {
 			final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
 			System.out.println(registry);
 			View anwender = new View(viewmodel,2);
-			viewmodel.setBeobachter_2(anwender);
+			viewmodel.setObserver2(anwender);
 			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));
 			loader.setController(anwender);
@@ -70,7 +70,7 @@ public class StartController  {
 			try {
 				viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
 				View anwender = new View(viewmodel,1);
-				viewmodel.setBeobachter_1(anwender);
+				viewmodel.setObserver1(anwender);
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));
 				loader.setController(anwender);
 				Parent root = loader.load();

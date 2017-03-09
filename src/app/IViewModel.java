@@ -7,13 +7,12 @@ public interface IViewModel extends Remote {
 
     String IMODELVIEW = "QuartettChat";
 	
-	public void change (String vergleichsattribut) throws RemoteException;
-	public void setBeobachter_1 (Beobachter beobachter_1) throws RemoteException;
-	public void setBeobachter_2 (Beobachter beobachter_2) throws RemoteException;
+	public void change (String comparisonAttribute) throws RemoteException;
+	public void setObserver1 (Observer observer) throws RemoteException;
+	public void setObserver2 (Observer observer) throws RemoteException;
 	
 	void changeChat (String message, int id) throws RemoteException;
 	
-	void spielStarten () throws RemoteException;
 	void restartGame (int id) throws RemoteException;
 	void quitGame (int id) throws RemoteException;
 	
