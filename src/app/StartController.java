@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package app;
 
 import java.io.IOException;
@@ -18,12 +13,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 public class StartController  {
@@ -33,12 +25,11 @@ public class StartController  {
 		try {
 			final Registry registry = LocateRegistry.getRegistry("localhost");
 			final IViewModel viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
-			System.out.println(registry);
-			View anwender = new View(viewmodel,2);
-			viewmodel.setObserver2(anwender);
+			View user = new View(viewmodel,2);
+			viewmodel.setObserver2(user);
 			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));
-			loader.setController(anwender);
+			loader.setController(user);
 			Parent root = loader.load();
 			Scene UI_scene = new Scene(root); 
 			Stage UI_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -48,7 +39,7 @@ public class StartController  {
 			UI_stage.setOnCloseRequest(e -> {
 				
 				try {
-					viewmodel.quitGame(anwender.getID());
+					viewmodel.quitGame(user.getID());
 					showAlert(e);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -61,18 +52,14 @@ public class StartController  {
 			final IGame model = new Game ();
 	        final Registry registry = LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
 	        final IViewModel modelview = new ViewModel(model);
-	        System.out.println(registry);
 	        registry.rebind(IViewModel.IMODELVIEW, modelview);	
-	    	
-	        
-			 System.out.println(registry);   
-			 IViewModel viewmodel;
+			IViewModel viewmodel;
 			try {
 				viewmodel = (IViewModel) registry.lookup(IViewModel.IMODELVIEW);
-				View anwender = new View(viewmodel,1);
-				viewmodel.setObserver1(anwender);
+				View user = new View(viewmodel,1);
+				viewmodel.setObserver1(user);
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("UI.fxml"));
-				loader.setController(anwender);
+				loader.setController(user);
 				Parent root = loader.load();
 				Scene UI_scene = new Scene(root); 
 				Stage UI_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -81,17 +68,15 @@ public class StartController  {
 				UI_stage.setOnCloseRequest(e2 -> {
 					
 					try {
-						viewmodel.quitGame(anwender.getID());
+						viewmodel.quitGame(user.getID());
 						showAlert(e2);
 						
 					} catch (Exception e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				});
 				System.out.println("Server läuft!");
 			} catch (Exception e2) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -126,7 +111,6 @@ public class StartController  {
 				e.consume();
 			}
 		} catch (Exception e1) {
-			System.out.println("Hier muss das Fenster schließen!");
 			e1.printStackTrace();
 			Platform.exit();
 			System.exit(0);
