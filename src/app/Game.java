@@ -43,7 +43,6 @@ public class Game extends UnicastRemoteObject implements IGame {
 		player1 = new Player();
 		player2 = new Player();
 		determineGameInitiator();
-		
 	}
 	
 	private void determineGameInitiator () {

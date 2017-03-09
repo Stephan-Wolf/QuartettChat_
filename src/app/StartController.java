@@ -19,7 +19,8 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 public class StartController  {
-
+	
+	
     @FXML
 	private void start(ActionEvent event) throws IOException{
 		try {
