@@ -43,29 +43,6 @@ import java.util.Collections;
 		cards.add(card16);
 	}
 	
-	public Card getCard(int id){
-		return cards.get(id);
-	}
-	
-	public void addCard(Card card){
-		cards.add(card);
-	}
-	
-	// Wird das überhaupt benötigt?  
-	public void removeCard(int index){
-		cards.remove(index);
-	}
-	
-//	//Testen
-//	public void removeFirstCard(){
-//		cards.removeFirst();
-//	}
-//	
-	
-	public LinkedList<Card> getAllCards(){
-	       return cards;
-	}
-	
 	public void printAllCards(){
 		for(Card card: cards){
 			card.printCard();

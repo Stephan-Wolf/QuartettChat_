@@ -16,15 +16,20 @@ public class Game extends UnicastRemoteObject implements IGame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	private static final int ROUNDWINNER_PLAYER_1 = 1;
 	private static final int ROUNDWINNER_PLAYER_2 = 2;
 	private static final int DRAW = 0;
 	
-	final String HP = "ps";
-	final String KMH = "kmh";
-	final String CONSUMPTION = "verbrauch";
-	final String CCM = "ccm";
-	final String ACCELERATION = "beschleunigung";
+	private static final String HP = "ps";
+	private static final String KMH = "kmh";
+	private static final String CONSUMPTION = "verbrauch";
+	private static final String CCM = "ccm";
+	private static final String ACCELERATION = "beschleunigung";
+	
+	private static final String LOST_ROUND = "Runde verloren";
+	private static final String WON_ROUND = "Runde gewonnen";
+	private static final String DRAWN_ROUND = "Runde untentschieden";
 	
 	private Player player1;
 	private Player player2;
@@ -32,10 +37,7 @@ public class Game extends UnicastRemoteObject implements IGame {
 	private boolean gameover = false;
 	
 	private BooleanProperty player1IsActive = new SimpleBooleanProperty();
-	
-
 	private StringProperty spieler1Status = new SimpleStringProperty();
-	
 	private StringProperty spieler2Status = new SimpleStringProperty();
 
 	
@@ -213,14 +215,17 @@ public class Game extends UnicastRemoteObject implements IGame {
 	
 	private void updateRoundWinner(int roundResult)  {
 		if (roundResult == ROUNDWINNER_PLAYER_1) {
-			spieler1Status.setValue("Runde gewonnen");
-			spieler2Status.setValue("Runde verloren");
+			spieler1Status.setValue(WON_ROUND);
+			spieler2Status.setValue(LOST_ROUND);
 			player1IsActive.setValue(true);
 		}
 		else if (roundResult == ROUNDWINNER_PLAYER_2) {
-			spieler1Status.setValue("Runde verloren");
-			spieler2Status.setValue("Runde gewonnen");
+			spieler1Status.setValue(LOST_ROUND);
+			spieler2Status.setValue(WON_ROUND);
 			player1IsActive.setValue(false);	
+		} else {
+			spieler1Status.setValue(DRAWN_ROUND);
+			spieler2Status.setValue(DRAWN_ROUND);
 		}
 	}
 	
@@ -228,58 +233,50 @@ public class Game extends UnicastRemoteObject implements IGame {
 		return this.player1.hpAttributeOfTopCardProperty();
 	}
 	
-	public StringProperty players1KmhProperty () {
-		return this.player1.kmhAttributeOfTopCardProperty();
-	}
-	
-	public StringProperty palyers1ConsumptionProperty () {
-		return this.player1.consumptionAttributeOfTopCardProperty();
-	}
-	
-	public StringProperty players1CcmProperty () {
-		return this.player1.ccmAttributeOfTopCardProperty();
-	}
-	
-	public StringProperty players1AccelerationProperty () {
-		return this.player1.accelerationAttributeOfTopCardProperty();
-	}
-	
-	
-	public StringProperty players1SourceOfJpgProperty () {
-		return this.player1.jpgSourceOfTopCardProperty();
-	}
-	
 	public StringProperty players2HpProperty () {
 		return this.player2.hpAttributeOfTopCardProperty();
+	}
+	
+	public StringProperty players1KmhProperty () {
+		return this.player1.kmhAttributeOfTopCardProperty();
 	}
 	
 	public StringProperty players2KmhProperty () {
 		return this.player2.kmhAttributeOfTopCardProperty();
 	}
 	
+	public StringProperty palyers1ConsumptionProperty () {
+		return this.player1.consumptionAttributeOfTopCardProperty();
+	}
+	
 	public StringProperty players2ConsumptionProperty () {
 		return this.player2.consumptionAttributeOfTopCardProperty();
+	}
+	
+	public StringProperty players1CcmProperty () {
+		return this.player1.ccmAttributeOfTopCardProperty();
 	}
 	
 	public StringProperty players2CcmProperty () {
 		return this.player2.ccmAttributeOfTopCardProperty();
 	}
 	
+	public StringProperty players1AccelerationProperty () {
+		return this.player1.accelerationAttributeOfTopCardProperty();
+	}
+	
 	public StringProperty players2AccelerationProperty () {
 		return this.player2.accelerationAttributeOfTopCardProperty();
 	}
 	
+	public StringProperty players1SourceOfJpgProperty () {
+		return this.player1.jpgSourceOfTopCardProperty();
+	}
 	
 	public StringProperty players2SourceOfJpgProperty () {
 		return this.player2.jpgSourceOfTopCardProperty();
 	}
 	
-	
-	public BooleanProperty activePlayer1Property () {
-			return this.player1IsActive;
-	
-	}
-
 	
 	public StringProperty players1CardNameProperty () {
 		return this.player1.nameOfTopCardProperty();
@@ -304,5 +301,9 @@ public class Game extends UnicastRemoteObject implements IGame {
 	
 	public StringProperty players2StatusProperty () {
 		return this.spieler2Status;
+	}
+	
+	public BooleanProperty activePlayer1Property () {
+		return this.player1IsActive;
 	}
 }

@@ -15,24 +15,14 @@ public class PlayerCardStack {
 	}
 	
 	void addCardOnTop (Card card) {
-		// hinten anh�ngen ?? adlast??
 		cards.addLast(card);
 		
 	}
 	
-	public LinkedList<Card> getAllCards() {
-	       return cards;
-	}
-	
 	void addCardAtTheBottom (Card card) {
-		// vorne anh�ngen
 		cards.addFirst(card);
 	}
-	
-//	void setCards (LinkedList<Card> cards) {
-//		this.cards = cards;
-//	}
-	
+		
 	public Card getTopCard() {
 		return cards.getLast();
 	}
