@@ -233,7 +233,7 @@
                         <String fx:value="-fx-background-radius: 10 10 10 10;" />
                      </styleClass>
                   </AnchorPane>
-                  <Button layoutX="7.0" layoutY="339.0" mnemonicParsing="false" onAction="#backbtn" text="Zurück zum Hauptmenü">
+                  <Button layoutX="7.0" layoutY="339.0" mnemonicParsing="false" onAction="#backToStart" text="Zurück zum Hauptmenü">
                      <font>
                         <Font name="Courier" size="12.0" />
                      </font></Button>

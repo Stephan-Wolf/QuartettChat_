@@ -20,7 +20,12 @@ import javafx.stage.WindowEvent;
 
 public class StartController  {
 	
-	
+	/**
+	 * Starts the game #onAction-Button
+	 *
+	 * catch-Block starts Server and Player 1 and UI.fxml 
+	 * try-Block starts Client (connects with Server) and Player 2 and UI.fxml 
+	 */
     @FXML
 	private void start(ActionEvent event) throws IOException{
 		try {
@@ -60,14 +65,14 @@ public class StartController  {
 				Stage UI_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 				UI_stage.setScene(UI_scene);
 				UI_stage.show();
-				UI_stage.setOnCloseRequest(e2 -> {
+				UI_stage.setOnCloseRequest(e1 -> {
 					
 					try {
 						viewmodel.quitGame(user.getID());
-						showAlert(e2);
+						showAlert(e1);
 						
-					} catch (Exception e1) {
-						e1.printStackTrace();
+					} catch (Exception e2) {
+						e2.printStackTrace();
 					}
 				});
 			} catch (Exception e2) {
@@ -76,6 +81,9 @@ public class StartController  {
 		}
     }
     
+    /**
+	 * Starts the Info-window with #info-Button
+	 */
     @FXML
     private void info(ActionEvent event) throws IOException{
     	Parent info_parent = FXMLLoader.load(getClass().getResource("Info.fxml"));
@@ -85,6 +93,9 @@ public class StartController  {
 		info_stage.show();
     }
     
+    /**
+	 * The Alert shown when Stage is closed
+	 */
 	public void showAlert(WindowEvent e) {
 		try {
 			Alert alert = new Alert(AlertType.WARNING);
@@ -108,4 +119,5 @@ public class StartController  {
 			System.exit(0);
 		}
 	}
+	
 }

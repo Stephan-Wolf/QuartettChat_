@@ -11,8 +11,11 @@ import javafx.stage.Stage;
 
 public class InfoController  {
 
+	/**
+	 * 
+	 */
 	@FXML
-	private void backbtn(ActionEvent event) throws IOException{
+	private void backToStart(ActionEvent event) throws IOException{
 		Parent start_parent = FXMLLoader.load(getClass().getResource("Start.fxml"));
     	Scene start_scene = new Scene(start_parent); 
 		Stage start_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -23,6 +23,10 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	
 	private BooleanProperty isPlayer1Active = new SimpleBooleanProperty();
 	
+	
+	/**
+	 * All the variables for both players
+	 */
 	private StringProperty players1CardName =  new SimpleStringProperty();
 	private StringProperty players1SourceOfJpg =  new SimpleStringProperty();
 	private StringProperty players1Hp =  new SimpleStringProperty();
@@ -71,9 +75,14 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 		
 		isPlayer1Active.bind(model.activePlayer1Property());
 	}
-
-	public void change (String vergleichsattribut) throws RemoteException {
-		model.calculateRoundResult(vergleichsattribut);
+	
+	/**
+	 * Triggers the Model when one step in the game happens
+	 *
+	 * @param comparisonAttribute one of the Attributes of a Card (Hp, Kmh, Consumption, CCm or Acceleration)
+	 */
+	public void change (String comparisonAttribute) throws RemoteException {
+		model.calculateRoundResult(comparisonAttribute);
 		this.updateObserver(1);
 		this.updateObserver(2);
 	}
