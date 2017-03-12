@@ -18,10 +18,10 @@ import java.util.Collections;
 	Card card10 = new Card("VW Golf 2 GTI G6","/Img/VWGolf2GTIG6.jpg", "300", "250","15.5","1600","13");
 	Card card11 = new Card("VW Polo 1 GT","/Img/VWPolo2GT.jpg", "60", "150","11.3","1300","10");
 	Card card12 = new Card("Porsche 911 Turbo S","/Img/Porsch911_TurboS.jpg","580","330","12","3800","3");
-	Card card13 = new Card("Ferrari_F40","/Img/FerrariF40.jpg","521","325", "18","4706","3.7");
-	Card card14 = new Card("Mitsubishi_Lancer_WRC","/Img/Mitsubishi_Lancer_WRC.jpg","300","280", "15","1999","4.4");
-	Card card15 = new Card("Skoda_Fabia_WRC","/Img/Skoda_Fabia_WRC.jpg","295","275","17","1999","4.6");
-	Card card16 = new Card("Opel_Vectra_GTS","/Img/Opel_Vectra_GTS.jpg","465","285", "21","3998","4.4");
+	Card card13 = new Card("Ferrari F40","/Img/FerrariF40.jpg","521","325", "18","4706","3.7");
+	Card card14 = new Card("Mitsubishi Lancer WRC","/Img/Mitsubishi_Lancer_WRC.jpg","300","280", "15","1999","4.4");
+	Card card15 = new Card("Skoda Fabia WRC","/Img/Skoda_Fabia_WRC.jpg","295","275","17","1999","4.6");
+	Card card16 = new Card("Opel Vectra GTS","/Img/Opel_Vectra_GTS.jpg","465","285", "21","3998","4.4");
 	
 	public GameCardStack() {
 		cards = new LinkedList<Card>();
