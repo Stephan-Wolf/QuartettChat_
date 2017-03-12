@@ -52,6 +52,7 @@ public class View  extends UnicastRemoteObject implements Observer {
 	@FXML
     public void initialize() {
 		textArea.setEditable(false);
+		textArea.setWrapText(true);
 		showOnEnd.setVisible(false);
     }
 	
