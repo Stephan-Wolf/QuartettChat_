@@ -90,14 +90,11 @@ public class Game extends UnicastRemoteObject implements IGame {
 	}
 	
 	@Override
-	public int calculateRoundResult(String cardAttribute) {
+	public void calculateRoundResult(String cardAttribute) {
 		if(gameover.get() == false) {
 			int roundResult = compareCardAttributes(cardAttribute);
 			this.updatePlayerCardStacks(roundResult);
 			this.updateRoundWinner(roundResult);
-			return roundResult;
-		} else {
-			return -1;
 		}
 	}
 	

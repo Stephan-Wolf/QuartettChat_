@@ -10,7 +10,7 @@ public interface IGame extends Remote
 {  
     void startGame() throws RemoteException;
     void repeatGame () throws RemoteException;
-    int calculateRoundResult(String carAttribute) throws RemoteException;
+    void calculateRoundResult(String carAttribute) throws RemoteException;
 	BooleanProperty activePlayer1Property() throws RemoteException;
 	BooleanProperty gameoverProperty() throws RemoteException;
     
