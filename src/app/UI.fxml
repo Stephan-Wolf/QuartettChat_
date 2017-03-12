@@ -45,27 +45,27 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                     	 <Button fx:id="buttonHP" mnemonicParsing="false" onAction="#compareHP" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
+                     	 <Button fx:id="buttonHP" disable="true" mnemonicParsing="false" onAction="#compareHP" prefHeight="26.0" prefWidth="100.0" text="PS" GridPane.columnIndex="1">
                            <font>
                               <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buttonKMH" mnemonicParsing="false" onAction="#compareKMH" prefHeight="26.0" prefWidth="100.0" text="KM/H" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="buttonKMH" disable="true" mnemonicParsing="false" onAction="#compareKMH" prefHeight="26.0" prefWidth="100.0" text="KM/H" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buttonConsumption" mnemonicParsing="false" onAction="#compareConsumption" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Button fx:id="buttonConsumption" disable="true" mnemonicParsing="false" onAction="#compareConsumption" prefHeight="26.0" prefWidth="100.0" text="VERBRAUCH" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buttonCCM" mnemonicParsing="false" onAction="#compareCCM" prefHeight="26.0" prefWidth="100.0" text="CCM" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Button fx:id="buttonCCM" disable="true" mnemonicParsing="false" onAction="#compareCCM" prefHeight="26.0" prefWidth="100.0" text="CCM" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
                               <Font name="Courier" size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="buttonAcceleration" mnemonicParsing="false" onAction="#compareAcceleration" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <Button fx:id="buttonAcceleration" disable="true" mnemonicParsing="false" onAction="#compareAcceleration" prefHeight="26.0" prefWidth="100.0" text="0-100 in s " GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <font>
                               <Font name="Courier" size="11.0" />
                            </font>
@@ -124,7 +124,7 @@
                               <Font name="Courier" size="13.0" />
                            </font>
                         </Text>
-                        <Text fx:id="labelRundenstatus" layoutX="6.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="184.9999966993928">
+                        <Text fx:id="labelRundenstatus" layoutX="6.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="auf Spieler 2 warten " wrappingWidth="184.9999966993928">
                          <font>
                               <Font name="Courier" size="13.0" />
                            </font>
@@ -149,7 +149,7 @@
                               <Font name="Courier" size="11.0" />
                            </font>
                         </TextField>
-                  <Button layoutX="7.0" layoutY="403.0" mnemonicParsing="false" onAction="#send" prefHeight="26.0" prefWidth="218.0" text="Senden">
+                  <Button fx:id="buttonSend" disable="true" layoutX="7.0" layoutY="403.0" mnemonicParsing="false" onAction="#send" prefHeight="26.0" prefWidth="218.0" text="Senden">
                    <font>
                               <Font name="Courier" size="13.0" />
                            </font>

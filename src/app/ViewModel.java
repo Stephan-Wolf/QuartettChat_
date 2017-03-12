@@ -90,12 +90,14 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	@Override
 	public void setObserver1(Observer observer) throws RemoteException {
 		player1 = observer;
-		updateObserver(1);
 	}
 	
 	@Override
 	public void setObserver2(Observer observer) throws RemoteException {
 		player2 = observer;
+		player1.updateButtonSend();
+		player2.updateButtonSend();
+		updateObserver(1);
 		updateObserver(2);
 	}
 	

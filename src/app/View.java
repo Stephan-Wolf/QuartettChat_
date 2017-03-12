@@ -36,7 +36,7 @@ public class View  extends UnicastRemoteObject implements Observer {
 	@FXML
 	private Text labelName, labelHP, labelKMH, labelConsumption, labelCCM, labelAcceleration, labelKartenanzahl, labelRundenstatus;
 	@FXML
-	private Button buttonHP, buttonKMH, buttonConsumption, buttonCCM, buttonAcceleration, restartButton, endGameButton;
+	private Button buttonHP, buttonKMH, buttonConsumption, buttonCCM, buttonAcceleration, restartButton, endGameButton, buttonSend;
 	@FXML
 	private ImageView imageDisplay;
 	@FXML
@@ -221,6 +221,16 @@ public class View  extends UnicastRemoteObject implements Observer {
 			System.exit(0);
 		}
 		
+	}
+
+	@Override
+	public void updateButtonSend() throws RemoteException {
+		thread = new Thread () {
+			public void run() {		
+				Platform.runLater(() -> buttonSend.setDisable(false));
+			}
+		};
+		thread.start();
 	}
 		
 }	

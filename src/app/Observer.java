@@ -10,5 +10,5 @@ public interface Observer extends Remote {
 	void updateChat(String message) throws RemoteException;
 	void updateRestartGame() throws RemoteException;	
 	void updateQuitGame() throws RemoteException;
-	
+	void updateButtonSend() throws RemoteException;
 }
