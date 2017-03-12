@@ -83,8 +83,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	 */
 	public void change (String comparisonAttribute) throws RemoteException {
 		model.calculateRoundResult(comparisonAttribute);
-		this.updateObserver(1);
-		this.updateObserver(2);
+		updateObservers();
 	}
 
 	@Override
@@ -97,12 +96,11 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 		player2 = observer;
 		player1.updateButtonSend();
 		player2.updateButtonSend();
-		updateObserver(1);
-		updateObserver(2);
+		updateObservers();
 	}
 	
-	void updateObserver(int x) throws RemoteException {
-		if(x==1){
+	private void updateObservers() throws RemoteException {
+		
 			String name = players1CardName.getValue();
 			String hp = players1Hp.getValue();
 			String kmh 	= players1Kmh.getValue();
@@ -115,21 +113,19 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 			String status = players1Status.getValue();
 			
 			player1.update(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status);	
-		}
-		if(x==2){
-			String name = players2CardName.getValue();
-			String hp = players2Hp.getValue();
-			String kmh 	= players2Kmh.getValue();
-			String consumption= players2Consumption.getValue();
-			String ccm = players2Ccm.getValue();
-			String acceleration = players2Acceleration.getValue();
-			boolean winner =! isPlayer1Active.getValue();
-			int numberOfCards = players2NumberOfCards.getValue();
-			String jpgUrl = players2SourceOfJpg.getValue();
-			String status = players2Status.getValue();
+		
+			name = players2CardName.getValue();
+			hp = players2Hp.getValue();
+			kmh 	= players2Kmh.getValue();
+			consumption= players2Consumption.getValue();
+			ccm = players2Ccm.getValue();
+			acceleration = players2Acceleration.getValue();
+			winner =! isPlayer1Active.getValue();
+			numberOfCards = players2NumberOfCards.getValue();
+			jpgUrl = players2SourceOfJpg.getValue();
+			status = players2Status.getValue();
 			
 			player2.update(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status);
-		}
 	}
 
 	@Override
@@ -150,10 +146,9 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 		}
 		if (player1Ready == true && player2Ready == true) {
 			model.repeatGame();
-			this.updateObserver(1);
-			this.updateObserver(2);
-			this.player1.updateRestartGame();
-			this.player2.updateRestartGame();
+			updateObservers();
+			player1.updateRestartGame();
+			player2.updateRestartGame();
 			player1Ready = false;
 			player2Ready = false;
 		}
