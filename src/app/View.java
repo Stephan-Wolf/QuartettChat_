@@ -53,6 +53,7 @@ public class View  extends UnicastRemoteObject implements Observer {
     public void initialize() {
 		textArea.setEditable(false);
 		textArea.setWrapText(true);
+		textField.setEditable(false);
 		showOnEnd.setVisible(false);
     }
 	
@@ -229,6 +230,7 @@ public class View  extends UnicastRemoteObject implements Observer {
 		thread = new Thread () {
 			public void run() {		
 				Platform.runLater(() -> buttonSend.setDisable(false));
+				Platform.runLater(() -> textField.setEditable(true));
 			}
 		};
 		thread.start();
