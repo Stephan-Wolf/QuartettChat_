@@ -16,8 +16,8 @@ import java.io.Serializable;
 public class ViewModel extends UnicastRemoteObject  implements IViewModel, Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private Observer player1;
-	private Observer player2;
+	private ViewModelObserver player1;
+	private ViewModelObserver player2;
 	private boolean player1Ready;
 	private boolean player2Ready;
 	
@@ -81,18 +81,18 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	 *
 	 * @param comparisonAttribute one of the Attributes of a Card (Hp, Kmh, Consumption, CCm or Acceleration)
 	 */
-	public void change (String comparisonAttribute) throws RemoteException {
+	public void changeGame (String comparisonAttribute) throws RemoteException {
 		model.calculateRoundResult(comparisonAttribute);
 		updateObservers();
 	}
 
 	@Override
-	public void setObserver1(Observer observer) throws RemoteException {
+	public void setObserver1(ViewModelObserver observer) throws RemoteException {
 		player1 = observer;
 	}
 	
 	@Override
-	public void setObserver2(Observer observer) throws RemoteException {
+	public void setObserver2(ViewModelObserver observer) throws RemoteException {
 		player2 = observer;
 		player1.updateButtonSend();
 		player2.updateButtonSend();
@@ -112,7 +112,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 			String jpgUrl = players1SourceOfJpg.getValue();
 			String status = players1Status.getValue();
 			
-			player1.update(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status);	
+			player1.updateGame(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status);	
 		
 			name = players2CardName.getValue();
 			hp = players2Hp.getValue();
@@ -125,7 +125,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 			jpgUrl = players2SourceOfJpg.getValue();
 			status = players2Status.getValue();
 			
-			player2.update(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status);
+			player2.updateGame(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status);
 	}
 
 	@Override

@@ -18,7 +18,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Optional;
 
-public class View  extends UnicastRemoteObject implements Observer {
+public class View  extends UnicastRemoteObject implements ViewModelObserver {
 	
 	private Thread thread;
 	final String HP = "ps";
@@ -64,27 +64,27 @@ public class View  extends UnicastRemoteObject implements Observer {
 	
 	@FXML
 	private void compareHP(ActionEvent event) throws RemoteException{
-		viewmodel.change(HP);
+		viewmodel.changeGame(HP);
 	}
 	
 	@FXML
 	private void compareKMH(ActionEvent event) throws RemoteException{
-		viewmodel.change(KMH);
+		viewmodel.changeGame(KMH);
 	}
 	
 	@FXML
 	private void compareConsumption(ActionEvent event) throws RemoteException{
-		viewmodel.change(CONSUMPTION);
+		viewmodel.changeGame(CONSUMPTION);
 	}
 	
 	@FXML
 	private void compareCCM(ActionEvent event) throws RemoteException{
-		viewmodel.change(CCM);
+		viewmodel.changeGame(CCM);
 	}
 	
 	@FXML
 	private void compareAcceleration(ActionEvent event) throws RemoteException{
-		viewmodel.change(ACCELERATION);
+		viewmodel.changeGame(ACCELERATION);
 	}
 	
 	@FXML
@@ -114,7 +114,7 @@ public class View  extends UnicastRemoteObject implements Observer {
 	}
 	
 	@Override
-	public void update(String name, String hp, String kmh, String consumption, String ccm, String acceleration,
+	public void updateGame(String name, String hp, String kmh, String consumption, String ccm, String acceleration,
 			boolean isPlayerActive, int numberOfCards, String jpgUrl, String status) throws RemoteException {
 
 		if (numberOfCards == 0 || numberOfCards == 16){
