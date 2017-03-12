@@ -72,6 +72,5 @@ import java.util.Collections;
 		playerCardStacks[0]  = players1CardStack;
 		playerCardStacks[1]  = players2CardStack;
 		return playerCardStacks;
-	}
-    
+	} 
 }

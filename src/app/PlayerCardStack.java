@@ -14,12 +14,12 @@ public class PlayerCardStack {
 		return cards.removeLast();
 	}
 	
-	void addCardOnTop (Card card) {
+	public void addCardOnTop (Card card) {
 		cards.addLast(card);
 		
 	}
 	
-	void addCardAtTheBottom (Card card) {
+	public void addCardAtTheBottom (Card card) {
 		cards.addFirst(card);
 	}
 		
@@ -37,5 +37,4 @@ public class PlayerCardStack {
 			cards.get(i).printCard();
 		}
 	}
-	
 }

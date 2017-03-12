@@ -56,7 +56,7 @@ public class Player {
 	}
 	
 	
-	public final StringProperty hpAttributeOfTopCardProperty () {
+	public StringProperty hpAttributeOfTopCardProperty () {
         return hpAttributeOfTopCard; 
 	}
 	

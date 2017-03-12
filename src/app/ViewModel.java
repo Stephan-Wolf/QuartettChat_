@@ -22,6 +22,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	private boolean player2Ready;
 	
 	private BooleanProperty isPlayer1Active = new SimpleBooleanProperty();
+	private BooleanProperty gameover = new SimpleBooleanProperty();
 	
 	
 	/**
@@ -74,6 +75,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 		players2Status.bind(model.players2StatusProperty());
 		
 		isPlayer1Active.bind(model.activePlayer1Property());
+		gameover.bind(model.gameoverProperty());
 	}
 	
 	/**
@@ -100,8 +102,10 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 	}
 	
 	private void updateObservers() throws RemoteException {
+			
+			boolean endOfGame = gameover.getValue();
 		
-			String name = players1CardName.getValue();
+			String name = players1CardName.get();
 			String hp = players1Hp.getValue();
 			String kmh 	= players1Kmh.getValue();
 			String consumption= palyers1Consumption.getValue();
@@ -112,7 +116,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 			String jpgUrl = players1SourceOfJpg.getValue();
 			String status = players1Status.getValue();
 			
-			player1.updateGame(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status);	
+			player1.updateGame(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status, endOfGame);	
 		
 			name = players2CardName.getValue();
 			hp = players2Hp.getValue();
@@ -125,7 +129,7 @@ public class ViewModel extends UnicastRemoteObject  implements IViewModel, Seria
 			jpgUrl = players2SourceOfJpg.getValue();
 			status = players2Status.getValue();
 			
-			player2.updateGame(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status);
+			player2.updateGame(name, hp, kmh, consumption, ccm, acceleration, winner, numberOfCards, jpgUrl, status, endOfGame);
 	}
 
 	@Override

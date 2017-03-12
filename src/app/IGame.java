@@ -11,25 +11,26 @@ public interface IGame extends Remote
     void startGame() throws RemoteException;
     void repeatGame () throws RemoteException;
     int calculateRoundResult(String carAttribute) throws RemoteException;
-	public BooleanProperty activePlayer1Property() throws RemoteException;
+	BooleanProperty activePlayer1Property() throws RemoteException;
+	BooleanProperty gameoverProperty() throws RemoteException;
     
-	public StringProperty players1CardNameProperty () throws RemoteException;
-	public StringProperty players1HpProperty () throws RemoteException;
-	public StringProperty players1KmhProperty () throws RemoteException;
-	public StringProperty palyers1ConsumptionProperty () throws RemoteException;
-	public StringProperty players1CcmProperty () throws RemoteException;
-	public StringProperty players1AccelerationProperty () throws RemoteException;
-	public IntegerProperty players1NumberOfCardsProperty () throws RemoteException;
-	public StringProperty players1SourceOfJpgProperty () throws RemoteException;
-	public StringProperty players1StatusProperty () throws RemoteException;
+	StringProperty players1CardNameProperty () throws RemoteException;
+	StringProperty players1HpProperty () throws RemoteException;
+	StringProperty players1KmhProperty () throws RemoteException;
+	StringProperty palyers1ConsumptionProperty () throws RemoteException;
+	StringProperty players1CcmProperty () throws RemoteException;
+	StringProperty players1AccelerationProperty () throws RemoteException;
+	IntegerProperty players1NumberOfCardsProperty () throws RemoteException;
+	StringProperty players1SourceOfJpgProperty () throws RemoteException;
+	StringProperty players1StatusProperty () throws RemoteException;
 
-	public StringProperty players2CardNameProperty () throws RemoteException;
-	public StringProperty players2HpProperty () throws RemoteException;
-	public StringProperty players2KmhProperty () throws RemoteException;
-	public StringProperty players2ConsumptionProperty () throws RemoteException;
-	public StringProperty players2CcmProperty () throws RemoteException;
-	public StringProperty players2AccelerationProperty () throws RemoteException;
-	public IntegerProperty players2NumberOfCardsProperty () throws RemoteException;
-	public StringProperty players2SourceOfJpgProperty () throws RemoteException;
-	public StringProperty players2StatusProperty () throws RemoteException;
+	StringProperty players2CardNameProperty () throws RemoteException;
+	StringProperty players2HpProperty () throws RemoteException;
+	StringProperty players2KmhProperty () throws RemoteException;
+	StringProperty players2ConsumptionProperty () throws RemoteException;
+	StringProperty players2CcmProperty () throws RemoteException;
+	StringProperty players2AccelerationProperty () throws RemoteException;
+	IntegerProperty players2NumberOfCardsProperty () throws RemoteException;
+	StringProperty players2SourceOfJpgProperty () throws RemoteException;
+	StringProperty players2StatusProperty () throws RemoteException;
 }

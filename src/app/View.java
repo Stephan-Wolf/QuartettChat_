@@ -21,11 +21,11 @@ import java.util.Optional;
 public class View  extends UnicastRemoteObject implements ViewModelObserver {
 	
 	private Thread thread;
-	final String HP = "ps";
-	final String KMH = "kmh";
-	final String CONSUMPTION = "verbrauch";
-	final String CCM = "ccm";
-	final String ACCELERATION = "beschleunigung";
+	private static final String HP = "ps";
+	private static final String KMH = "kmh";
+	private static final String CONSUMPTION = "verbrauch";
+	private static final String CCM = "ccm";
+	private static final String ACCELERATION = "beschleunigung";
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private IViewModel viewmodel;
@@ -34,9 +34,9 @@ public class View  extends UnicastRemoteObject implements ViewModelObserver {
 	@FXML
 	private Pane showOnEnd, hideOnEnd2;
 	@FXML
-	private Text labelName, labelHP, labelKMH, labelConsumption, labelCCM, labelAcceleration, labelKartenanzahl, labelRundenstatus;
+	private Text labelName, labelHP, labelKMH, labelConsumption, labelCCM, labelAcceleration, labelNumberOfCards, labelRoundStatus;
 	@FXML
-	private Button buttonHP, buttonKMH, buttonConsumption, buttonCCM, buttonAcceleration, restartButton, endGameButton, buttonSend;
+	private Button buttonHP, buttonKMH, buttonConsumption, buttonCCM, buttonAcceleration, buttonRestart, buttonEndGame, buttonSend;
 	@FXML
 	private ImageView imageDisplay;
 	@FXML
@@ -50,7 +50,7 @@ public class View  extends UnicastRemoteObject implements ViewModelObserver {
 	}
 	
 	@FXML
-    public void initialize() {
+    private void initialize() {
 		textArea.setEditable(false);
 		textArea.setWrapText(true);
 		textField.setEditable(false);
@@ -90,8 +90,8 @@ public class View  extends UnicastRemoteObject implements ViewModelObserver {
 	@FXML
 	private void restartGame (ActionEvent event) throws RemoteException{
 		viewmodel.restartGame(this.getID());
-		restartButton.setDisable(true);
-		endGameButton.setDisable(true);
+		buttonRestart.setDisable(true);
+		buttonEndGame.setDisable(true);
 	}
 	
 	@FXML
@@ -115,20 +115,20 @@ public class View  extends UnicastRemoteObject implements ViewModelObserver {
 	
 	@Override
 	public void updateGame(String name, String hp, String kmh, String consumption, String ccm, String acceleration,
-			boolean isPlayerActive, int numberOfCards, String jpgUrl, String status) throws RemoteException {
+			boolean isPlayerActive, int numberOfCards, String jpgUrl, String status, boolean gameover) throws RemoteException {
 
-		if (numberOfCards == 0 || numberOfCards == 16){
+		if (gameover){
 			hideOnEnd.setVisible(false);
 			hideOnEnd2.setVisible(false);
 			showOnEnd.setVisible(true);
 			
-			if(numberOfCards == 0){
+			if(!isPlayerActive){
 				labelName.setText("CRASH Du hast verloren");
 				String image = new String("/Img/car_crash.jpg");
 		        Image imageUse = new Image(image);
 		        imageDisplay.setImage(imageUse);
 			}
-			if(numberOfCards == 16){
+			if(isPlayerActive){
 				labelName.setText("WINNER Du hast gewonnen");
 				String image = new String("/Img/Zielflagge.jpg");
 		        Image imageUse = new Image(image);
@@ -155,9 +155,9 @@ public class View  extends UnicastRemoteObject implements ViewModelObserver {
 					Platform.runLater(() -> buttonConsumption.setDisable(!isPlayerActive));
 					Platform.runLater(() -> buttonCCM.setDisable(!isPlayerActive));
 					Platform.runLater(() -> buttonAcceleration.setDisable(!isPlayerActive));
-					Platform.runLater(() -> labelKartenanzahl.setText(String.valueOf(numberOfCards)));
+					Platform.runLater(() -> labelNumberOfCards.setText(String.valueOf(numberOfCards)));
 					Platform.runLater(() -> imageDisplay.setImage(imageUse));
-					Platform.runLater(() -> labelRundenstatus.setText(status));
+					Platform.runLater(() -> labelRoundStatus.setText(status));
 				}
 			};
 			thread.start();
@@ -180,10 +180,10 @@ public class View  extends UnicastRemoteObject implements ViewModelObserver {
 			public void run() {		
 				Platform.runLater(() -> hideOnEnd.setVisible(true));
 				Platform.runLater(() -> showOnEnd.setVisible(false));
-				Platform.runLater(() -> restartButton.setDisable(false));
-				Platform.runLater(() -> endGameButton.setDisable(false));
+				Platform.runLater(() -> buttonRestart.setDisable(false));
+				Platform.runLater(() -> buttonEndGame.setDisable(false));
 				Platform.runLater(() -> hideOnEnd2.setVisible(true));
-				Platform.runLater(() -> labelRundenstatus.setText("Jetzt gehts los"));
+				Platform.runLater(() -> labelRoundStatus.setText("Jetzt gehts los"));
 			}
 		};
 		thread.start();
@@ -221,8 +221,7 @@ public class View  extends UnicastRemoteObject implements ViewModelObserver {
 			e.printStackTrace();
 			Platform.exit();
 			System.exit(0);
-		}
-		
+		}		
 	}
 
 	@Override
@@ -234,8 +233,7 @@ public class View  extends UnicastRemoteObject implements ViewModelObserver {
 			}
 		};
 		thread.start();
-	}
-		
+	}		
 }	
 
 

@@ -51,7 +51,5 @@ public class Card {
     
 	public void printCard(){
     	System.out.println(this.getName());
-    }
-    
+    }    
 }
-

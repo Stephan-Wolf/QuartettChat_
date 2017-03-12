@@ -31,11 +31,11 @@ public class Game extends UnicastRemoteObject implements IGame {
 	private Player player1;
 	private Player player2;
 	private GameCardStack cardStack;
-	private boolean gameover = false;
 	
+	private BooleanProperty gameover = new SimpleBooleanProperty();
 	private BooleanProperty player1IsActive = new SimpleBooleanProperty();
-	private StringProperty spieler1Status = new SimpleStringProperty();
-	private StringProperty spieler2Status = new SimpleStringProperty();
+	private StringProperty player1Status = new SimpleStringProperty();
+	private StringProperty player2Status = new SimpleStringProperty();
 
 	
 	public Game () throws RemoteException {
@@ -56,7 +56,7 @@ public class Game extends UnicastRemoteObject implements IGame {
 	}
 	
 	public void startGame () {
-		gameover = false;
+		gameover.set(false);
 		this.mixCards();
 		this.dealCards();
 	}
@@ -64,7 +64,7 @@ public class Game extends UnicastRemoteObject implements IGame {
 	public void repeatGame () {
 		
 		cardStack = new GameCardStack();
-		gameover = false;
+		gameover.set(false);
 		this.mixCards();
 		this.dealCards();
 		this.determineGameInitiator();
@@ -72,7 +72,6 @@ public class Game extends UnicastRemoteObject implements IGame {
 	}
 	
 	private void mixCards() {
-		System.out.println("kartenMischen()");
 		this.cardStack.mix();
 	}
 	
@@ -83,51 +82,29 @@ public class Game extends UnicastRemoteObject implements IGame {
 		this.player1.setPlayerCardStack(playerCardStack[0]);
 		player1.updateNumberOfCards();
 		this.player1.uncoverTopCard();
-
-		
+	
 		this.player2.setPlayerCardStack(playerCardStack [1]);
 		player2.updateNumberOfCards();
 		this.player2.uncoverTopCard();
 
-		System.out.println();
-		System.out.println("kartenAusteilen()");
-		System.out.println("Spielerstapel Spieler1:");
-		player1.printAllCards();
-		System.out.println();
-		System.out.println("Spielerstapel Spieler2:");
-		player2.printAllCards();
 	}
 	
-	
-	// noch �berlegen, ob auf int verzichten
+	@Override
 	public int calculateRoundResult(String cardAttribute) {
-		if(gameover == false) {
+		if(gameover.get() == false) {
 			int roundResult = compareCardAttributes(cardAttribute);
 			this.updatePlayerCardStacks(roundResult);
 			this.updateRoundWinner(roundResult);
-			System.out.println();
-			System.out.println("**************************************************");
-			System.out.println("ermittleRundenergebnis() return: " + roundResult);
-			System.out.println("spieler1.AlleKartenAusgeben()");
-			player1.printAllCards();
-			System.out.println();
-			System.out.println("spieler2.AlleKartenAusgeben()");
-			player2.printAllCards();
-			System.out.println();
 			return roundResult;
 		} else {
-			System.out.println("Spielende: " + gameover);
 			return -1;
 		}
 	}
 	
 	private int compareCardAttributes(String cardAttributes){
-		System.out.println("vergleicheAttribut() attribut: " + cardAttributes);
 		
 		if(cardAttributes.equals(HP)) {
-			
 			int result = getComparingResult(player1.hpAttributeOfTopCardProperty(), player2.hpAttributeOfTopCardProperty());
-			
 			return result;
 			
 		} else if(cardAttributes.equals(KMH)) {
@@ -155,8 +132,6 @@ public class Game extends UnicastRemoteObject implements IGame {
 		return 0;
 	}
 	
-
-	
 	private int getComparingResult(StringProperty cardAttribute1, StringProperty cardAttribute2) {
 		float comparingFloatingPointNumber1 = Float.parseFloat(cardAttribute1.getValue());
 		float comparingFloatingPointNumber2 = Float.parseFloat(cardAttribute2.getValue());
@@ -171,9 +146,7 @@ public class Game extends UnicastRemoteObject implements IGame {
 		}
 	}
 	
-
 	private void updatePlayerCardStacks(int roundResult) {
-		System.out.println("spielerstapelAktualisieren()");
 		
 		if (roundResult == ROUNDWINNER_PLAYER_1) {
 			this.transferCard(this.player1, this.player2);
@@ -181,10 +154,6 @@ public class Game extends UnicastRemoteObject implements IGame {
 		} else if (roundResult == ROUNDWINNER_PLAYER_2){
 			this.transferCard(this.player2, this.player1);
 			
-		}else if (roundResult == ROUNDWINNER_PLAYER_1 && gameover == true){
-			System.out.println("SPiel Over und Gewinner ist Spieler 1");
-		}else if (roundResult == ROUNDWINNER_PLAYER_2 && gameover == true){
-			System.out.println("SPiel Over und Gewinner ist Spieler 2");
 		} else {
 			this.player1.moveTopCardDownwards();
 			player1.uncoverTopCard();
@@ -197,7 +166,7 @@ public class Game extends UnicastRemoteObject implements IGame {
 		Card card = loser.giveCard();
 		loser.updateNumberOfCards();
 		if (loser.numberOfCardsProperty().getValue() == 0) {
-			gameover = true;
+			gameover.set(true);
 		} else {
 			loser.uncoverTopCard();
 		}
@@ -211,95 +180,117 @@ public class Game extends UnicastRemoteObject implements IGame {
 	
 	private void updateRoundWinner(int roundResult)  {
 		if (roundResult == ROUNDWINNER_PLAYER_1) {
-			spieler1Status.setValue(WON_ROUND);
-			spieler2Status.setValue(LOST_ROUND);
+			player1Status.setValue(WON_ROUND);
+			player2Status.setValue(LOST_ROUND);
 			player1IsActive.setValue(true);
 		}
 		else if (roundResult == ROUNDWINNER_PLAYER_2) {
-			spieler1Status.setValue(LOST_ROUND);
-			spieler2Status.setValue(WON_ROUND);
+			player1Status.setValue(LOST_ROUND);
+			player2Status.setValue(WON_ROUND);
 			player1IsActive.setValue(false);	
 		} else {
-			spieler1Status.setValue(DRAWN_ROUND);
-			spieler2Status.setValue(DRAWN_ROUND);
+			player1Status.setValue(DRAWN_ROUND);
+			player2Status.setValue(DRAWN_ROUND);
 		}
 	}
 	
+	@Override
 	public StringProperty players1HpProperty () {
 		return this.player1.hpAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players2HpProperty () {
 		return this.player2.hpAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players1KmhProperty () {
 		return this.player1.kmhAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players2KmhProperty () {
 		return this.player2.kmhAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty palyers1ConsumptionProperty () {
 		return this.player1.consumptionAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players2ConsumptionProperty () {
 		return this.player2.consumptionAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players1CcmProperty () {
 		return this.player1.ccmAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players2CcmProperty () {
 		return this.player2.ccmAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players1AccelerationProperty () {
 		return this.player1.accelerationAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players2AccelerationProperty () {
 		return this.player2.accelerationAttributeOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players1SourceOfJpgProperty () {
 		return this.player1.jpgSourceOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players2SourceOfJpgProperty () {
 		return this.player2.jpgSourceOfTopCardProperty();
 	}
 	
-	
+	@Override
 	public StringProperty players1CardNameProperty () {
 		return this.player1.nameOfTopCardProperty();
 	}
 	
+	@Override
 	public StringProperty players2CardNameProperty () {
 		return this.player2.nameOfTopCardProperty();
 	}
 	
-	
+	@Override
 	public IntegerProperty players1NumberOfCardsProperty () {
 		return this.player1.numberOfCardsProperty();
 	}
 	
+	@Override
 	public IntegerProperty players2NumberOfCardsProperty () {
 		return this.player2.numberOfCardsProperty();
 	}
 	
+	@Override
 	public StringProperty players1StatusProperty () {
-		return this.spieler1Status;
+		return this.player1Status;
 	}
 	
+	@Override
 	public StringProperty players2StatusProperty () {
-		return this.spieler2Status;
+		return this.player2Status;
 	}
 	
+	@Override
 	public BooleanProperty activePlayer1Property () {
 		return this.player1IsActive;
+	}
+
+	@Override
+	public BooleanProperty gameoverProperty() throws RemoteException {
+		return this.gameover;
 	}
 }

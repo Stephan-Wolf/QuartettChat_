@@ -102,11 +102,11 @@
                   </GridPane>
                   <Pane fx:id="showOnEnd" layoutX="75.0" layoutY="172.0" prefHeight="171.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="restartButton" layoutX="25.0" layoutY="53.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="26.0" prefWidth="151.0" text="Spiel wiederholen">
+                        <Button fx:id="buttonRestart" layoutX="25.0" layoutY="53.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="26.0" prefWidth="151.0" text="Spiel wiederholen">
                            <font>
                               <Font name="Courier" size="13.0" />
                            </font></Button>
-                        <Button fx:id="endGameButton" layoutX="25.0" layoutY="93.0" mnemonicParsing="false" onAction="#endGame" prefHeight="26.0" prefWidth="151.0" text="Spiel beenden">
+                        <Button fx:id="buttonEndGame" layoutX="25.0" layoutY="93.0" mnemonicParsing="false" onAction="#endGame" prefHeight="26.0" prefWidth="151.0" text="Spiel beenden">
                            <font>
                               <Font name="Courier" size="13.0" />
                            </font></Button>
@@ -119,12 +119,12 @@
                               <Font name="Courier" size="13.0" />
                            </font>
                         </Label>
-                        <Text fx:id="labelKartenanzahl" layoutX="120.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="16.682918548583984">
+                        <Text fx:id="labelNumberOfCards" layoutX="120.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="16.682918548583984">
                          <font>
                               <Font name="Courier" size="13.0" />
                            </font>
                         </Text>
-                        <Text fx:id="labelRundenstatus" layoutX="6.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="auf Spieler 2 warten " wrappingWidth="184.9999966993928">
+                        <Text fx:id="labelRoundStatus" layoutX="6.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="auf Spieler 2 warten " wrappingWidth="184.9999966993928">
                          <font>
                               <Font name="Courier" size="13.0" />
                            </font>
