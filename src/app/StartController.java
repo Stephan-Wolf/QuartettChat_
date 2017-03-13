@@ -1,5 +1,13 @@
 package app;
 
+/**
+* StartController.java
+* 
+* @author  Christian Hechtberger
+* @version 1.0
+* @since   2017/03 
+*/
+
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;

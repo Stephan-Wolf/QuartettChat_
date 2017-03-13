@@ -1,5 +1,13 @@
 package app;
 
+/**
+* Card.java
+*
+* @author  Stephan Wolf
+* @version 1.0
+* @since   2017/03 
+*/
+
 public class Card {
 	
 	private String name;

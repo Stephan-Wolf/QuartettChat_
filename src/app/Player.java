@@ -1,5 +1,13 @@
 package app;
 
+/**
+* Player.java
+*
+* @author  Artur Nowodworski
+* @version 1.0
+* @since   2017/03 
+*/
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

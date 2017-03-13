@@ -1,5 +1,13 @@
 package app;
 
+/**
+* ViewModel.java
+*
+* @author  Oliver Dusel
+* @version 1.0
+* @since   2017/03 
+*/
+
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;

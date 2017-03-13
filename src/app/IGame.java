@@ -1,5 +1,13 @@
 package app;
 
+/**
+* IGame.java
+*
+* @author  Oliver Dusel
+* @version 1.0
+* @since   2017/03 
+*/
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import javafx.beans.property.StringProperty;

@@ -1,5 +1,13 @@
 package app;
 
+/**
+* PlayerCardStack.java
+*
+* @author  Stephan Wolf
+* @version 1.0
+* @since   2017/03 
+*/
+
 import java.util.LinkedList;
 
 public class PlayerCardStack {

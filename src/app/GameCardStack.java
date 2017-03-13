@@ -1,5 +1,13 @@
 package app;
 
+/**
+* GameCardStack.java
+* 
+* @author  Stephan Wolf
+* @version 1.0
+* @since   2017/03 
+*/
+
 import java.util.LinkedList;
 import java.util.Collections;
 

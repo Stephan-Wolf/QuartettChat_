@@ -1,5 +1,13 @@
 package app;
 
+/**
+*  Game.java
+*
+* @author  Artur Nowodworski
+* @version 1.0
+* @since   2017/03 
+*/
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.property.SimpleBooleanProperty;

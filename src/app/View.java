@@ -1,5 +1,13 @@
 package app;
 
+/**
+* View.java
+*
+* @author  Christian Hechtberger
+* @version 1.0
+* @since   2017/03 
+*/
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

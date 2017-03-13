@@ -1,5 +1,13 @@
 package app;
 
+/**
+* InfoController.java
+*
+* @author  Christian Hechtberger
+* @version 1.0
+* @since   2017/03 
+*/
+
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
